@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Orders" representedClassName="Orders" syncable="YES" codeGenerationType="class">
+        <attribute name="orderCompleted_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="orderSubmissionTime_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="orderType_" optional="YES" attributeType="String"/>
+        <attribute name="orderUUID_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="patientEmailAddress_" optional="YES" attributeType="String"/>
+        <attribute name="pharmacyAccreditationNumber_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pharmacyEmailAddress_" optional="YES" attributeType="String"/>
+        <attribute name="pharmacyName_" optional="YES" attributeType="String"/>
+        <attribute name="prescriptionSource_" optional="YES" attributeType="String"/>
+        <attribute name="refill_prescription" optional="YES" attributeType="String"/>
+        <attribute name="trans_prescription" optional="YES" attributeType="String"/>
+        <attribute name="trans_priorPharmacyName" optional="YES" attributeType="String"/>
+        <attribute name="trans_priorPharmacyPhone" optional="YES" attributeType="String"/>
+        <attribute name="trans_transferAll" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="fulfillmentPharmacy_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pharmacy" inverseName="orderHistory_" inverseEntity="Pharmacy"/>
+        <relationship name="patient_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="orderHistory_" inverseEntity="Patient"/>
+    </entity>
+    <entity name="Patient" representedClassName="Patient" syncable="YES" codeGenerationType="class">
+        <attribute name="address_" optional="YES" attributeType="String"/>
+        <attribute name="city_" optional="YES" attributeType="String"/>
+        <attribute name="emailAddress_" optional="YES" attributeType="String"/>
+        <attribute name="fullName_" optional="YES" attributeType="String"/>
+        <attribute name="patientUUID_" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber_" optional="YES" attributeType="String"/>
+        <attribute name="postalCode_" optional="YES" attributeType="String"/>
+        <attribute name="privacyCompletionFlag_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="province_" optional="YES" attributeType="String"/>
+        <attribute name="signupCompletionFlag_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="healthInfo_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientHealthDetails" inverseName="patient_" inverseEntity="PatientHealthDetails"/>
+        <relationship name="insuranceInfo_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientInsuranceDetails" inverseName="patient_" inverseEntity="PatientInsuranceDetails"/>
+        <relationship name="orderHistory_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Orders" inverseName="patient_" inverseEntity="Orders"/>
+        <relationship name="orderPharmacy_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pharmacy" inverseName="patientCustomer_" inverseEntity="Pharmacy"/>
+        <relationship name="paymentInfo_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientPaymentDetails" inverseName="patient_" inverseEntity="PatientPaymentDetails"/>
+        <relationship name="shippingInfo_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientFulfillmentDetails" inverseName="patient_" inverseEntity="PatientFulfillmentDetails"/>
+    </entity>
+    <entity name="PatientFulfillmentDetails" representedClassName="PatientFulfillmentDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="address_" optional="YES" attributeType="String"/>
+        <attribute name="city_" optional="YES" attributeType="String"/>
+        <attribute name="fullName_" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber_" optional="YES" attributeType="String"/>
+        <attribute name="postalCode_" optional="YES" attributeType="String"/>
+        <attribute name="province_" optional="YES" attributeType="String"/>
+        <relationship name="patient_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="shippingInfo_" inverseEntity="Patient"/>
+    </entity>
+    <entity name="PatientHealthDetails" representedClassName="PatientHealthDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="allergiesFlag_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="birthDate_" optional="YES" attributeType="String"/>
+        <attribute name="gender_" optional="YES" attributeType="String"/>
+        <attribute name="genericSubstitution_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="medicalConditionsFlag_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="specificAllergies_" optional="YES" attributeType="String"/>
+        <attribute name="specificMedicalConditions_" optional="YES" attributeType="String"/>
+        <relationship name="patient_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="healthInfo_" inverseEntity="Patient"/>
+    </entity>
+    <entity name="PatientInsuranceDetails" representedClassName="PatientInsuranceDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="billToInsuranceFlag1" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="billToInsuranceFlag2" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="billToInsuranceFlag3" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="carrierCode1" optional="YES" attributeType="String"/>
+        <attribute name="carrierCode2" optional="YES" attributeType="String"/>
+        <attribute name="carrierCode3" optional="YES" attributeType="String"/>
+        <attribute name="emailAddress" optional="YES" attributeType="String"/>
+        <attribute name="groupNumber1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="groupNumber2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="groupNumber3" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="insurancePhoneNumber1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="insurancePhoneNumber2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="insurancePhoneNumber3" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="memberIDNumber1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="memberIDNumber2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="memberIDNumber3" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ohip" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="planName1" optional="YES" attributeType="String"/>
+        <attribute name="planName2" optional="YES" attributeType="String"/>
+        <attribute name="planName3" optional="YES" attributeType="String"/>
+        <attribute name="policyholderDOB1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="policyholderDOB2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="policyholderDOB3" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="policyholderName1" optional="YES" attributeType="String"/>
+        <attribute name="policyholderName2" optional="YES" attributeType="String"/>
+        <attribute name="policyholderName3" optional="YES" attributeType="String"/>
+        <attribute name="relationshipToCardholder1" optional="YES" attributeType="String"/>
+        <attribute name="relationshipToCardholder2" optional="YES" attributeType="String"/>
+        <attribute name="relationshipToCardholder3" optional="YES" attributeType="String"/>
+        <relationship name="patient_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="insuranceInfo_" inverseEntity="Patient"/>
+    </entity>
+    <entity name="PatientPaymentDetails" representedClassName="PatientPaymentDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="cardholderName_" optional="YES" attributeType="String"/>
+        <attribute name="cvv_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expirationMM_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expirationYY_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paymentCardNumber_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paymentType_" optional="YES" attributeType="String"/>
+        <relationship name="patient_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="paymentInfo_" inverseEntity="Patient"/>
+    </entity>
+    <entity name="Pharmacy" representedClassName="Pharmacy" syncable="YES" codeGenerationType="class">
+        <attribute name="accreditationNumber_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="address_" optional="YES" attributeType="String"/>
+        <attribute name="city_" optional="YES" attributeType="String"/>
+        <attribute name="emailAddress_" optional="YES" attributeType="String"/>
+        <attribute name="faxNumber_" optional="YES" attributeType="String"/>
+        <attribute name="latitude_" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude_" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pharmacyName_" optional="YES" attributeType="String"/>
+        <attribute name="pharmacyUUID_" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber_" optional="YES" attributeType="String"/>
+        <attribute name="postalCode_" optional="YES" attributeType="String"/>
+        <attribute name="province_" optional="YES" attributeType="String"/>
+        <relationship name="orderHistory_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Orders" inverseName="fulfillmentPharmacy_" inverseEntity="Orders"/>
+        <relationship name="patientCustomer_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="orderPharmacy_" inverseEntity="Patient"/>
+    </entity>
+    <elements>
+        <element name="Orders" positionX="183.9375" positionY="-35.2734375" width="128" height="283"/>
+        <element name="Patient" positionX="473.3359375" positionY="97.109375" width="187.84375" height="283"/>
+        <element name="PatientFulfillmentDetails" positionX="765.03515625" positionY="582.4375" width="182.3828125" height="28"/>
+        <element name="PatientHealthDetails" positionX="937.76953125" positionY="-80.50390625" width="207.96484375" height="28"/>
+        <element name="PatientInsuranceDetails" positionX="870.8515625" positionY="131.9375" width="199.984375" height="28"/>
+        <element name="PatientPaymentDetails" positionX="815.8515625" positionY="389.6796875" width="161.90625" height="28"/>
+        <element name="Pharmacy" positionX="-153.51171875" positionY="419.09765625" width="111.53515625" height="28"/>
+    </elements>
+</model>
