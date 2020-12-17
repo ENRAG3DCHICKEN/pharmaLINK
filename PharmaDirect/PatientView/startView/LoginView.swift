@@ -42,6 +42,8 @@ struct LoginView: View {
                 
                 TextField("Email", text: $email).simultaneousGesture(TapGesture().onEnded {
                 })
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
 
@@ -68,7 +70,7 @@ struct LoginView: View {
                                                                   
                             //User authenticated - checking if user is admin account
                             let db = Firestore.firestore()
-                            db.collection("admin").getDocuments() { (querySnapshot, err) in
+                            db.collection("pharmacies").getDocuments() { (querySnapshot, err) in
                                 if let err = err {
                                     print("Error getting documents: \(err)")
                                 } else {
@@ -79,7 +81,7 @@ struct LoginView: View {
                                         print("\(document.documentID) => \(document.data())")
                                         
                                         // Applies when user is logged in and identified as an admin account
-                                        if UserDefaults.standard.string(forKey: "email") == (document.data()["email"] as! String) {
+                                        if self.email == (document.data()["EmailAddress"] as! String) {
                                             self.selection = 2
                                         }
                                     }

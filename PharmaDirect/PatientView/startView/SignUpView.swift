@@ -49,6 +49,8 @@ struct SignUpView: View {
                 TextField("Email", text: $email).simultaneousGesture(TapGesture().onEnded {
                     self.fieldSelection = 1
                 })
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .padding(5)
                     .border(self.emailErrorCondition == true ? Color.red : self.fieldSelection == 1 ? (Color(UIColor.mainColor)) : Color.gray, width: 1.5)
                     .padding()
@@ -104,15 +106,39 @@ struct SignUpView: View {
                         
                         // Create the User - via FirebaseAuth
                         Auth.auth().createUser(withEmail: self.email.trimmingCharacters(in: .whitespacesAndNewlines), password: self.password.trimmingCharacters(in: .whitespacesAndNewlines)) { (result, err) in
+                                                        
                             // Check for errors
                             if err != nil {
                                 // There was an error creating the user
                                 self.displayErrorMessage = err!.localizedDescription
                                 print(self.displayErrorMessage)
                             } else if err == nil && result != nil {
+                                
+                                //Check if Admin Account
+                                //User authenticated - checking if user is admin account
+                                let db = Firestore.firestore()
+                                db.collection("pharmacies").getDocuments() { (querySnapshot, err) in
+                                    if let err = err {
+                                        print("Error getting documents: \(err)")
+                                    } else {
+                                        
+                                        for document in querySnapshot!.documents {
+                                            
+                                            //this below line is for debugging
+                                            print("\(document.documentID) => \(document.data())")
+                                            
+                                            // Applies when user is logged in and identified as an admin account
+                                            if self.email == (document.data()["EmailAddress"] as! String) {
+                                                self.selection = 4
+                                            }
+                                        }
+                                
+                                //Pass to Patient Account
                                 UserDefaults.standard.set(self.email, forKey: "email")
-                                UserDefaults.standard.set(self.password, forKey: "password")                                
+                                UserDefaults.standard.set(self.password, forKey: "password")
                                 self.selection = 3
+                                    }
+                                }
                             }
                         }
                     } else {
@@ -154,11 +180,13 @@ struct SignUpView: View {
                     
                     Text(displayErrorMessage).font(.caption)
                         .padding()
-                    
+                    //
                     NavigationLink(destination: PrivacyPolicyView(), tag: 1, selection: $selection) { EmptyView() }
                     NavigationLink(destination: TermsView(), tag: 2, selection: $selection) { EmptyView() }
+                    //
                     NavigationLink(destination: PharmacySearchView(), tag: 3, selection: $selection) { EmptyView() }
-                    
+                    //
+                    NavigationLink(destination: AdminHomeView(), tag: 4, selection: $selection) { EmptyView() }
                     Spacer()
                 }
 
