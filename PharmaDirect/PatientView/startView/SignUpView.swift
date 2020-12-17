@@ -128,15 +128,18 @@ struct SignUpView: View {
                                             print("\(document.documentID) => \(document.data())")
                                             
                                             // Applies when user is logged in and identified as an admin account
-                                            if self.email == (document.data()["EmailAddress"] as! String) {
+                                            if self.email == (document.data()["EmailAddress"]! as! String) {
+                                                print("leaving for admin")
                                                 self.selection = 4
+                                            } else {
+                                                //Pass to Patient Account
+                                                UserDefaults.standard.set(self.email, forKey: "email")
+                                                UserDefaults.standard.set(self.password, forKey: "password")
+                                                self.selection = 3
                                             }
                                         }
                                 
-                                //Pass to Patient Account
-                                UserDefaults.standard.set(self.email, forKey: "email")
-                                UserDefaults.standard.set(self.password, forKey: "password")
-                                self.selection = 3
+
                                     }
                                 }
                             }

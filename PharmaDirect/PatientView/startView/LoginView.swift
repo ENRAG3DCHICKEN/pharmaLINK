@@ -81,7 +81,7 @@ struct LoginView: View {
                                         print("\(document.documentID) => \(document.data())")
                                         
                                         // Applies when user is logged in and identified as an admin account
-                                        if self.email == (document.data()["EmailAddress"] as! String) {
+                                        if self.email == (document.data()["EmailAddress"]! as! String) {
                                             self.selection = 2
                                         }
                                     }
