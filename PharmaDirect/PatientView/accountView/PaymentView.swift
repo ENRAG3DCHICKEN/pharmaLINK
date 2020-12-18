@@ -81,11 +81,11 @@ struct PaymentView: View {
                                         Text(paymentMethods[index]).tag(paymentMethods[index])
                                     }
                                 }
-                                TextField("Cardholder Name", text: $cardholderName)
-                                TextField("Card Number (no dashes / spaces)", text: $paymentCardNumber)
-                                TextField("Expiration Month", text: $expirationMonth)
-                                TextField("Expiration Year", text: $expirationYear)
-                                TextField("CVV", text: $cvv)
+                                TextField("Cardholder Name", text: $cardholderName).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("Card Number (no dashes / spaces)", text: $paymentCardNumber).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("Expiration Month", text: $expirationMonth).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("Expiration Year", text: $expirationYear).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("CVV", text: $cvv).autocapitalization(.none).disableAutocorrection(true)
                             
                         }
                     }

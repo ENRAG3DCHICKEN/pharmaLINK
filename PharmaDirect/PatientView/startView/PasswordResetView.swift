@@ -30,6 +30,8 @@ struct PasswordResetView: View {
             
             TextField("Email", text: $email).simultaneousGesture(TapGesture().onEnded {
             })
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             

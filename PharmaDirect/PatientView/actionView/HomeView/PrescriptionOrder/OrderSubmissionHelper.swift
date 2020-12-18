@@ -28,8 +28,8 @@ func OrderSubmissionToCoreDataAndFB(context: NSManagedObjectContext, chosenPharm
     groupedObjectsWillChange_Orders(context: context, patientFulfillmentDetails: patientFulfillmentDetails, orders: orders)
     print("Core Data Order Submission Completed!")
 
-    SendOrdersToFirestore(orders: orders)
-    UpdatePatientFulfillmentDetailsOnFirestore(context: context)
+//    SendOrdersToFirestore(orders: orders)
+//    UpdatePatientFulfillmentDetailsOnFirestore(context: context)
     
     ClearOrderRelatedUserDefaults()
 

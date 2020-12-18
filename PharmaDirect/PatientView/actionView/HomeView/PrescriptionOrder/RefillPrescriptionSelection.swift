@@ -45,12 +45,12 @@ struct RefillPrescriptionSelection: View {
                 }
                 
                 Section() {
-                    TextField("Refill Rx #1: ", text: $rx1)
-                    TextField("Refill Rx #2: ", text: $rx2)
-                    TextField("Refill Rx #3: ", text: $rx3)
-                    TextField("Refill Rx #4: ", text: $rx4)
-                    TextField("Refill Rx #5: ", text: $rx5)
-                    TextField("Refill Rx #6: ", text: $rx6)
+                    TextField("Refill Rx #1: ", text: $rx1).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Refill Rx #2: ", text: $rx2).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Refill Rx #3: ", text: $rx3).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Refill Rx #4: ", text: $rx4).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Refill Rx #5: ", text: $rx5).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Refill Rx #6: ", text: $rx6).autocapitalization(.none).disableAutocorrection(true)
                 }
                 
             }
@@ -77,7 +77,7 @@ struct RefillPrescriptionSelection: View {
                 .padding()
             
             NavigationLink(destination: RefillPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 0, selection: $selection) { EmptyView() }
-            NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy, prescriptionSource: nil, indicator: 3), tag: 1, selection: $selection) { EmptyView() }
+            NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy, prescriptionSource: "Refill RX - N/A", indicator: 3), tag: 1, selection: $selection) { EmptyView() }
             
         }
     }

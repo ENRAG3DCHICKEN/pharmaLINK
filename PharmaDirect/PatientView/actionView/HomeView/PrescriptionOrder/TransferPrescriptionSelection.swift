@@ -63,8 +63,8 @@ struct TransferPrescriptionSelection: View {
                 if isOn1 == true, isOn2 == false {
                 
                     Section {
-                        TextField("Old Pharmacy Name", text: $priorPharmacyName)
-                        TextField("Old Pharmacy Phone", text: $priorPharmacyPhone)
+                        TextField("Old Pharmacy Name", text: $priorPharmacyName).autocapitalization(.none).disableAutocorrection(true)
+                        TextField("Old Pharmacy Phone", text: $priorPharmacyPhone).autocapitalization(.none).disableAutocorrection(true)
                     }
                     
                     Toggle(isOn: $transferAll) { Text("Transfer all Medications") }

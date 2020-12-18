@@ -75,16 +75,16 @@ struct PatientInfoView: View {
             
             Form {
                 Section(header: Text("Patient Info")) {
-                    TextField("Full Name", text: $fullName)
-                    TextField("Address", text: $address)
-                    TextField("City", text: $city)
+                    TextField("Full Name", text: $fullName).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Address", text: $address).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("City", text: $city).autocapitalization(.none).disableAutocorrection(true)
                     Picker(selection: $province, label: Text("Province")) {
                         ForEach(0..<provinces.count) { index in
                             Text(provinces[index]).tag(provinces[index])
                         }
                     }
-                    TextField("Postal Code", text: $postalCode)
-                    TextField("Phone", text: $phoneNumber)
+                    TextField("Postal Code", text: $postalCode).autocapitalization(.none).disableAutocorrection(true)
+                    TextField("Phone", text: $phoneNumber).autocapitalization(.none).disableAutocorrection(true)
 
                 }
             }

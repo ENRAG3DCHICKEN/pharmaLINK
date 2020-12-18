@@ -75,7 +75,7 @@ struct InsuranceView: View {
                 
                 Form {
                     Section(header: Text("Insurance Details")) {
-                        TextField("OHIP Number", text: $OHIP)
+                        TextField("OHIP Number", text: $OHIP).autocapitalization(.none).disableAutocorrection(true)
                         
                         Section {
                             Toggle(isOn: self.$billToInsuranceFlag1) { Text("Would you like us to bill a prescription insurance provider?").font(.callout) }

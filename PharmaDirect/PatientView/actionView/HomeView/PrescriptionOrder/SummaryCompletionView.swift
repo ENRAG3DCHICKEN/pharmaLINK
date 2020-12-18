@@ -90,8 +90,11 @@ struct SummaryCompletionView: View {
                 .foregroundColor(Color(.white))
             
             Button(action: {
-                OrderSubmissionToCoreDataAndFB(context: context, chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator)
+                
                 self.selection = 1
+                print("OK")
+                OrderSubmissionToCoreDataAndFB(context: context, chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator)
+                
             } ) { Text("Confirm Order >").font(.body).bold() }
                 .environment(\.managedObjectContext, self.context)
                 .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
@@ -106,6 +109,5 @@ struct SummaryCompletionView: View {
         
         //
         }
-        
     }
 }

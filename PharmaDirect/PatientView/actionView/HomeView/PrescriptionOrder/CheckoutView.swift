@@ -57,15 +57,16 @@ struct CheckoutView: View {
 
                     if optionDelivery_Regular == true || optionDelivery_Sameday == true {
                         Section(header: Text("Shipping Details: ")) {
-                               TextField("Full Name", text: $shipFullName)
-                                TextField("Address", text: $shipAddress)
+                               TextField("Full Name", text: $shipFullName).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("Address", text: $shipAddress).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("City", text: $shipCity).autocapitalization(.none).disableAutocorrection(true)
                                 Picker(selection: $shipProvince, label: Text("Province")) {
                                     ForEach(0..<provinces.count) { index in
                                         Text(provinces[index]).tag(provinces[index])
                                     }
                                 }
-                                TextField("Postal Code", text: $shipPostalCode)
-                                TextField("Phone", text: $shipPhoneNumber)
+                                TextField("Postal Code", text: $shipPostalCode).autocapitalization(.none).disableAutocorrection(true)
+                                TextField("Phone", text: $shipPhoneNumber).autocapitalization(.none).disableAutocorrection(true)
                         }
 //                                .padding()
                     }
@@ -106,7 +107,7 @@ struct CheckoutView: View {
                 UserDefaults.standard.set(shipProvince, forKey: "shipProvince")
                 UserDefaults.standard.set(shipPostalCode, forKey: "shipPostalCode")
                 UserDefaults.standard.set(shipPhoneNumber, forKey: "shipPhoneNumber")
-                
+                                
                 self.selection = 1
                 
             } ) { Text("Next >").font(.body).bold() }
