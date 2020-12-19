@@ -22,10 +22,6 @@ struct LandingView: View {
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                     
-
-//                    HStack {
-//                        Image("yoga").resizable()
-//                                .frame(width: 100, height: 50)
                         
                         Text("pharmacie")
                             .foregroundColor(colorScheme == .dark ? Color(.green) : Color(.gray))
@@ -167,6 +163,8 @@ struct CarouselView: View {
 
 struct CardView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var passedCarouselPane: Int
     var passedGeometry: GeometryProxy
     
@@ -175,19 +173,37 @@ struct CardView: View {
         self.passedCarouselPane = carouselPane
     }
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(cardList, id: \.id) { cards in
-                Image(cards.fileName).centerCropped()
-                    .frame(width: passedGeometry.size.width, height: passedGeometry.size.height)
-                    .opacity(cards.id == passedCarouselPane+1 ? 1 : 0.6)
-                    
+        
+        Group {
+            
+            //
+            if colorScheme == .dark {
+                HStack(spacing: 0) {
+                    ForEach(cardList1, id: \.id) { cards in
+                        Image(cards.fileName).centerCropped()
+                            .frame(width: passedGeometry.size.width, height: passedGeometry.size.height)
+                            .opacity(cards.id == passedCarouselPane+1 ? 1 : 0.6)
+                    }
+                }
+            }
+            
+            //
+            if colorScheme == .light {
+                HStack(spacing: 0) {
+                    ForEach(cardList2, id: \.id) { cards in
+                        Image(cards.fileName).centerCropped()
+                            .frame(width: passedGeometry.size.width, height: passedGeometry.size.height)
+                            .opacity(cards.id == passedCarouselPane+1 ? 1 : 0.6)
+                    }
+                }
             }
         }
+        
     }
 }
 
 
-var cardList: Array<Card> {
+var cardList1: Array<Card> {
     [
         Card(id: 1, fileName: "pharmacy_florianOlivoUnsplash", label: "pikachu"),
         Card(id: 2, fileName: "p2-2", label: "bulbasaur"),
@@ -195,6 +211,17 @@ var cardList: Array<Card> {
         Card(id: 4, fileName: "p4-4", label: "squirtle")
     ]
 }
+
+var cardList2: Array<Card> {
+    [
+        Card(id: 1, fileName: "pharmacyShopify", label: "pikachu"),
+        Card(id: 2, fileName: "p2-2", label: "bulbasaur"),
+        Card(id: 3, fileName: "p1-1", label: "charmander"),
+        Card(id: 4, fileName: "p4-4", label: "squirtle")
+    ]
+}
+
+
 
 
 
