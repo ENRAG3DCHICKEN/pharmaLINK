@@ -83,3 +83,30 @@ extension Image {
         }
     }
 }
+
+extension Image {
+    func leftCropped() -> some View {
+        GeometryReader { geo in
+            self
+            .resizable()
+            .scaledToFill()
+            .offset(x: geo.size.width * -0.15)
+            .frame(width: geo.size.width, height: geo.size.height)
+            .clipped()
+        }
+    }
+}
+
+
+extension Image {
+    func rightCropped() -> some View {
+        GeometryReader { geo in
+            self
+            .resizable()
+            .scaledToFill()
+            .offset(x: geo.size.width * 0.15)
+            .frame(width: geo.size.width, height: geo.size.height)
+            .clipped()
+        }
+    }
+}

@@ -22,15 +22,17 @@ struct LandingView: View {
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                     
-                        
-                        Text("pharmacie")
-                            .foregroundColor(colorScheme == .dark ? Color(.green) : Color(.gray))
-                            .font(.largeTitle)
-                            .padding()
-//                    }
-                        
+                    Text("PHARMACIE")
+                        .bold()
+                        .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+                        .font(.largeTitle)
+                        .padding()
 
-
+//                    Image(systemName: "cross.fill")
+//                        .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+//                        .font(.largeTitle)
+//                        .padding()
+                    
                         GeometryReader { geometry in
                         CarouselView(geoemtry: geometry, carouselPane: carouselPane)
                     
@@ -193,7 +195,7 @@ struct CardView: View {
                     ForEach(cardList2, id: \.id) { cards in
                         Image(cards.fileName).centerCropped()
                             .frame(width: passedGeometry.size.width, height: passedGeometry.size.height)
-                            .opacity(cards.id == passedCarouselPane+1 ? 1 : 0.6)
+                            
                     }
                 }
             }
@@ -205,19 +207,19 @@ struct CardView: View {
 
 var cardList1: Array<Card> {
     [
-        Card(id: 1, fileName: "pharmacy_florianOlivoUnsplash", label: "pikachu"),
-        Card(id: 2, fileName: "p2-2", label: "bulbasaur"),
-        Card(id: 3, fileName: "p1-1", label: "charmander"),
-        Card(id: 4, fileName: "p4-4", label: "squirtle")
+        Card(id: 1, fileName: "pharmacy_florianOlivoUnsplash", label: "Euro Pharmacy at Night"),
+        Card(id: 2, fileName: "stretching_Unsplash", label: "Female doing Yoga"),
+        Card(id: 3, fileName: "coffee_Unsplash", label: "Modern Coffee"),
+        Card(id: 4, fileName: "family_Unsplash", label: "Family Celebration")
     ]
 }
 
 var cardList2: Array<Card> {
     [
-        Card(id: 1, fileName: "pharmacyShopify", label: "pikachu"),
-        Card(id: 2, fileName: "p2-2", label: "bulbasaur"),
-        Card(id: 3, fileName: "p1-1", label: "charmander"),
-        Card(id: 4, fileName: "p4-4", label: "squirtle")
+        Card(id: 1, fileName: "pharmacieWikimedia", label: "Parisian Pharmacy"),
+        Card(id: 2, fileName: "stretching_Unsplash", label: "Female doing Yoga"),
+        Card(id: 3, fileName: "coffee_Unsplash", label: "Modern Coffee"),
+        Card(id: 4, fileName: "family_Unsplash", label: "Family Celebration")
     ]
 }
 

@@ -25,7 +25,7 @@ struct AdminOrderView: View {
         
         VStack {
             
-            EmptyView()
+            Text("")
                 .navigationBarTitle("Order View")
 //                .navigationBarItems(trailing: action)
 //                .navigationBarHidden(true)

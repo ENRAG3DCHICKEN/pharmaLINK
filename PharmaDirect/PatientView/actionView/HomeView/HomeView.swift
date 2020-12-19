@@ -118,9 +118,6 @@ struct PastPrescriptions: View {
                             .padding()
                             .frame(height: UIScreen.main.bounds.height * 0.4)
                     }
-                    
-                    Spacer()
-                    
                 }
             }
         }
