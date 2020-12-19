@@ -13,6 +13,8 @@ import FirebaseFirestore
 
 struct LogoView: View {
     
+    
+    @State private var hasTimeElapsed = false
     @State var selection: Int?
     @State var email: String?
     @State var password: String?
@@ -21,15 +23,31 @@ struct LogoView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ZStack {
+
                 
                 Text("")
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
 
-                LinearGradient(gradient: Gradient(colors: [Color(UIColor.gradiant4), Color(UIColor.gradiant3)]), startPoint: .top, endPoint: .bottom)
-                Image("yoga").resizable()
-                        .frame(width: 200, height: 120)
+//                LinearGradient(gradient: Gradient(colors: [Color(UIColor.gradiant4), Color(UIColor.gradiant3)]), startPoint: .top, endPoint: .bottom)
+                    
+                ZStack {
+
+                    Image("parisReisetopiaUnsplash")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        
+//                        .frame(width: 500, height: 500)
+//                        .clipped()
+                    Text("pharmacie")
+                        .font(.largeTitle)
+//                        .font(.system(size: 94, weight: .medium, design: .default))
+                        .foregroundColor(.white)
+                        .bold()
+                        .frame(width: UIScreen.main.bounds.width * 0.6)
+                }
                     
 
         
@@ -37,10 +55,15 @@ struct LogoView: View {
                 NavigationLink(destination: HomeView(), tag: 2, selection: $selection) { EmptyView() }
                 NavigationLink(destination: AdminHomeView(), tag: 3, selection: $selection) { EmptyView() }
                 NavigationLink(destination: PharmacySearchView(), tag: 4, selection: $selection) { EmptyView() }
-                }
+                
         }
+
+            
             
         .onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+
+            
             if UserDefaults.standard.string(forKey: "email") != nil, UserDefaults.standard.string(forKey: "password") != nil {
                 
                 print("signing in")
@@ -58,6 +81,9 @@ struct LogoView: View {
                             if let err = err {
                                 print("Error getting documents: \(err)")
                             } else {
+                                
+                                
+
                                 
                                 for document in querySnapshot!.documents {
                                     
@@ -96,11 +122,12 @@ struct LogoView: View {
                 // No Credentials
                 print("credentials")
                 self.selection = 1
-                  
+//                hasTimeElapsed = true
+            }
                 }
             }
         )
-            .background(Color(UIColor.mainColor))
+//            .background(Color(UIColor.mainColor))
         }
     }
 }

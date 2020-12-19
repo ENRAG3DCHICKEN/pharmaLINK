@@ -10,6 +10,8 @@ import SwiftUI
 
 struct LandingView: View {
 
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var selection: Int? = nil
     @State var carouselPane: Int = 0
     
@@ -21,15 +23,16 @@ struct LandingView: View {
                         .navigationBarHidden(true)
                     
 
-                    HStack {
-                        Image("yoga").resizable()
-                                .frame(width: 100, height: 50)
+//                    HStack {
+//                        Image("yoga").resizable()
+//                                .frame(width: 100, height: 50)
                         
-                        Text("AllTrails")
-                            .foregroundColor(Color(.gray))
-                            .font(.title)
-                    }
-                        .padding()
+                        Text("pharmacie")
+                            .foregroundColor(colorScheme == .dark ? Color(.green) : Color(.gray))
+                            .font(.largeTitle)
+                            .padding()
+//                    }
+                        
 
 
                         GeometryReader { geometry in
@@ -48,10 +51,10 @@ struct LandingView: View {
                         HStack {
                             Spacer(minLength: geometry.size.width/2.5)
                             HStack {
-                                Circle().foregroundColor(Color(carouselPane == 0 ? .black : .lightGray))
-                                Circle().foregroundColor(Color(carouselPane == 1 ? .black : .lightGray))
-                                Circle().foregroundColor(Color(carouselPane == 2 ? .black : .lightGray))
-                                Circle().foregroundColor(Color(carouselPane == 3 ? .black : .lightGray))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 0 && colorScheme != .dark) ? .black : (carouselPane == 0 && colorScheme == .dark) ? .green : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 1 && colorScheme != .dark) ? .black : (carouselPane == 1 && colorScheme == .dark) ? .green : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 2 && colorScheme != .dark) ? .black : (carouselPane == 2 && colorScheme == .dark) ? .green : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 3 && colorScheme != .dark) ? .black : (carouselPane == 3 && colorScheme == .dark) ? .green : .lightGray)))
                             }
                             Spacer(minLength: geometry.size.width/2.5)
                         }
@@ -76,11 +79,20 @@ struct LandingView: View {
                             Button(action: {
                                 self.selection = 1
                             }, label: { Text("Sign Up").font(.body) })
+//                                .frame(width: UIScreen.main.bounds.width / 2.5, height: 30)
+//                                .background(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2))
+//                                .foregroundColor(Color(UIColor.mainColor))
+//                                .background(Color(.white))
+//                                .padding()
+                            
                                 .frame(width: UIScreen.main.bounds.width / 2.5, height: 30)
+                                .foregroundColor(Color(UIColor.mainColor))
+                                .background(Color(UIColor.white))
+                                .cornerRadius(10)
                                 .background(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2))
                                 .foregroundColor(Color(UIColor.mainColor))
-                                .background(Color(.white))
                                 .padding()
+                                
                         }
                         NavigationLink(destination: LoginView(), tag: 2, selection: $selection) {
                             Button(action: {
@@ -154,6 +166,7 @@ struct CarouselView: View {
 }
 
 struct CardView: View {
+    
     var passedCarouselPane: Int
     var passedGeometry: GeometryProxy
     
@@ -163,26 +176,27 @@ struct CardView: View {
     }
     var body: some View {
         HStack(spacing: 0) {
-                ForEach(cardList, id: \.id) { cards in
-                    Image(cards.fileName).centerCropped()
-                        
-
-                        .frame(width: passedGeometry.size.width, height: passedGeometry.size.height)
-                        .opacity(cards.id == passedCarouselPane+1 ? 1 : 0.6)
-                        
-                }
+            ForEach(cardList, id: \.id) { cards in
+                Image(cards.fileName).centerCropped()
+                    .frame(width: passedGeometry.size.width, height: passedGeometry.size.height)
+                    .opacity(cards.id == passedCarouselPane+1 ? 1 : 0.6)
+                    
+            }
         }
     }
 }
 
+
 var cardList: Array<Card> {
     [
-        Card(id: 1, fileName: "p1-1", label: "pikachu"),
+        Card(id: 1, fileName: "pharmacy_florianOlivoUnsplash", label: "pikachu"),
         Card(id: 2, fileName: "p2-2", label: "bulbasaur"),
-        Card(id: 3, fileName: "p3-3", label: "charmander"),
+        Card(id: 3, fileName: "p1-1", label: "charmander"),
         Card(id: 4, fileName: "p4-4", label: "squirtle")
     ]
 }
+
+
 
 struct Card {
     
@@ -205,6 +219,7 @@ var text2 = ["""
             """
             With just one tap, get detailed driving directions so you can quickly and easily get right to the trailhead
             """]
+
 
 
 

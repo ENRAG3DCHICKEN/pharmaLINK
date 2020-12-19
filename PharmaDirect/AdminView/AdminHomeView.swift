@@ -104,6 +104,13 @@ struct PendingPrescriptions: View {
             Text("")
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
+            
+                Text("Pending Orders").font(.headline)
+                
+                // If BLANK
+                if orders.count == 0 {
+                    Text("There are no pending orders in your order history").font(.body).padding()
+                }
 
                 List {
                     ForEach(orders, id: \.self) { (order: Orders) in
@@ -131,9 +138,17 @@ struct CompletedPrescriptions: View {
     var body: some View {
 
         VStack {
-            Text("")
+            Text("").font(.headline)
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
+            
+            
+            Text("Completed Orders")
+            
+            // If BLANK
+            if orders.count == 0 {
+                Text("There are no completed orders in your order history").font(.body).padding()
+            }
 
                 List {
                     ForEach(orders, id: \.self) { (order: Orders) in
