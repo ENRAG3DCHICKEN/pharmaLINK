@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Orders" representedClassName="Orders" syncable="YES" codeGenerationType="class">
         <attribute name="orderCompleted_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="orderSubmissionTime_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -109,6 +109,9 @@
         <attribute name="phoneNumber_" optional="YES" attributeType="String"/>
         <attribute name="postalCode_" optional="YES" attributeType="String"/>
         <attribute name="province_" optional="YES" attributeType="String"/>
+        <attribute name="shipping_FreeDelivery" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="shipping_LocalPickup" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="shipping_SamedayDelivery" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="orderHistory_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Orders" inverseName="fulfillmentPharmacy_" inverseEntity="Orders"/>
         <relationship name="patientCustomer_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="orderPharmacy_" inverseEntity="Patient"/>
     </entity>
@@ -119,6 +122,6 @@
         <element name="PatientHealthDetails" positionX="937.76953125" positionY="-80.50390625" width="207.96484375" height="28"/>
         <element name="PatientInsuranceDetails" positionX="870.8515625" positionY="131.9375" width="199.984375" height="28"/>
         <element name="PatientPaymentDetails" positionX="815.8515625" positionY="389.6796875" width="161.90625" height="28"/>
-        <element name="Pharmacy" positionX="-153.51171875" positionY="419.09765625" width="111.53515625" height="28"/>
+        <element name="Pharmacy" positionX="-153.51171875" positionY="419.09765625" width="111.53515625" height="298"/>
     </elements>
 </model>

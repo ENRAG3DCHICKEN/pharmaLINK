@@ -12,6 +12,7 @@ import Firebase
 
 struct SignUpView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @State var selection: Int? = nil
     
     @State var fieldSelection: Int? = nil
@@ -35,8 +36,11 @@ struct SignUpView: View {
 //                    .navigationBarTitle("")
 //                    .navigationBarHidden(true)
                 
-                Image("yoga").resizable()
-                        .frame(width: 100, height: 60)
+                Text("PHARMACIE")
+                    .bold()
+                    .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+                    .font(.largeTitle)
+                    .padding()
 
                 Text("""
                         Create an account to

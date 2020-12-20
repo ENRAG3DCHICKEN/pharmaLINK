@@ -15,6 +15,7 @@ import CoreData
 
 struct LoginView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context
     
     @State var email: String = ""
@@ -30,8 +31,11 @@ struct LoginView: View {
 //                    .navigationBarTitle("")
 //                    .navigationBarHidden(true)
                 
-                Image("yoga").resizable()
-                        .frame(width: 100, height: 60)
+                Text("PHARMACIE")
+                    .bold()
+                    .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+                    .font(.largeTitle)
+                    .padding()
                 
                 Text("""
                         Welcome back.
@@ -59,15 +63,15 @@ struct LoginView: View {
                     })
                 
                 Button(action: {
+                    
+                    UserDefaults.standard.set(self.email, forKey: "email")
+                    
                     Auth.auth().signIn(withEmail: self.email.trimmingCharacters(in: .whitespacesAndNewlines), password: self.password.trimmingCharacters(in: .whitespacesAndNewlines)) { (result, err) in
                         if err != nil {
                             //
                             self.errorMessage = err!.localizedDescription
                         } else {
-                            
-                            UserDefaults.standard.set(self.email, forKey: "email")
-                            UserDefaults.standard.set(self.password, forKey: "password")
-                                                                  
+                                                        
                             //User authenticated - checking if user is admin account
                             let db = Firestore.firestore()
                             db.collection("pharmacies").getDocuments() { (querySnapshot, err) in

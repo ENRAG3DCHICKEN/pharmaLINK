@@ -54,8 +54,13 @@ struct AdminHomeView: View {
 
 struct AdminDetailsView: View {
     
+    @Environment(\.managedObjectContext) var context: NSManagedObjectContext
+    @State var pharmacy: Pharmacy?
+    
     @State private var selection: Int?
-
+    
+    
+    
     var body: some View {
         
         VStack {
@@ -64,27 +69,123 @@ struct AdminDetailsView: View {
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
             
-            NavigationLink(destination: LandingView(), tag: 6, selection: $selection) {
-                Button(action: {
-                    UserDefaults.standard.removeObject(forKey: "email")
-                    UserDefaults.standard.removeObject(forKey: "password")
-                    UserDefaults.standard.removeObject(forKey: "signupCompletionFlag")
-                    
-                    self.selection = 6
-                }, label: {
-                    HStack {
-                        Image(systemName: "key").font(.body)
-                        Text("Logout").font(.body).bold()
-                        Spacer()
-                        Text(">").font(.body).bold()
-                    }.padding()
-                })
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
-                    .foregroundColor(Color(.white))
-                    .background(Color(UIColor.buttonBar))
-                    .padding().shadow(radius: 5, y: 5)
-            }
+            //1. Pharmacy Store Profile
+            //2. Shipping Details
+            //3. Logout
+            
+            
+            
+                NavigationLink(destination: AccountProfileView(pharmacy: pharmacy), tag: 1, selection: $selection) {
+                    ZStack {
+                        LinearGradient(gradient: Gradient(colors: [Color(UIColor.tile1b),Color(UIColor.tile1a)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        HStack {
+                            Button(action: {
+                                self.selection = 1
+                            }, label: {
+                                    VStack {
+                                        HStack {
+                                            Text("New")
+                                                .font(.headline).bold()
+                                                .multilineTextAlignment(.leading)
+                                            Spacer()
+                                        }
+                                        HStack {
+                                            Text("Prescription")
+                                                .font(.headline).bold()
+                                                .multilineTextAlignment(.leading)
+                                            Spacer()
+                                        }
+                                        Spacer()
+                                        
+                                    }
+                                        .padding()
+                            })
+                            Spacer()
+                            Image(systemName: "plus")
+                                .font(.title)
+                                .padding()
+                        }
+                    }
+                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.20)
+                        .foregroundColor(Color(.white))
+                        .padding().shadow(radius: 5, y: 5)
+                }
+                
+                NavigationLink(destination: ShippingProfileView(pharmacy: pharmacy), tag: 2, selection: $selection) {
+                    ZStack {
+                        LinearGradient(gradient: Gradient(colors: [Color(UIColor.tile2b),Color(UIColor.tile2a)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        HStack {
+                            Button(action: {
+                                self.selection = 2
+                            }, label: {
+                                VStack {
+                                    HStack {
+                                        Text("Shipping Details")
+                                            .font(.headline).bold()
+                                            .multilineTextAlignment(.leading)
+                                        Spacer()
+                                    }
+                                }
+                                    .padding()
+                                })
+                                Spacer()
+                                Image(systemName: "paperplane")
+                                    .font(.title)
+                                    .padding()
+                            }
+                    }
+                                .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.2)
+                                .foregroundColor(Color(.white))
+                                .padding().shadow(radius: 5, y: 5)
+                }
+                
+                
+                NavigationLink(destination: LandingView(), tag: 3, selection: $selection) {
+                    ZStack {
+                        LinearGradient(gradient: Gradient(colors: [Color(UIColor.tile3b),Color(UIColor.tile3a)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        HStack {
+                            Button(action: {
+                                UserDefaults.standard.removeObject(forKey: "email")
+                                UserDefaults.standard.removeObject(forKey: "password")
+                                UserDefaults.standard.removeObject(forKey: "signupCompletionFlag")
+                                self.selection = 3
+                            }, label: {
+                                VStack {
+                                    VStack {
+                                        HStack {
+                                            Text("Logut")
+                                                .font(.headline).bold()
+                                                .multilineTextAlignment(.leading)
+                                            Spacer()
+                                        }
+                                        Spacer()
+                                    }
+                                        .padding()
+                                }
+                                Spacer()
+                                Image(systemName: "key")
+                                    .font(.title)
+                                    .padding()
+                            })
+                        }
+                    }
+                                .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.2)
+                                .foregroundColor(Color(.white))
+                                .padding().shadow(radius: 5, y: 5)
+                        
+                }
         }
+            .onAppear {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    //Standard query request to Core Data
+                    let request = NSFetchRequest<Pharmacy>(entityName: "Pharmacy")
+                    request.sortDescriptors = [NSSortDescriptor(key: "accreditationNumber_", ascending: true)]
+                    request.predicate = NSPredicate(format: "emailAddress_ == %@", String(UserDefaults.standard.string(forKey: "email")!))
+
+                    let results = (try? context.fetch(request)) ?? []
+                    self.pharmacy = results.first!
+                }
+            }
     }
 }
 

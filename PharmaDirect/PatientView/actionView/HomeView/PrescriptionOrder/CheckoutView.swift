@@ -16,6 +16,7 @@ struct CheckoutView: View {
         @State private var indicator: Int
         @State private var prescriptionSource: String?
     
+        //Patient Selection
         @State private var optionLocalPickup: Bool = true
         @State private var optionDelivery_Regular: Bool = false
         @State private var optionDelivery_Sameday: Bool = false
@@ -49,9 +50,17 @@ struct CheckoutView: View {
                
                 Form {
                     Section(header: Text("Shipping Options: "))  {
-                        Toggle(isOn: od1) { Text("In-Store Pick Up - FREE").font(.body) }
-                        Toggle(isOn: od2) { Text("Regular Delivery - FREE").font(.body) }
-                        Toggle(isOn: od3) { Text("Same-Day Delivery - ($5)").font(.body) }
+                        
+                        if chosenPharmacy.shipping_LocalPickup {
+                            Toggle(isOn: od1) { Text("In-Store Pick Up - FREE").font(.body) }
+                        }
+                        if chosenPharmacy.shipping_FreeDelivery {
+                            Toggle(isOn: od2) { Text("Regular Delivery - FREE").font(.body) }
+                        }
+                        if chosenPharmacy.shipping_SamedayDelivery {
+                            Toggle(isOn: od3) { Text("Same-Day Delivery - ($5)").font(.body) }
+                        }
+                        
                     }
                     
 
@@ -89,7 +98,7 @@ struct CheckoutView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.gradiant1))
-            .padding(.horizontal)
+                .padding(.horizontal)
             
             Button(action: {
   

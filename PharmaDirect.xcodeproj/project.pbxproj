@@ -35,6 +35,8 @@
 		73728F9A258075A90047CCE7 /* AdminOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73728F99258075A90047CCE7 /* AdminOrderView.swift */; };
 		737572D3253394E700ADFD75 /* LandingViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737572D2253394E700ADFD75 /* LandingViewHelpers.swift */; };
 		737B63992577620F00729E25 /* ObtainPrescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737B63982577620F00729E25 /* ObtainPrescription.swift */; };
+		737E7430258ED0BE0058DDEA /* ShippingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E742F258ED0BE0058DDEA /* ShippingProfileView.swift */; };
+		737E7433258EDADA0058DDEA /* AccountProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E7432258EDADA0058DDEA /* AccountProfileView.swift */; };
 		738C75A42546290F000B5A11 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C75A32546290F000B5A11 /* MapView.swift */; };
 		738C75A625467CEB000B5A11 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C75A525467CEB000B5A11 /* FoundationExtensions.swift */; };
 		73D4C5F0254C902400F9137B /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4C5EF254C902400F9137B /* LandingView.swift */; };
@@ -104,6 +106,8 @@
 		73728F99258075A90047CCE7 /* AdminOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrderView.swift; sourceTree = "<group>"; };
 		737572D2253394E700ADFD75 /* LandingViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewHelpers.swift; sourceTree = "<group>"; };
 		737B63982577620F00729E25 /* ObtainPrescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtainPrescription.swift; sourceTree = "<group>"; };
+		737E742F258ED0BE0058DDEA /* ShippingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingProfileView.swift; sourceTree = "<group>"; };
+		737E7432258EDADA0058DDEA /* AccountProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProfileView.swift; sourceTree = "<group>"; };
 		738C75A32546290F000B5A11 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		738C75A525467CEB000B5A11 /* FoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 		73D4C5EF254C902400F9137B /* LandingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				73FACE3225380FC500A17817 /* AdminHomeView.swift */,
+				737E7432258EDADA0058DDEA /* AccountProfileView.swift */,
+				737E742F258ED0BE0058DDEA /* ShippingProfileView.swift */,
 				73728F99258075A90047CCE7 /* AdminOrderView.swift */,
 			);
 			path = AdminView;
@@ -489,6 +495,7 @@
 				732C38742534F5D6000CF5F0 /* InsuranceView.swift in Sources */,
 				734E54A525818635003B8F4D /* LogoutHelper.swift in Sources */,
 				734E54A925819BF4003B8F4D /* LoginViewHelper.swift in Sources */,
+				737E7433258EDADA0058DDEA /* AccountProfileView.swift in Sources */,
 				EE22E3BE25678A5300907B43 /* FormSubmissionHelper.swift in Sources */,
 				73D510232536B6D200502AC8 /* RefillPrescriptionMessage.swift in Sources */,
 				73728F9A258075A90047CCE7 /* AdminOrderView.swift in Sources */,
@@ -513,6 +520,7 @@
 				73D60A732573802200D422D3 /* TransferPrescriptionMessage.swift in Sources */,
 				73FBBC132550CA58007ADE39 /* PasswordResetView.swift in Sources */,
 				73D510212536B6C800502AC8 /* TransferPrescriptionSelection.swift in Sources */,
+				737E7430258ED0BE0058DDEA /* ShippingProfileView.swift in Sources */,
 				732C38782534F5EB000CF5F0 /* PaymentView.swift in Sources */,
 				7317D2E0254921E400EDD6FA /* ImagePicker.swift in Sources */,
 				EEA2092A2555D61500921616 /* InsuranceView2.swift in Sources */,

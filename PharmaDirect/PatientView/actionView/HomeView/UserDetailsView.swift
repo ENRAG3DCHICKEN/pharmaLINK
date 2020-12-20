@@ -12,11 +12,11 @@ import CoreData
 struct UserDetailsView: View {
     
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
+    @State var chosenPharmacy: Pharmacy?
     
     @State var selection: Int?
     
-    
-    @State var chosenPharmacy: Pharmacy?
+
     var body: some View {
         
         VStack(spacing: 0) {
