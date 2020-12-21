@@ -24,10 +24,10 @@ struct PatientInfoView: View {
     @State var postalCode: String
     @State var phoneNumber: String
     
-//    var validation_Integers: Bool {
-//        postalCode.count != 6 ||
+//    var validation_postalCode: Bool {
+//        (postalCode.count != 6 || postalCode.count != 7)
 //    }
-//
+
     init() {
         if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
             _fullName = State(wrappedValue: UserDefaults.standard.string(forKey: "fullName")!)
@@ -58,7 +58,7 @@ struct PatientInfoView: View {
                 .resizable()
                 .frame(height: UIScreen.main.bounds.height * 0.2)
                 .overlay(
-                    Text("Help us match you to the right counselor.")
+                    Text("Provide all necessary info to your pharmacist")
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.2)
                         .foregroundColor(.white)
                         .background(Color.black)
