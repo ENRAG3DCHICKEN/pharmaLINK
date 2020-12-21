@@ -23,8 +23,8 @@ struct ShippingProfileView: View {
     init(pharmacy: Pharmacy?) {
         // Pharmacy is Initialized - Review and Save Pharmacy to Core Data before Returning to Admin View
         // Pharmacy is NOT Initialized - Return to Admin View
-        _pharmacy = State(wrappedValue: pharmacy ?? nil)
-        _selection = State(wrappedValue: nil ?? 1)
+        _pharmacy = State(wrappedValue: pharmacy)
+        _selection = State(wrappedValue: (pharmacy != nil ? 0 : 1))
         
         _localPickupOption = State(wrappedValue: pharmacy?.shipping_LocalPickup ?? false)
         _freeDeliveryOption = State(wrappedValue: pharmacy?.shipping_FreeDelivery ?? false)
@@ -64,6 +64,7 @@ struct ShippingProfileView: View {
             })  { Text("Submit").font(.body).bold() }
                 .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                 .foregroundColor(Color(.white))
+                .background(Color(UIColor.mainColor))
                 .padding()
             
             NavigationLink(destination: AdminHomeView(), tag: 1, selection: $selection) { EmptyView() }

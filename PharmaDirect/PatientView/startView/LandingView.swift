@@ -57,17 +57,21 @@ struct LandingView: View {
                             Spacer(minLength: geometry.size.width/2.5)
                         }
                             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.04)
+                        
                             
                     }
                         .frame(maxHeight: 20)
-                    VStack(alignment: .leading) {
+                    .padding()
+                    VStack(alignment: .center) {
                         Text(text1[carouselPane])
                             .padding(6)
                             .font(.headline)
+                            .multilineTextAlignment(.center)
                         Text(text2[carouselPane])
                             .padding(6)
                             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.08)
                             .font(.subheadline)
+                            .multilineTextAlignment(.center)
 
                     }
                         
@@ -77,11 +81,6 @@ struct LandingView: View {
                             Button(action: {
                                 self.selection = 1
                             }, label: { Text("Sign Up").font(.body) })
-//                                .frame(width: UIScreen.main.bounds.width / 2.5, height: 30)
-//                                .background(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2))
-//                                .foregroundColor(Color(UIColor.mainColor))
-//                                .background(Color(.white))
-//                                .padding()
                             
                                 .frame(width: UIScreen.main.bounds.width / 2.5, height: 30)
                                 .foregroundColor(Color(UIColor.mainColor))
@@ -234,19 +233,19 @@ struct Card {
     var label: String
 }
 
-var text1 = ["Discover 100,000+ trails around the world", "Find a trail that's perfect for you", "Hit the trail with confidence", "Get driving directions right to the trailhead"]
+var text1 = ["Discover local independent pharmacies", "Find a pharmacist that's perfect for you", "Discuss your healthcare in confidence", "Get prescriptions delivered to your home"]
 
 var text2 = ["""
-            Explore the largest collection of trail maps anywhere, curated by millions of outdoor ethusiasts like you.
+            Fill your prescription with one of the many local independent pharmacies in your home city
             """,
             """
-            Find your perfect hike, bike ride, or run. FIlter by length, rating, and difficulty. Easily find dog and kid-friendly trails.
+            Get information about local pharmacists and choose the service provider that meets your needs
             """,
             """
-            Browse hand-curated trail maps plus reviews, photos and recordings from the AllTrails community.
+            Learn more about your healthcare and medication needs within a safe and private environment
             """,
             """
-            With just one tap, get detailed driving directions so you can quickly and easily get right to the trailhead
+            With just a few taps, obtain personalized medicine delivered to your home quickly and easily
             """]
 
 

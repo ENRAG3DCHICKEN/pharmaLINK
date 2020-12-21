@@ -84,13 +84,13 @@ struct AdminDetailsView: View {
                             }, label: {
                                     VStack {
                                         HStack {
-                                            Text("New")
+                                            Text("Account")
                                                 .font(.headline).bold()
                                                 .multilineTextAlignment(.leading)
                                             Spacer()
                                         }
                                         HStack {
-                                            Text("Prescription")
+                                            Text("Details")
                                                 .font(.headline).bold()
                                                 .multilineTextAlignment(.leading)
                                             Spacer()
@@ -120,11 +120,18 @@ struct AdminDetailsView: View {
                             }, label: {
                                 VStack {
                                     HStack {
-                                        Text("Shipping Details")
+                                        Text("Shipping")
                                             .font(.headline).bold()
                                             .multilineTextAlignment(.leading)
                                         Spacer()
                                     }
+                                    HStack {
+                                        Text("Details")
+                                            .font(.headline).bold()
+                                            .multilineTextAlignment(.leading)
+                                        Spacer()
+                                    }
+                                    Spacer()
                                 }
                                     .padding()
                                 })
@@ -153,7 +160,7 @@ struct AdminDetailsView: View {
                                 VStack {
                                     VStack {
                                         HStack {
-                                            Text("Logut")
+                                            Text("Logout")
                                                 .font(.headline).bold()
                                                 .multilineTextAlignment(.leading)
                                             Spacer()
@@ -176,15 +183,15 @@ struct AdminDetailsView: View {
                 }
         }
             .onAppear {
-                DispatchQueue.global(qos: .userInitiated).async {
+//                DispatchQueue.global(qos: .userInitiated).async {
                     //Standard query request to Core Data
                     let request = NSFetchRequest<Pharmacy>(entityName: "Pharmacy")
                     request.sortDescriptors = [NSSortDescriptor(key: "accreditationNumber_", ascending: true)]
-                    request.predicate = NSPredicate(format: "emailAddress_ == %@", String(UserDefaults.standard.string(forKey: "email")!))
-
+                    request.predicate = NSPredicate(format: "emailAddress_ = %@", UserDefaults.standard.string(forKey: "email")!)
                     let results = (try? context.fetch(request)) ?? []
                     self.pharmacy = results.first!
-                }
+                    print(pharmacy)
+//                }
             }
     }
 }

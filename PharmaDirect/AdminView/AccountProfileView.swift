@@ -23,20 +23,22 @@ struct AccountProfileView: View {
 
     @State private var selection: Int?
     
+    
     init(pharmacy: Pharmacy?) {
         
-        // Pharmacy is Initialized - Review and Save Pharmacy to Core Data before Returning to Admin View
-        // Pharmacy is NOT Initialized - Return to Admin View
-        _pharmacy = State(wrappedValue: pharmacy ?? nil)
-        _selection = State(wrappedValue: nil ?? 1)
+        //Pharmacy is Initialized - Review and Save Pharmacy to Core Data before Returning to Admin View
+        //Pharmacy is NOT Initialized - Return to Admin View
+        _pharmacy = State(wrappedValue: pharmacy)
+        _selection = State(wrappedValue: (pharmacy != nil ? 0 : 1))
         _address = State(wrappedValue: pharmacy?.address ?? "")
         _province = State(wrappedValue: pharmacy?.province ?? "")
         _city = State(wrappedValue: pharmacy?.city ?? "")
         _postalCode = State(wrappedValue: pharmacy?.postalCode ?? "")
         _phoneNumber = State(wrappedValue: pharmacy?.phoneNumber ?? "")
         _faxNumber = State(wrappedValue: pharmacy?.faxNumber ?? "")
-        
     }
+    
+
     
     var body: some View {
 
