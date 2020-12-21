@@ -251,7 +251,7 @@ struct CompletedPrescriptions: View {
                 .navigationBarHidden(true)
             
             
-            Text("Completed Orders")
+            Text("Completed Orders").font(.headline)
             
             // If BLANK
             if orders.count == 0 {

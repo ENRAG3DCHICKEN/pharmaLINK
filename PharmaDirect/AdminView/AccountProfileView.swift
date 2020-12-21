@@ -42,7 +42,7 @@ struct AccountProfileView: View {
     
     var body: some View {
 
-        VStack {
+        VStack {            
             Form {
                 Section(header: Text("Account Profile:")) {
                     TextField("Address: ", text: $address).autocapitalization(.none).disableAutocorrection(true)

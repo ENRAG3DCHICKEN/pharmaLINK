@@ -173,7 +173,7 @@ struct SignUpView: View {
                             Text("Terms of Service")
                                 .font(.footnote)
                                 .underline()
-                                .foregroundColor(Color(UIColor.mainColor))
+                                .foregroundColor(colorScheme == .light ? Color(UIColor.mainColor) : Color(.green))
                                 .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                                     self.selection = 1
                                 })
@@ -182,7 +182,7 @@ struct SignUpView: View {
                             Text("Privacy Policy")
                                 .font(.footnote)
                                 .underline()
-                                .foregroundColor(Color(UIColor.mainColor))
+                                .foregroundColor(colorScheme == .light ? Color(UIColor.mainColor) : Color(.green))
                                 .onTapGesture(count: 1, perform: {
                                     self.selection = 2
                                 })

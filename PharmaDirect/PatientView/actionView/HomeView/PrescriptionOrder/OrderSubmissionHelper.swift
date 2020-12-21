@@ -69,6 +69,13 @@ func OrdersObjectUpdate(context: NSManagedObjectContext, patient: Patient, chose
     let orders = Orders(context: context)
     
     orders.orderCompleted = false
+    orders.statusRXPrep = false
+    orders.statusRXCompleted = false
+    orders.statusRXEntry = false
+    orders.statusPatientEntry = false
+    
+    orders.fulfillmentOption = UserDefaults.standard.string(forKey: "shipOption")!
+
     orders.orderUUID = UUID()
     orders.patientEmailAddress = UserDefaults.standard.string(forKey: "email")!
     orders.pharmacyName = chosenPharmacy.pharmacyName

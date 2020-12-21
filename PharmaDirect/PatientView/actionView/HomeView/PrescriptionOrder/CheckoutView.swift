@@ -103,11 +103,11 @@ struct CheckoutView: View {
             Button(action: {
   
                 if optionLocalPickup {
-                    UserDefaults.standard.set("optionLocalPickup", forKey: "shipOption")
+                    UserDefaults.standard.set("Local Pickup", forKey: "shipOption")
                 } else if optionDelivery_Regular {
-                    UserDefaults.standard.set("optionDelivery_Regular", forKey: "shipOption")
+                    UserDefaults.standard.set("Regular Delivery", forKey: "shipOption")
                 } else if optionDelivery_Sameday {
-                    UserDefaults.standard.set("optionDelivery_Sameday", forKey: "shipOption")
+                    UserDefaults.standard.set("Sameday Delivery", forKey: "shipOption")
                 }
                 
                 UserDefaults.standard.set(shipFullName, forKey: "shipFullName")

@@ -24,6 +24,10 @@ struct PatientInfoView: View {
     @State var postalCode: String
     @State var phoneNumber: String
     
+//    var validation_Integers: Bool {
+//        postalCode.count != 6 ||
+//    }
+//
     init() {
         if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
             _fullName = State(wrappedValue: UserDefaults.standard.string(forKey: "fullName")!)

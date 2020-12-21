@@ -43,7 +43,7 @@ struct SummaryCompletionView: View {
                     }
                     
                     
-                    if UserDefaults.standard.string(forKey: "shipOption") != "optionLocalPickup" {
+                    if UserDefaults.standard.string(forKey: "shipOption") != "Local Pickup" {
                         Section(header: Text("Your prescription will be shipped to: ")) {
                         // Delivery Details
                             

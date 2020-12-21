@@ -61,6 +61,30 @@ extension Orders {
         get { prescriptionSource_! }
         set { prescriptionSource_ = newValue }
     }
+    var statusPatientEntry: Bool {
+        get { statusPatientEntry_ }
+        set { statusPatientEntry_ = newValue }
+    }
+    var statusRXEntry: Bool {
+        get { statusRXEntry_ }
+        set { statusRXEntry_ = newValue }
+    }
+    var statusRXPrep: Bool {
+        get { statusRXPrep_ }
+        set { statusRXPrep_ = newValue }
+    }
+    var statusRXCompleted: Bool {
+        get { statusRXCompleted_ }
+        set { statusRXCompleted_ = newValue }
+    }
+    var fulfillmentOption: String {
+        get { fulfillmentOption_! }
+        set { fulfillmentOption_ = newValue }
+    }
+    
+    
+    
+    
 //    var refill_prescription: String {
 //        get { refill_prescription_! }
 //        set { refill_prescription_ = newValue }
@@ -81,7 +105,7 @@ extension Orders {
 //        get { trans_transferAll_ }
 //        set { trans_transferAll_ = newValue }
 //    }
-    
+
     //One to One Relationships
     var fulfillmentPharmacy: Pharmacy {
         get { fulfillmentPharmacy_! }

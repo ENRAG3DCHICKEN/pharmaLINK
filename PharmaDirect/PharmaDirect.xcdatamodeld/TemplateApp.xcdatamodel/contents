@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Orders" representedClassName="Orders" syncable="YES" codeGenerationType="class">
+        <attribute name="fulfillmentOption_" optional="YES" attributeType="String"/>
         <attribute name="orderCompleted_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="orderSubmissionTime_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="orderType_" optional="YES" attributeType="String"/>
@@ -11,6 +12,10 @@
         <attribute name="pharmacyName_" optional="YES" attributeType="String"/>
         <attribute name="prescriptionSource_" optional="YES" attributeType="String"/>
         <attribute name="refill_prescription" optional="YES" attributeType="String"/>
+        <attribute name="statusPatientEntry_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="statusRXCompleted_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="statusRXEntry_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="statusRXPrep_" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="trans_prescription" optional="YES" attributeType="String"/>
         <attribute name="trans_priorPharmacyName" optional="YES" attributeType="String"/>
         <attribute name="trans_priorPharmacyPhone" optional="YES" attributeType="String"/>
@@ -116,7 +121,7 @@
         <relationship name="patientCustomer_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="orderPharmacy_" inverseEntity="Patient"/>
     </entity>
     <elements>
-        <element name="Orders" positionX="183.9375" positionY="-35.2734375" width="128" height="283"/>
+        <element name="Orders" positionX="183.9375" positionY="-35.2734375" width="128" height="358"/>
         <element name="Patient" positionX="473.3359375" positionY="97.109375" width="187.84375" height="283"/>
         <element name="PatientFulfillmentDetails" positionX="765.03515625" positionY="582.4375" width="182.3828125" height="28"/>
         <element name="PatientHealthDetails" positionX="937.76953125" positionY="-80.50390625" width="207.96484375" height="28"/>

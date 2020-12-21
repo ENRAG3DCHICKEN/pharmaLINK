@@ -27,7 +27,7 @@ struct AdminOrderView: View {
             
             Text("")
                 .navigationBarTitle("Order View")
-//                .navigationBarItems(trailing: action)
+                .navigationBarItems(trailing: action)
 //                .navigationBarHidden(true)
                                      
             Form {
@@ -81,17 +81,7 @@ struct AdminOrderView: View {
                     Text("Expiration YY: \(String(chosenOrder.patient.paymentInfo.expirationYY))")
                     Text("CVV: \(chosenOrder.patient.paymentInfo.cvv)")
                 }
-                
-                //Patient Fulfillment Details
-                Section(header: Text("Patient Fulfillment Details: ")) {
-                    Text("Shipping Name: \(chosenOrder.patient.shippingInfo.fullName)")
-                    Text("Shipping Address: \(chosenOrder.patient.shippingInfo.address)")
-                    Text("Shipping Province: \(chosenOrder.patient.shippingInfo.province)")
-                    Text("Shipping City: \(chosenOrder.patient.shippingInfo.city)")
-                    Text("Shipping Postal Code: \(String(chosenOrder.patient.shippingInfo.postalCode))")
-                    Text("Shipping Phone Number: \(chosenOrder.patient.shippingInfo.phoneNumber)")
-                }
-                
+                                
                 //Patient Insurance Details
                 Section(header: Text("Patient Insurance Details: ")) {
                     Text("OHIP Number: \(chosenOrder.patient.insuranceInfo.ohip)")
@@ -141,26 +131,108 @@ struct AdminOrderView: View {
             }
         }
         EmptyView()
-        
-
-        
-        
     }
-//
-//    @State private var showAction = false
-//
-//    var action: some View {
-//        Button("Action") {
-//            self.showAction = true
-//        }
-//            .sheet(isPresented: $showAction) {
-//
-//            }
-//    }
+
+    @State private var showAction = false
+
+    var action: some View {
+        Button("Action") {
+            self.showAction = true
+        }
+            .sheet(isPresented: $showAction) {
+                PharmacistAction(chosenOrder: chosenOrder, showAction: $showAction)
+            }
+    }
     
 }
     
     
+struct PharmacistAction: View {
+    
+    @Binding var showAction: Bool
+    
+    @State private var chosenOrder: Orders
+    
+    @State private var patientEntryCompleted: Bool
+    @State private var rxEntryCompleted: Bool
+    @State private var rxPreparationCompleted: Bool
+    @State private var rxCompleted: Bool
+
+    
+    
+    init(chosenOrder: Orders, showAction: Binding<Bool>) {
+        _chosenOrder = State(wrappedValue: chosenOrder)
+        _showAction = showAction
+        
+        _patientEntryCompleted = State(wrappedValue: chosenOrder.statusPatientEntry)
+        _rxEntryCompleted = State(wrappedValue: chosenOrder.statusRXEntry)
+        _rxPreparationCompleted = State(wrappedValue: chosenOrder.statusRXPrep)
+        _rxCompleted = State(wrappedValue: chosenOrder.statusRXCompleted)
+    }
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                
+                Section {
+                    Text("Patient Fulfillment Method: \(chosenOrder.fulfillmentOption)")
+                        .navigationBarTitle("Admin Order Management:")
+                        .navigationBarItems(leading: cancel, trailing: done)
+                }
+                
+                Section(header: Text("Pharmacy Completion Status:")) {
+                    Toggle("Patient Entry Completed:", isOn: $patientEntryCompleted)
+                    Toggle("Prescription Entry Completed:", isOn: $rxEntryCompleted)
+                    Toggle("Prescription Preparation Completed:", isOn: $rxPreparationCompleted)
+                    Toggle("Prescription Completed:", isOn: $rxCompleted)
+                }
+                
+                if chosenOrder.fulfillmentOption_ != "Local Pickup" {
+                    //Patient Fulfillment Details
+                    Section(header: Text("Patient Shipping Details: ")) {
+                        Text("Shipping Name: \(chosenOrder.patient.shippingInfo.fullName)")
+                        Text("Shipping Address: \(chosenOrder.patient.shippingInfo.address)")
+                        Text("Shipping Province: \(chosenOrder.patient.shippingInfo.province)")
+                        Text("Shipping City: \(chosenOrder.patient.shippingInfo.city)")
+                        Text("Shipping Postal Code: \(String(chosenOrder.patient.shippingInfo.postalCode))")
+                        Text("Shipping Phone Number: \(chosenOrder.patient.shippingInfo.phoneNumber)")
+                    }
+                }
+            }
+        }
+    }
+    
+    var cancel: some View {
+        Button("Cancel") {
+            self.showAction = false
+        }
+    }
+    
+    var done: some View {
+        Button("Done") {
+            
+            if patientEntryCompleted == true {
+                chosenOrder.statusPatientEntry = true
+            }
+            if rxEntryCompleted == true {
+                chosenOrder.statusRXEntry = true
+            }
+            if rxPreparationCompleted == true {
+                chosenOrder.statusRXPrep = true
+            }
+            if rxCompleted == true {
+                chosenOrder.statusRXCompleted = true
+            }
+            
+            if (patientEntryCompleted && rxEntryCompleted && rxPreparationCompleted && rxCompleted) {
+                chosenOrder.orderCompleted = true
+            }
+            
+            self.showAction = false
+        }
+    }
+    
+}
     
     
     
