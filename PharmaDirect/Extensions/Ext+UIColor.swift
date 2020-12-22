@@ -58,5 +58,7 @@ extension UIColor {
     static var tile3a: UIColor { return UIColor(red: 215/255, green: 169/255, blue: 110/255, alpha: 1) }
     static var tile3b: UIColor { return UIColor(red: 233/255, green: 67/255, blue: 147/255, alpha: 1) }
     
+    static var neonGreen: UIColor { return UIColor(red: 50/255, green: 201/255, blue: 87/255, alpha: 1) }
+    
     }
     

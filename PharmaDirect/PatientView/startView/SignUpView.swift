@@ -36,9 +36,9 @@ struct SignUpView: View {
 //                    .navigationBarTitle("")
 //                    .navigationBarHidden(true)
                 
-                Text("PHARMACIE")
+                Text("pharmacie")
                     .bold()
-                    .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+                    .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
                     .font(.largeTitle)
                     .padding()
 
@@ -173,7 +173,7 @@ struct SignUpView: View {
                             Text("Terms of Service")
                                 .font(.footnote)
                                 .underline()
-                                .foregroundColor(colorScheme == .light ? Color(UIColor.mainColor) : Color(.green))
+                                .foregroundColor(colorScheme == .light ? Color(UIColor.mainColor) : Color(UIColor.neonGreen))
                                 .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                                     self.selection = 1
                                 })
@@ -182,7 +182,7 @@ struct SignUpView: View {
                             Text("Privacy Policy")
                                 .font(.footnote)
                                 .underline()
-                                .foregroundColor(colorScheme == .light ? Color(UIColor.mainColor) : Color(.green))
+                                .foregroundColor(colorScheme == .light ? Color(UIColor.mainColor) : Color(UIColor.neonGreen))
                                 .onTapGesture(count: 1, perform: {
                                     self.selection = 2
                                 })
@@ -193,8 +193,8 @@ struct SignUpView: View {
                     Text(displayErrorMessage).font(.caption)
                         .padding()
                     //
-                    NavigationLink(destination: PrivacyPolicyView(), tag: 1, selection: $selection) { EmptyView() }
-                    NavigationLink(destination: TermsView(), tag: 2, selection: $selection) { EmptyView() }
+                    NavigationLink(destination: TermsView(), tag: 1, selection: $selection) { EmptyView() }
+                    NavigationLink(destination: PrivacyPolicyView(), tag: 2, selection: $selection) { EmptyView() }
                     //
                     NavigationLink(destination: PharmacySearchView(), tag: 3, selection: $selection) { EmptyView() }
                     //

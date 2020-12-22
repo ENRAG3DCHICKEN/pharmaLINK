@@ -22,9 +22,9 @@ struct LandingView: View {
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                     
-                    Text("PHARMACIE")
+                    Text("pharmacie")
                         .bold()
-                        .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+                        .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
                         .font(.largeTitle)
                         .padding()
 
@@ -43,25 +43,15 @@ struct LandingView: View {
                         .gesture(self.panGesture())
                         .animation(.easeInOut)
 
-
-                    GeometryReader { geometry in
-                    
-                        HStack {
-                            Spacer(minLength: geometry.size.width/2.5)
                             HStack {
-                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 0 && colorScheme != .dark) ? .black : (carouselPane == 0 && colorScheme == .dark) ? .green : .lightGray)))
-                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 1 && colorScheme != .dark) ? .black : (carouselPane == 1 && colorScheme == .dark) ? .green : .lightGray)))
-                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 2 && colorScheme != .dark) ? .black : (carouselPane == 2 && colorScheme == .dark) ? .green : .lightGray)))
-                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 3 && colorScheme != .dark) ? .black : (carouselPane == 3 && colorScheme == .dark) ? .green : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 0 && colorScheme != .dark) ? UIColor.mainColor : (carouselPane == 0 && colorScheme == .dark) ? UIColor.mainColor : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 1 && colorScheme != .dark) ? UIColor.mainColor : (carouselPane == 1 && colorScheme == .dark) ? UIColor.mainColor : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 2 && colorScheme != .dark) ? UIColor.mainColor : (carouselPane == 2 && colorScheme == .dark) ? UIColor.mainColor : .lightGray)))
+                                Image(systemName: "circle.fill").foregroundColor(Color(((carouselPane == 3 && colorScheme != .dark) ? UIColor.mainColor : (carouselPane == 3 && colorScheme == .dark) ? UIColor.mainColor : .lightGray)))
                             }
-                            Spacer(minLength: geometry.size.width/2.5)
-                        }
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.04)
-                        
-                            
-                    }
-                        .frame(maxHeight: 20)
-                    .padding()
+                                .frame(maxHeight: 20)
+                                .padding()
+                    
                     VStack(alignment: .center) {
                         Text(text1[carouselPane])
                             .padding(6)

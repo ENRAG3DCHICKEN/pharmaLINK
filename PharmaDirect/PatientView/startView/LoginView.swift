@@ -31,9 +31,9 @@ struct LoginView: View {
 //                    .navigationBarTitle("")
 //                    .navigationBarHidden(true)
                 
-                Text("PHARMACIE")
+                Text("pharmacie")
                     .bold()
-                    .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
+                    .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
                     .font(.largeTitle)
                     .padding()
                 

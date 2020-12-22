@@ -42,7 +42,7 @@ struct HealthProfileView2: View {
                     .resizable()
                     .frame(height: UIScreen.main.bounds.height * 0.2)
                     .overlay(
-                        Text("Help us match you to the right counselor.")
+                        Text("Provide all necessary info to your pharmacist")
                             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.2)
                             .foregroundColor(.white)
                             .background(Color.black)

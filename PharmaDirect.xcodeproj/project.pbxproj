@@ -121,7 +121,7 @@
 		73E0481D2523B26200340628 /* Ext+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIColor.swift"; sourceTree = "<group>"; };
 		73E37ADB25899A1100842CD6 /* Ext+PatientInsuranceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+PatientInsuranceDetails.swift"; sourceTree = "<group>"; };
 		73E37B2B2589C0B700842CD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		73E6CCD225239EBD00287255 /* PharmaDirect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PharmaDirect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73E6CCD225239EBD00287255 /* pharmacie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pharmacie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E6CCD525239EBD00287255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73E6CCD725239EBD00287255 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		73E6CCDA25239EBD00287255 /* TemplateApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TemplateApp.xcdatamodel; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 		73E6CCD325239EBD00287255 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73E6CCD225239EBD00287255 /* PharmaDirect.app */,
+				73E6CCD225239EBD00287255 /* pharmacie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,7 +390,7 @@
 			);
 			name = PharmaDirect;
 			productName = TemplateApp;
-			productReference = 73E6CCD225239EBD00287255 /* PharmaDirect.app */;
+			productReference = 73E6CCD225239EBD00287255 /* pharmacie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -696,7 +696,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JY.PharmaDirect;
-				PRODUCT_NAME = PharmaDirect;
+				PRODUCT_NAME = pharmacie;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -718,7 +718,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JY.PharmaDirect;
-				PRODUCT_NAME = PharmaDirect;
+				PRODUCT_NAME = pharmacie;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

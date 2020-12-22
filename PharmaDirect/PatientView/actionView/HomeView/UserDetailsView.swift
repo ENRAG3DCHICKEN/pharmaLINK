@@ -51,7 +51,7 @@ struct UserDetailsView: View {
                 }.padding()
                 
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -68,7 +68,7 @@ struct UserDetailsView: View {
                 }.padding()
                 
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -84,7 +84,7 @@ struct UserDetailsView: View {
                 Text(">").font(.body).bold()
                 }.padding()
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -100,7 +100,7 @@ struct UserDetailsView: View {
                     Text(">").font(.body).bold()
                 }.padding()
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -116,7 +116,7 @@ struct UserDetailsView: View {
                     Text(">").font(.body).bold()
                 }.padding()
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -132,7 +132,7 @@ struct UserDetailsView: View {
                     Text(">").font(.body).bold()
                 }.padding()
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -150,7 +150,7 @@ struct UserDetailsView: View {
                     Text(">").font(.body).bold()
                 }.padding()
             })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 30)
+                .frame(width: UIScreen.main.bounds.width * 0.8, height: 30)
                 .foregroundColor(Color(.white))
                 .background(Color(UIColor.buttonBar))
                 .padding().shadow(radius: 5, y: 5)
@@ -160,7 +160,6 @@ struct UserDetailsView: View {
      
             
 
-        Spacer()
     
         
 
