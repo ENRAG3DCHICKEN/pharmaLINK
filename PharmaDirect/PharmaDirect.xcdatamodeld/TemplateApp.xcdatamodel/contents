@@ -120,6 +120,15 @@
         <relationship name="orderHistory_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Orders" inverseName="fulfillmentPharmacy_" inverseEntity="Orders"/>
         <relationship name="patientCustomer_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="orderPharmacy_" inverseEntity="Patient"/>
     </entity>
+    <configuration name="Cloud" usedWithCloudKit="YES">
+        <memberEntity name="Orders"/>
+        <memberEntity name="Patient"/>
+        <memberEntity name="PatientFulfillmentDetails"/>
+        <memberEntity name="PatientHealthDetails"/>
+        <memberEntity name="PatientInsuranceDetails"/>
+        <memberEntity name="PatientPaymentDetails"/>
+        <memberEntity name="Pharmacy"/>
+    </configuration>
     <elements>
         <element name="Orders" positionX="183.9375" positionY="-35.2734375" width="128" height="358"/>
         <element name="Patient" positionX="473.3359375" positionY="97.109375" width="187.84375" height="283"/>

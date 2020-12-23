@@ -106,7 +106,7 @@ struct AdminDetailsView: View {
                                 .padding()
                         }
                     }
-                        .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height * 0.20)
+                        .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.17)
                         .foregroundColor(Color(.white))
                         .padding().shadow(radius: 5, y: 5)
                 }
@@ -141,7 +141,7 @@ struct AdminDetailsView: View {
                                     .padding()
                             }
                     }
-                                .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height * 0.2)
+                                .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.17)
                                 .foregroundColor(Color(.white))
                                 .padding().shadow(radius: 5, y: 5)
                 }
@@ -176,7 +176,7 @@ struct AdminDetailsView: View {
                             })
                         }
                     }
-                                .frame(width: UIScreen.main.bounds.width * 0.65, height: UIScreen.main.bounds.height * 0.2)
+                                .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.17)
                                 .foregroundColor(Color(.white))
                                 .padding().shadow(radius: 5, y: 5)
                         

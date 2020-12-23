@@ -45,6 +45,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentCloudKitContainer(name: "PharmaDirect")
+        
+        //For the purposes of: Initializing the CloudKit Schema During Development
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("Could not retrieve a persistent store description.")
+        }
+
+        //START of INSERTION
+        // Put our stores into Application Support
+        var storePath: URL
+        do {
+            storePath = try FileManager.default.url(for: .applicationSupportDirectory,
+                                                    in: .userDomainMask,
+                                                    appropriateFor: nil,
+                                                    create: true)
+        } catch {
+            fatalError("Unable to get path to Application Support directory")
+        }
+
+        // Create a store description for a local store
+        let localStoreLocation = storePath.appendingPathComponent("local.store")
+        let localStoreDescription =
+            NSPersistentStoreDescription(url: localStoreLocation)
+//        localStoreDescription.configuration = "Local"
+
+
+        // Create a store descpription for a CloudKit-backed local store
+        let cloudStoreLocation = storePath.appendingPathComponent("cloud.store")
+        let cloudStoreDescription =
+            NSPersistentStoreDescription(url: cloudStoreLocation)
+        cloudStoreDescription.configuration = "Cloud"
+
+
+
+        // Set the container options on the cloud store
+//        cloudStoreDescription.cloudKitContainerOptions =
+//            NSPersistentCloudKitContainerOptions(
+//                containerIdentifier: "iCloud.com.mydomain.mycontainer")
+                cloudStoreDescription.cloudKitContainerOptions =
+                    NSPersistentCloudKitContainerOptions(
+                        containerIdentifier: "iCloud.pharmacie")
+                
+
+        // Update the container's list of store descriptions
+        container.persistentStoreDescriptions = [
+            cloudStoreDescription,
+            localStoreDescription
+        ]
+        //END of INSERTION
+        
+        
+        
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

@@ -74,7 +74,7 @@ struct LandingView: View {
                             
                                 .frame(width: UIScreen.main.bounds.width / 2.5, height: 30)
                                 .foregroundColor(Color(UIColor.mainColor))
-                                .background(Color(UIColor.white))
+                                .background(colorScheme == .light ? Color(.white) : Color(UIColor.shadedWhite))
                                 .cornerRadius(10)
                                 .background(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2))
                                 .foregroundColor(Color(UIColor.mainColor))
