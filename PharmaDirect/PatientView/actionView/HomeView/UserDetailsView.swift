@@ -28,10 +28,10 @@ struct UserDetailsView: View {
 
         Image("cropped-img7")
             .resizable()
-            .frame(height: UIScreen.main.bounds.height * 0.2)
+            .frame(height: UIScreen.main.bounds.height * 0.18)
             .overlay(
                 Text("Account Profile").font(.title)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.2)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
                     .foregroundColor(.white)
                     .background(Color.black)
                     .opacity(0.7)

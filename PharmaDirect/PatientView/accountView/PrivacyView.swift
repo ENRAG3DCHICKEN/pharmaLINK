@@ -34,10 +34,10 @@ struct PrivacyView: View {
                     
                     Image("cropped-img7")
                         .resizable()
-                        .frame(height: UIScreen.main.bounds.height * 0.2)
+                        .frame(height: UIScreen.main.bounds.height * 0.18)
                         .overlay(
                             Text("Provide all necessary info to your pharmacist")
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.2)
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
                                 .foregroundColor(.white)
                                 .background(Color.black)
                                 .opacity(0.7)

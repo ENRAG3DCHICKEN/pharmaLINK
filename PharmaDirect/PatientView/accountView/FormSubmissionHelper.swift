@@ -354,37 +354,37 @@ func SendFormToFirebase(context: NSManagedObjectContext, patient: Patient, patie
 }
 
 
-
-func SendFormToCloudKit(context: NSManagedObjectContext, patient: Patient, patientHealthDetails: PatientHealthDetails, patientInsuranceDetails: PatientInsuranceDetails, patientPaymentDetails: PatientPaymentDetails) {
-    
-        let db = CKContainer.default().privateCloudDatabase
-    
-        //Patient Object
-        let users = CKRecord(recordType: "Users")
-        
-        users["address"] = patient.address
-        users["city"] = patient.city
-        users["emailAddress"] = patient.emailAddress
-        users["fullName"] = patient.fullName
-        users["patientUUID"] = patient.patientUUID
-        users["phoneNumber"] = patient.phoneNumber
-        users["postalCode"] = patient.postalCode
-        users["privacyCompletionFlag"] = patient.privacyCompletionFlag
-        users["province"] = patient.province
-        users["signupCompletionFlag"] = patient.signupCompletionFlag
-
-        db.save(users) { (savedRecord: CKRecord?, error: Error?) -> Void in
-            if error == nil {
-                // great!
-            } else {
-                // report other errors (there are 29 different CKErrorCodes!)
-            }
-        }
-    
-        //PatientHealthDetails Object
-        let usersHealthDetails = CKRecord(recordType: "Users_HealthDetails")
-        
-        users["address"] = patient.address
+//
+//func SendFormToCloudKit(context: NSManagedObjectContext, patient: Patient, patientHealthDetails: PatientHealthDetails, patientInsuranceDetails: PatientInsuranceDetails, patientPaymentDetails: PatientPaymentDetails) {
+//
+//        let db = CKContainer.default().privateCloudDatabase
+//
+//        //Patient Object
+//        let users = CKRecord(recordType: "Users")
+//
+//        users["address"] = patient.address
+//        users["city"] = patient.city
+//        users["emailAddress"] = patient.emailAddress
+//        users["fullName"] = patient.fullName
+//        users["patientUUID"] = patient.patientUUID
+//        users["phoneNumber"] = patient.phoneNumber
+//        users["postalCode"] = patient.postalCode
+//        users["privacyCompletionFlag"] = patient.privacyCompletionFlag
+//        users["province"] = patient.province
+//        users["signupCompletionFlag"] = patient.signupCompletionFlag
+//
+//        db.save(users) { (savedRecord: CKRecord?, error: Error?) -> Void in
+//            if error == nil {
+//                // great!
+//            } else {
+//                // report other errors (there are 29 different CKErrorCodes!)
+//            }
+//        }
+//
+//        //PatientHealthDetails Object
+//        let usersHealthDetails = CKRecord(recordType: "Users_HealthDetails")
+//
+//        users["address"] = patient.address
         
 //
 //        // Add a new document in collection "users",
@@ -461,7 +461,7 @@ func SendFormToCloudKit(context: NSManagedObjectContext, patient: Patient, patie
 //
 //
         
-
-}
-
-
+//
+//}
+//
+//
