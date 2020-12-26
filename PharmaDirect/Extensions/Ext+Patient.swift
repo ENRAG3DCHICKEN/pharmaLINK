@@ -94,7 +94,7 @@ extension Patient {
 
 extension Patient {
     
-    //Standard query request to Core Data
+    //Modified query request to Core Data
     static func fetchRequest(_ predicate: NSPredicate) -> NSFetchRequest<Patient> {
         let request = NSFetchRequest<Patient>(entityName: "Patient")
         // need to sort by distance
@@ -102,5 +102,5 @@ extension Patient {
         request.predicate = predicate
         return request
     }
+    
 }
-

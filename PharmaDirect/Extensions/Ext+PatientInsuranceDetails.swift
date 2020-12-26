@@ -16,10 +16,10 @@ import UIKit
 
 extension PatientInsuranceDetails {
     //Standard query request to Core Data
-    static func fetchRequest(_ predicate: NSPredicate) -> NSFetchRequest<PatientPaymentDetails> {
-        let request = NSFetchRequest<PatientPaymentDetails>(entityName: "PatientPaymentDetails")
+    static func fetchRequest(_ predicate: NSPredicate) -> NSFetchRequest<PatientInsuranceDetails> {
+        let request = NSFetchRequest<PatientInsuranceDetails>(entityName: "PatientInsuranceDetails")
         // need to sort by distance
-        request.sortDescriptors = [NSSortDescriptor(key: "cardholderName_", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "ohip", ascending: true)]
         request.predicate = predicate
         return request
     }
