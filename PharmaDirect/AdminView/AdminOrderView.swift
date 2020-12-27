@@ -11,7 +11,7 @@ import CoreData
 
 struct AdminOrderView: View {
     
-
+    @Environment(\.colorScheme) var colorScheme
     
     @State private var chosenOrder: Orders
     
@@ -148,6 +148,8 @@ struct AdminOrderView: View {
     
     
 struct PharmacistAction: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     
     @Binding var showAction: Bool
     

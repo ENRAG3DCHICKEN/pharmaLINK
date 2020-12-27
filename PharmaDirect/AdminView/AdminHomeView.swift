@@ -11,6 +11,8 @@ import CoreData
 
 struct AdminHomeView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var selection: Int
 
     init(selectionValue: Int) {
@@ -54,7 +56,9 @@ struct AdminHomeView: View {
 
 struct AdminDetailsView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
+    
     @State var pharmacy: Pharmacy?
     
     @State private var selection: Int?
@@ -199,6 +203,8 @@ struct AdminDetailsView: View {
 
 struct PendingPrescriptions: View {
 
+    @Environment(\.colorScheme) var colorScheme
+    
     @FetchRequest(fetchRequest: Orders.fetchRequest(
         NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate(format: "pharmacyEmailAddress_ == %@", UserDefaults.standard.string(forKey: "email")!), NSPredicate(format: "orderCompleted_ = %d", false)
@@ -235,6 +241,8 @@ struct PendingPrescriptions: View {
 
 
 struct CompletedPrescriptions: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     
     @FetchRequest(fetchRequest: Orders.fetchRequest(
         NSCompoundPredicate(andPredicateWithSubpredicates: [

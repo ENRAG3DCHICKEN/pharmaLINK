@@ -26,7 +26,7 @@ func FormSubmissionToCoreData(context: NSManagedObjectContext) {
     print("Form Submission Completed!")
     
     
-//    SendFormToFirebase(context: context, patient: patient, patientHealthDetails: patientHealthDetails, patientInsuranceDetails: patientInsuranceDetails, patientPaymentDetails: patientPaymentDetails)
+    //    SendFormToFirebase(context: context, patient: patient, patientHealthDetails: patientHealthDetails, patientInsuranceDetails: patientInsuranceDetails, patientPaymentDetails: patientPaymentDetails)
     //    SendFormToCloudKit(context: context, patient: patient, patientHealthDetails: patientHealthDetails, patientInsuranceDetails: patientInsuranceDetails, patientPaymentDetails: patientPaymentDetails)
 
 }

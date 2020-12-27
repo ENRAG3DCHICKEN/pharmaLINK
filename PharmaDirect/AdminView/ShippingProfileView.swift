@@ -8,10 +8,14 @@
 
 import SwiftUI
 import CoreData
+import FirebaseFirestore
+import Firebase
 
 struct ShippingProfileView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context
+    
     @State private var pharmacy: Pharmacy?
     @State private var selection: Int?
     
@@ -57,6 +61,37 @@ struct ShippingProfileView: View {
                     try context.save()
                 } catch(let error) {
                     print("couldn't save pharmacy update to CoreData: \(error.localizedDescription)")
+                }
+                
+                //Send Pharmacy Shipping Profile Update to Firebase Firestore
+                
+                let db = Firestore.firestore()
+                db.collection("pharmacies").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            
+                            //this below line is for debugging
+                            print("\(document.documentID) => \(document.data())")
+                            
+                            // Applies when user is logged in and identified as an admin account
+                            if UserDefaults.standard.string(forKey: "email")! == (document.data()["EmailAddress"] as! String) {
+                                db.collection("pharmacies").document(document.documentID).updateData([
+                                    "Shipping_LocalPickupOption": self.localPickupOption,
+                                    "Shipping_FreeDeliveryOption": self.freeDeliveryOption,
+                                    "Shipping_SamedayDeliveryOption": self.samedayDeliveryOption,
+                                ]) { err in
+                                    if let err = err {
+                                        print("Error updating document: \(err)")
+                                    } else {
+                                        print("Document successfully updated")
+                                    }
+                                }
+                                self.selection = 1
+                            }
+                        }
+                    }
                 }
 
                 self.selection = 1

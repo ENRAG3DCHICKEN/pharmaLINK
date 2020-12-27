@@ -11,6 +11,7 @@ import CoreData
 
 struct SummaryCompletionView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     
     @State private var selection: Int?

@@ -11,7 +11,9 @@ import CoreData
 
 struct UserDetailsView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
+    
     @State var chosenPharmacy: Pharmacy?
     
     @State var selection: Int?
@@ -19,7 +21,7 @@ struct UserDetailsView: View {
 
     var body: some View {
         
-        VStack(spacing: 0) {
+        VStack() {
             
         Text("")
             .navigationBarTitle("")

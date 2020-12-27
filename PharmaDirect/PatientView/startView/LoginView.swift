@@ -31,10 +31,17 @@ struct LoginView: View {
 //                    .navigationBarTitle("")
 //                    .navigationBarHidden(true)
                 
-                Text("pharmacie")
-                    .bold()
-                    .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
-                    .font(.largeTitle)
+                Group {
+                    Text("pharmacie")
+                        .bold()
+                        .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
+                        .font(.largeTitle)
+                    + Text("+")
+                        .bold()
+                        .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
+                        .font(.largeTitle)
+                        .baselineOffset(10)
+                }
                     .padding()
                 
                 Text("""

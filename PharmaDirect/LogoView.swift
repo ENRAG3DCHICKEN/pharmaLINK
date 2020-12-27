@@ -41,11 +41,24 @@ struct LogoView: View {
                         
 //                        .frame(width: 500, height: 500)
 //                        .clipped()
-                    Text("pharmacie")
-                        .font(.largeTitle)
-//                        .font(.system(size: 94, weight: .medium, design: .default))
-                        .foregroundColor(.white)
-                        .bold()
+//                    Text("pharmacie")
+//                        .font(.largeTitle)
+//
+//                        .foregroundColor(.white)
+//                        .bold()
+                        
+                    
+                    Group {
+                        Text("pharmacie")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .bold()
+                        + Text("+")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .bold()
+                            .baselineOffset(10)
+                    }
                         .frame(width: UIScreen.main.bounds.width * 0.6)
                 }
                     
@@ -54,7 +67,7 @@ struct LogoView: View {
                 NavigationLink(destination: LandingView(), tag: 1, selection: $selection) { EmptyView() }
                 NavigationLink(destination: HomeView(), tag: 2, selection: $selection) { EmptyView() }
                 NavigationLink(destination: AdminHomeView(), tag: 3, selection: $selection) { EmptyView() }
-                NavigationLink(destination: PharmacySearchView(), tag: 4, selection: $selection) { EmptyView() }
+//                NavigationLink(destination: PharmacySearchView(), tag: 4, selection: $selection) { EmptyView() }
                 
         }
 
@@ -77,7 +90,7 @@ struct LogoView: View {
                         self.selection = 1
                     } else {
                         let db = Firestore.firestore()
-                        db.collection("admin").getDocuments() { (querySnapshot, err) in
+                        db.collection("pharmacies").getDocuments() { (querySnapshot, err) in
                             if let err = err {
                                 print("Error getting documents: \(err)")
                             } else {
@@ -91,9 +104,10 @@ struct LogoView: View {
                                     print("\(document.documentID) => \(document.data())")
                                     
                                     // Applies when user is logged in and identified as an admin account
-                                    if UserDefaults.standard.string(forKey: "email")! == (document.data()["email"] as! String) {
+                                    if UserDefaults.standard.string(forKey: "email")! == (document.data()["EmailAddress"] as! String) {
                                         print("check3")
-                                        self.selection = 3
+//                                        self.selection = 3
+                                        self.selection = 1
 
                                     }
                                 }
@@ -106,10 +120,14 @@ struct LogoView: View {
                                         print("check2")
                                         self.selection = 2
                                     } else {
-                                        //Sign-up Process Incomplete - PatientInfoView
+                                        //(OLD)Sign-up Process Incomplete - PatientInfoView
+//                                        print("leaving")
+//                                        print("check4")
+//                                        self.selection = 4
+                                        //(New)Sign-up Process Incomplete - Send them back to Landing View
                                         print("leaving")
                                         print("check4")
-                                        self.selection = 4
+                                        self.selection = 1
                                     }
                                     
                                     

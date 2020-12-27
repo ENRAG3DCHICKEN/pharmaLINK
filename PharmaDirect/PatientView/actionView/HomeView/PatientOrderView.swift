@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PatientOrderView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @State private var chosenOrder: Orders
     
     init(chosenOrder: Orders) {

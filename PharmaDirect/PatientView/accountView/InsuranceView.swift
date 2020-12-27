@@ -11,6 +11,7 @@ import CoreData
 
 struct InsuranceView: View {
     
+        @Environment(\.colorScheme) var colorScheme
         @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     
         @State var selection: Int?

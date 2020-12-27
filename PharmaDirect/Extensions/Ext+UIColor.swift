@@ -60,6 +60,7 @@ extension UIColor {
     
     static var neonGreen: UIColor { return UIColor(red: 50/255, green: 201/255, blue: 87/255, alpha: 1) }
     static var shadedWhite: UIColor { return UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1) }
-    
+//    static var blueWhite: UIColor { return UIColor(red: 183/255, green: 203/255, blue: 229/255, alpha: 1) }
+    static var blueWhite: UIColor { return UIColor(red: 30/255, green: 255/255, blue: 30/255, alpha: 1) }
     }
     

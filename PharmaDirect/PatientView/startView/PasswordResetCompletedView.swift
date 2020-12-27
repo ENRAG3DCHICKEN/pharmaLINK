@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PasswordResetCompletedView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var selection: Int? = nil
     
     var body: some View {

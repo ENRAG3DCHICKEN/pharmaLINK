@@ -10,6 +10,8 @@ import SwiftUI
 
 struct NewPrescriptionMessage: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var selection: Int?
     
     @State private var chosenPharmacy: Pharmacy?

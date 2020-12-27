@@ -11,6 +11,7 @@ import CoreData
 
 struct PaymentView: View {
         
+        @Environment(\.colorScheme) var colorScheme
         @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     
         @State var selection: Int?

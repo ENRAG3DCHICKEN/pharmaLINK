@@ -13,6 +13,7 @@ import CoreData
 
 struct ObtainPrescriptions: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     @State private var chosenPharmacy: Pharmacy?
     @State private var selection: Int?

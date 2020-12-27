@@ -13,6 +13,7 @@ import Firebase
 struct SignUpView: View {
     
     @Environment(\.colorScheme) var colorScheme
+    
     @State var selection: Int? = nil
     
     @State var fieldSelection: Int? = nil
@@ -36,12 +37,18 @@ struct SignUpView: View {
 //                    .navigationBarTitle("")
 //                    .navigationBarHidden(true)
                 
-                Text("pharmacie")
-                    .bold()
-                    .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
-                    .font(.largeTitle)
+                Group {
+                    Text("pharmacie")
+                        .bold()
+                        .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
+                        .font(.largeTitle)
+                    + Text("+")
+                        .bold()
+                        .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
+                        .font(.largeTitle)
+                        .baselineOffset(10)
+                }
                     .padding()
-
                 Text("""
                         Create an account to
                     fullfill your prescriptions.

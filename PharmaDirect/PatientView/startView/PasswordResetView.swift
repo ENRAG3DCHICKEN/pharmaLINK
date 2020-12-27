@@ -11,6 +11,8 @@ import Firebase
 
 struct PasswordResetView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var email: String = ""
     @State var displayErrorMessage = ""
     
@@ -21,8 +23,8 @@ struct PasswordResetView: View {
         VStack {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBarTitle("Password Reset")
+//                .navigationBarHidden(true)
             
             Text("Forgot your password?").font(.headline)
             

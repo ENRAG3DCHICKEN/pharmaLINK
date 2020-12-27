@@ -12,6 +12,7 @@ import CoreData
 
 struct PatientInfoView: View {
 
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     
     @State var chosenPharmacy: Pharmacy?
@@ -24,10 +25,6 @@ struct PatientInfoView: View {
     @State var postalCode: String
     @State var phoneNumber: String
     
-//    var validation_postalCode: Bool {
-//        (postalCode.count != 6 || postalCode.count != 7)
-//    }
-
     init() {
         if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
             _fullName = State(wrappedValue: UserDefaults.standard.string(forKey: "fullName")!)
@@ -53,7 +50,7 @@ struct PatientInfoView: View {
             Text("")
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
-        
+                 
             Image("cropped-img7")
                 .resizable()
                 .frame(height: UIScreen.main.bounds.height * 0.2)

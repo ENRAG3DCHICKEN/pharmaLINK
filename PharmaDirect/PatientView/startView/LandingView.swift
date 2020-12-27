@@ -22,18 +22,20 @@ struct LandingView: View {
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                     
-                    Text("pharmacie")
-                        .bold()
-                        .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
-                        .font(.largeTitle)
+                    Group {
+                        Text("pharmacie")
+                            .bold()
+                            .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
+                            .font(.largeTitle)
+                        + Text("+")
+                            .bold()
+                            .foregroundColor(colorScheme == .dark ? Color(UIColor.neonGreen) : (Color(UIColor.mainColor)))
+                            .font(.largeTitle)
+                            .baselineOffset(10)
+                    }
                         .padding()
-
-//                    Image(systemName: "cross.fill")
-//                        .foregroundColor(colorScheme == .dark ? Color(.green) : (Color(UIColor.mainColor)))
-//                        .font(.largeTitle)
-//                        .padding()
                     
-                        GeometryReader { geometry in
+                    GeometryReader { geometry in
                         CarouselView(geoemtry: geometry, carouselPane: carouselPane)
                     
 
@@ -245,3 +247,22 @@ var text2 = ["""
 
 
 
+struct StrokeText: View {
+    let text: String
+    let width: CGFloat
+    let color: Color
+
+    var body: some View {
+        ZStack{
+            ZStack{
+                Text(text).bold().offset(x:  width, y:  width)
+                Text(text).bold().offset(x: -width, y: -width)
+                Text(text).bold().offset(x: -width, y:  width)
+                Text(text).bold().offset(x:  width, y: -width)
+            }
+            .foregroundColor(color)
+            Text(text).bold()
+
+        }
+    }
+}

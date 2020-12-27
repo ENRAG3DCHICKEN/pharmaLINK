@@ -8,10 +8,14 @@
 
 import SwiftUI
 import CoreData
+import Firebase
+import FirebaseFirestore
 
 struct AccountProfileView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context
+    
     @State private var pharmacy: Pharmacy?
     
     @State private var address: String
@@ -72,10 +76,42 @@ struct AccountProfileView: View {
                 } catch(let error) {
                     print("couldn't save pharmacy update to CoreData: \(error.localizedDescription)")
                 }
-
-                self.selection = 1
-     
-            })  { Text("Submit").font(.body).bold() }
+                
+                //Send Pharmacy Profile Update to Firebase Firestore
+                
+                let db = Firestore.firestore()
+                db.collection("pharmacies").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            
+                            //this below line is for debugging
+                            print("\(document.documentID) => \(document.data())")
+                            
+                            // Applies when user is logged in and identified as an admin account
+                            if UserDefaults.standard.string(forKey: "email")! == (document.data()["EmailAddress"] as! String) {
+                                db.collection("pharmacies").document(document.documentID).updateData([
+                                    "Address": self.address,
+                                    "Province": self.province,
+                                    "City": self.city,
+                                    "PostalCode": self.postalCode,
+                                    "PhoneNumber": self.phoneNumber,
+                                    "FaxNumber": self.faxNumber
+                                ]) { err in
+                                    if let err = err {
+                                        print("Error updating document: \(err)")
+                                    } else {
+                                        print("Document successfully updated")
+                                    }
+                                }
+                                self.selection = 1
+                            }
+                        }
+                    }
+                }
+                
+            }) { Text("Submit").font(.body).bold() }
                 .disabled(address.isEmpty || province.isEmpty || city.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty || faxNumber.isEmpty)
                 .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                 .foregroundColor(Color(.white))

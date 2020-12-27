@@ -10,6 +10,8 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     
     @State private var selection: Int
@@ -58,6 +60,7 @@ struct HomeView: View {
 
 struct PastPrescriptions: View {
     
+    @Environment(\.colorScheme) var colorScheme
 
     @FetchRequest(fetchRequest: Orders.fetchRequest(
         NSCompoundPredicate(andPredicateWithSubpredicates: [
