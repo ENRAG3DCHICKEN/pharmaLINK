@@ -6,7 +6,8 @@ target 'PharmaDirect' do
   use_frameworks!
 
   # Pods for PharmaDirect
-pod 'Firebase'
+  # pod 'Firebase'
+
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 

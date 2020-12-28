@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02703DF34FD0012732E1AB38 /* Pods_PharmaDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4327934A8B01B3AD65226F2B /* Pods_PharmaDirect.framework */; };
 		730484B12532B7BF004B73FB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730484B02532B7BF004B73FB /* HomeView.swift */; };
 		730484B32532C3E0004B73FB /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730484B22532C3E0004B73FB /* PrivacyPolicyView.swift */; };
 		730484B52532C3E9004B73FB /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730484B42532C3E9004B73FB /* TermsView.swift */; };
@@ -65,6 +64,7 @@
 		73FACE3325380FC500A17817 /* AdminHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FACE3225380FC500A17817 /* AdminHomeView.swift */; };
 		73FBBC132550CA58007ADE39 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FBBC122550CA58007ADE39 /* PasswordResetView.swift */; };
 		73FBBC172550D93E007ADE39 /* PasswordResetCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FBBC162550D93E007ADE39 /* PasswordResetCompletedView.swift */; };
+		B1305016EF58B7B306E50978 /* Pods_PharmaDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B343D0B5F5CC0E64DB1A9527 /* Pods_PharmaDirect.framework */; };
 		EE0AFFCB255C6B7D00DCE905 /* SummaryCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0AFFCA255C6B7D00DCE905 /* SummaryCompletionView.swift */; };
 		EE22E3BE25678A5300907B43 /* FormSubmissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22E3BD25678A5300907B43 /* FormSubmissionHelper.swift */; };
 		EE25BA13255A05BF00721345 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE25BA12255A05BF00721345 /* UserDetailsView.swift */; };
@@ -77,8 +77,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4327934A8B01B3AD65226F2B /* Pods_PharmaDirect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PharmaDirect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		69ED8733944E3C7545B1BB87 /* Pods-PharmaDirect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PharmaDirect.debug.xcconfig"; path = "Target Support Files/Pods-PharmaDirect/Pods-PharmaDirect.debug.xcconfig"; sourceTree = "<group>"; };
 		730484B02532B7BF004B73FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		730484B22532C3E0004B73FB /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		730484B42532C3E9004B73FB /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
@@ -139,7 +137,8 @@
 		73FACE3225380FC500A17817 /* AdminHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeView.swift; sourceTree = "<group>"; };
 		73FBBC122550CA58007ADE39 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		73FBBC162550D93E007ADE39 /* PasswordResetCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetCompletedView.swift; sourceTree = "<group>"; };
-		D115C808BDFC26E4C27232FA /* Pods-PharmaDirect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PharmaDirect.release.xcconfig"; path = "Target Support Files/Pods-PharmaDirect/Pods-PharmaDirect.release.xcconfig"; sourceTree = "<group>"; };
+		78564E1C9B10A0C119AE6AA4 /* Pods-PharmaDirect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PharmaDirect.release.xcconfig"; path = "Target Support Files/Pods-PharmaDirect/Pods-PharmaDirect.release.xcconfig"; sourceTree = "<group>"; };
+		B343D0B5F5CC0E64DB1A9527 /* Pods_PharmaDirect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PharmaDirect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0AFFCA255C6B7D00DCE905 /* SummaryCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCompletionView.swift; sourceTree = "<group>"; };
 		EE22E3BD25678A5300907B43 /* FormSubmissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSubmissionHelper.swift; sourceTree = "<group>"; };
 		EE25BA12255A05BF00721345 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
@@ -149,6 +148,7 @@
 		EEA2092C2555D62400921616 /* InsuranceView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsuranceView3.swift; sourceTree = "<group>"; };
 		EEACFED225664AA60030C7E1 /* Ext+PatientHealthDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+PatientHealthDetails.swift"; sourceTree = "<group>"; };
 		EEE57BDA2568A30600EEECC6 /* Ext+PatientFulfillmentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+PatientFulfillmentDetails.swift"; sourceTree = "<group>"; };
+		FBD9EC643BC9CBDD977EF49F /* Pods-PharmaDirect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PharmaDirect.debug.xcconfig"; path = "Target Support Files/Pods-PharmaDirect/Pods-PharmaDirect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +158,7 @@
 			files = (
 				73F8CAC0254106CC00E86887 /* CloudKit.framework in Frameworks */,
 				73F8CABD2541009900E86887 /* MapKit.framework in Frameworks */,
-				02703DF34FD0012732E1AB38 /* Pods_PharmaDirect.framework in Frameworks */,
+				B1305016EF58B7B306E50978 /* Pods_PharmaDirect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +170,7 @@
 			children = (
 				73F8CABF254106CC00E86887 /* CloudKit.framework */,
 				73F8CABC2541009900E86887 /* MapKit.framework */,
-				4327934A8B01B3AD65226F2B /* Pods_PharmaDirect.framework */,
+				B343D0B5F5CC0E64DB1A9527 /* Pods_PharmaDirect.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,8 +178,8 @@
 		711934B37356DFA5D28E3080 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				69ED8733944E3C7545B1BB87 /* Pods-PharmaDirect.debug.xcconfig */,
-				D115C808BDFC26E4C27232FA /* Pods-PharmaDirect.release.xcconfig */,
+				FBD9EC643BC9CBDD977EF49F /* Pods-PharmaDirect.debug.xcconfig */,
+				78564E1C9B10A0C119AE6AA4 /* Pods-PharmaDirect.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -378,11 +378,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73E6CCE925239EC000287255 /* Build configuration list for PBXNativeTarget "PharmaDirect" */;
 			buildPhases = (
-				89786DC25940A11DD721081B /* [CP] Check Pods Manifest.lock */,
+				1ED0871999F5922A0FF628F1 /* [CP] Check Pods Manifest.lock */,
 				73E6CCCE25239EBD00287255 /* Sources */,
 				73E6CCCF25239EBD00287255 /* Frameworks */,
 				73E6CCD025239EBD00287255 /* Resources */,
-				95E7672EE281BE83E2D1EE0F /* [CP] Embed Pods Frameworks */,
+				284663F923D51180788B97AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -441,7 +441,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		89786DC25940A11DD721081B /* [CP] Check Pods Manifest.lock */ = {
+		1ED0871999F5922A0FF628F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -463,7 +463,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95E7672EE281BE83E2D1EE0F /* [CP] Embed Pods Frameworks */ = {
+		284663F923D51180788B97AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -619,6 +619,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -673,6 +674,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CODE_SIGN_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -682,11 +684,12 @@
 		};
 		73E6CCEA25239EC000287255 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69ED8733944E3C7545B1BB87 /* Pods-PharmaDirect.debug.xcconfig */;
+			baseConfigurationReference = FBD9EC643BC9CBDD977EF49F /* Pods-PharmaDirect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PharmaDirect/PharmaDirect.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"PharmaDirect/Preview Content\"";
 				DEVELOPMENT_TEAM = 79W68ZHT57;
 				ENABLE_PREVIEWS = YES;
@@ -698,6 +701,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JY.PharmaDirect;
 				PRODUCT_NAME = pharmacie;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -705,11 +709,12 @@
 		};
 		73E6CCEB25239EC000287255 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D115C808BDFC26E4C27232FA /* Pods-PharmaDirect.release.xcconfig */;
+			baseConfigurationReference = 78564E1C9B10A0C119AE6AA4 /* Pods-PharmaDirect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PharmaDirect/PharmaDirect.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"PharmaDirect/Preview Content\"";
 				DEVELOPMENT_TEAM = 79W68ZHT57;
 				ENABLE_PREVIEWS = YES;
@@ -721,6 +726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JY.PharmaDirect;
 				PRODUCT_NAME = pharmacie;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
