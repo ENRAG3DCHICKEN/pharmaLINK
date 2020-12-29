@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "73E6CCD125239EBD00287255"
-               BuildableName = "pharmacie+.app"
+               BuildableName = "pharmacie.app"
                BlueprintName = "PharmaDirect"
                ReferencedContainer = "container:PharmaDirect.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73E6CCD125239EBD00287255"
-            BuildableName = "pharmacie+.app"
+            BuildableName = "pharmacie.app"
             BlueprintName = "PharmaDirect"
             ReferencedContainer = "container:PharmaDirect.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73E6CCD125239EBD00287255"
-            BuildableName = "pharmacie+.app"
+            BuildableName = "pharmacie.app"
             BlueprintName = "PharmaDirect"
             ReferencedContainer = "container:PharmaDirect.xcodeproj">
          </BuildableReference>

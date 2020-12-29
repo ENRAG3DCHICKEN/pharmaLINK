@@ -23,7 +23,6 @@
 		732C387E2535685C000CF5F0 /* HealthProfileView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C387D2535685C000CF5F0 /* HealthProfileView1.swift */; };
 		732C38802535686E000CF5F0 /* HealthProfileView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C387F2535686E000CF5F0 /* HealthProfileView3.swift */; };
 		7347EB13257B270B006C8ED1 /* OrderSubmissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7347EB12257B270A006C8ED1 /* OrderSubmissionHelper.swift */; };
-		734825AC2572242D00CF2CBF /* NewPrescriptionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734825AB2572242D00CF2CBF /* NewPrescriptionMessage.swift */; };
 		734E54A525818635003B8F4D /* LogoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E54A425818635003B8F4D /* LogoutHelper.swift */; };
 		734E54A925819BF4003B8F4D /* LoginViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E54A825819BF4003B8F4D /* LoginViewHelper.swift */; };
 		7351731225882A350046FE6C /* Firebase+PatientRelationships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7351731125882A350046FE6C /* Firebase+PatientRelationships.swift */; };
@@ -43,9 +42,7 @@
 		73D5101C253676B200502AC8 /* InsuranceView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D5101B253676B200502AC8 /* InsuranceView1.swift */; };
 		73D5101F2536B6B600502AC8 /* NewPrescription, Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D5101E2536B6B600502AC8 /* NewPrescription, Camera.swift */; };
 		73D510212536B6C800502AC8 /* TransferPrescriptionSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D510202536B6C800502AC8 /* TransferPrescriptionSelection.swift */; };
-		73D510232536B6D200502AC8 /* RefillPrescriptionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D510222536B6D200502AC8 /* RefillPrescriptionMessage.swift */; };
 		73D60A6C2573334200D422D3 /* Ext+PatientPaymentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D60A6B2573334200D422D3 /* Ext+PatientPaymentDetails.swift */; };
-		73D60A732573802200D422D3 /* TransferPrescriptionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D60A722573802200D422D3 /* TransferPrescriptionMessage.swift */; };
 		73E0481E2523B26200340628 /* Ext+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E0481D2523B26200340628 /* Ext+UIColor.swift */; };
 		73E37ADC25899A1100842CD6 /* Ext+PatientInsuranceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E37ADB25899A1100842CD6 /* Ext+PatientInsuranceDetails.swift */; };
 		73E37B2C2589C0B700842CD6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73E37B2B2589C0B700842CD6 /* GoogleService-Info.plist */; };
@@ -93,7 +90,6 @@
 		732C387D2535685C000CF5F0 /* HealthProfileView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthProfileView1.swift; sourceTree = "<group>"; };
 		732C387F2535686E000CF5F0 /* HealthProfileView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthProfileView3.swift; sourceTree = "<group>"; };
 		7347EB12257B270A006C8ED1 /* OrderSubmissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSubmissionHelper.swift; sourceTree = "<group>"; };
-		734825AB2572242D00CF2CBF /* NewPrescriptionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionMessage.swift; sourceTree = "<group>"; };
 		734E54A425818635003B8F4D /* LogoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutHelper.swift; sourceTree = "<group>"; };
 		734E54A825819BF4003B8F4D /* LoginViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewHelper.swift; sourceTree = "<group>"; };
 		7351731125882A350046FE6C /* Firebase+PatientRelationships.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+PatientRelationships.swift"; sourceTree = "<group>"; };
@@ -113,9 +109,7 @@
 		73D5101B253676B200502AC8 /* InsuranceView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsuranceView1.swift; sourceTree = "<group>"; };
 		73D5101E2536B6B600502AC8 /* NewPrescription, Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewPrescription, Camera.swift"; sourceTree = "<group>"; };
 		73D510202536B6C800502AC8 /* TransferPrescriptionSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPrescriptionSelection.swift; sourceTree = "<group>"; };
-		73D510222536B6D200502AC8 /* RefillPrescriptionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefillPrescriptionMessage.swift; sourceTree = "<group>"; };
 		73D60A6B2573334200D422D3 /* Ext+PatientPaymentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+PatientPaymentDetails.swift"; sourceTree = "<group>"; };
-		73D60A722573802200D422D3 /* TransferPrescriptionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPrescriptionMessage.swift; sourceTree = "<group>"; };
 		73E0481D2523B26200340628 /* Ext+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIColor.swift"; sourceTree = "<group>"; };
 		73E37ADB25899A1100842CD6 /* Ext+PatientInsuranceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+PatientInsuranceDetails.swift"; sourceTree = "<group>"; };
 		73E37B2B2589C0B700842CD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -218,11 +212,8 @@
 		734825A725721EF000CF2CBF /* PrescriptionOrder */ = {
 			isa = PBXGroup;
 			children = (
-				734825AB2572242D00CF2CBF /* NewPrescriptionMessage.swift */,
 				EE25BA16255A453C00721345 /* NewPrescriptionSelection.swift */,
-				73D510222536B6D200502AC8 /* RefillPrescriptionMessage.swift */,
 				736D9743257C73730004FFD7 /* RefillPrescriptionSelection.swift */,
-				73D60A722573802200D422D3 /* TransferPrescriptionMessage.swift */,
 				73D510202536B6C800502AC8 /* TransferPrescriptionSelection.swift */,
 				732C38752534F5DF000CF5F0 /* CheckoutView.swift */,
 				EE0AFFCA255C6B7D00DCE905 /* SummaryCompletionView.swift */,
@@ -497,7 +488,6 @@
 				734E54A925819BF4003B8F4D /* LoginViewHelper.swift in Sources */,
 				737E7433258EDADA0058DDEA /* AccountProfileView.swift in Sources */,
 				EE22E3BE25678A5300907B43 /* FormSubmissionHelper.swift in Sources */,
-				73D510232536B6D200502AC8 /* RefillPrescriptionMessage.swift in Sources */,
 				73728F9A258075A90047CCE7 /* AdminOrderView.swift in Sources */,
 				EEE57BDB2568A30600EEECC6 /* Ext+PatientFulfillmentDetails.swift in Sources */,
 				EEA2092D2555D62400921616 /* InsuranceView3.swift in Sources */,
@@ -505,7 +495,6 @@
 				EE25BA17255A453C00721345 /* NewPrescriptionSelection.swift in Sources */,
 				732C38762534F5DF000CF5F0 /* CheckoutView.swift in Sources */,
 				EEACFED325664AA60030C7E1 /* Ext+PatientHealthDetails.swift in Sources */,
-				734825AC2572242D00CF2CBF /* NewPrescriptionMessage.swift in Sources */,
 				73D4C5F0254C902400F9137B /* LandingView.swift in Sources */,
 				7320BF40252423FF009CAA58 /* SignUpView.swift in Sources */,
 				73E37ADC25899A1100842CD6 /* Ext+PatientInsuranceDetails.swift in Sources */,
@@ -517,7 +506,6 @@
 				73D5101C253676B200502AC8 /* InsuranceView1.swift in Sources */,
 				730484B32532C3E0004B73FB /* PrivacyPolicyView.swift in Sources */,
 				EE99250F2565E0D100EB4120 /* Ext+Patient.swift in Sources */,
-				73D60A732573802200D422D3 /* TransferPrescriptionMessage.swift in Sources */,
 				73FBBC132550CA58007ADE39 /* PasswordResetView.swift in Sources */,
 				73D510212536B6C800502AC8 /* TransferPrescriptionSelection.swift in Sources */,
 				737E7430258ED0BE0058DDEA /* ShippingProfileView.swift in Sources */,

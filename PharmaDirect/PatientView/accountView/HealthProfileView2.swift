@@ -26,7 +26,7 @@ struct HealthProfileView2: View {
             _allergiesListFlag = State(wrappedValue: UserDefaults.standard.object(forKey: "allergiesListFlag") as! [Bool])
             _otherAllergies = State(wrappedValue: UserDefaults.standard.string(forKey: "otherAllergies")!)
         } else {
-            _allergiesFlag = State(wrappedValue: false)
+            _allergiesFlag = State(wrappedValue: true)
             _allergiesListFlag = State(wrappedValue: Array(repeating: false, count: allergiesListExOther.count))
             _otherAllergies = State(wrappedValue: "")
         }
@@ -39,17 +39,18 @@ struct HealthProfileView2: View {
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
                 
-                Image("cropped-img7")
-                    .resizable()
-                    .frame(height: UIScreen.main.bounds.height * 0.18)
-                    .overlay(
-                        Text("Provide all necessary info to your pharmacist")
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .opacity(0.7)
-                    )
-                
+                if UIScreen.main.bounds.size.height > 800 {
+                    Image("cropped-img7")
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height * 0.18)
+                        .overlay(
+                            Text("Provide all necessary info to your pharmacist")
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .opacity(0.7)
+                        )
+                }
                       
                 if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
                     HStack {

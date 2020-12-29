@@ -48,16 +48,18 @@ struct PaymentView: View {
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                     
-                    Image("cropped-img7")
-                        .resizable()
-                        .frame(height: UIScreen.main.bounds.height * 0.18)
-                        .overlay(
-                            Text("Provide all necessary info to your pharmacist")
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
-                                .foregroundColor(.white)
-                                .background(Color.black)
-                                .opacity(0.7)
-                        )
+                    if UIScreen.main.bounds.size.height > 800 {
+                        Image("cropped-img7")
+                            .resizable()
+                            .frame(height: UIScreen.main.bounds.height * 0.18)
+                            .overlay(
+                                Text("Provide all necessary info to your pharmacist")
+                                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                                    .opacity(0.7)
+                            )
+                    }
                           
                     if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
                         HStack {
@@ -72,8 +74,8 @@ struct PaymentView: View {
                     
                     
                     
-                    Text("We accept Visa and Mastercard credit cards.")
-                    Text("We do not accept any debit cards.")
+                    Text("We accept Visa and Mastercard.")
+                    Text("We do not accept debit.")
                     
                     Form {
                         Section(header: Text("Billing Info")) {

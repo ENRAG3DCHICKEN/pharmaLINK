@@ -27,17 +27,18 @@ struct UserDetailsView: View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
                       
-
-        Image("cropped-img7")
-            .resizable()
-            .frame(height: UIScreen.main.bounds.height * 0.18)
-            .overlay(
-                Text("Account Profile").font(.title)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
-                    .foregroundColor(.white)
-                    .background(Color.black)
-                    .opacity(0.7)
-            )
+        if UIScreen.main.bounds.size.height > 800 {
+            Image("cropped-img7")
+                .resizable()
+                .frame(height: UIScreen.main.bounds.height * 0.18)
+                .overlay(
+                    Text("Account Profile").font(.title)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
+                        .foregroundColor(.white)
+                        .background(Color.black)
+                        .opacity(0.7)
+                )
+        }
             
             NavigationLink(destination: PharmacySearchView(chosenPharmacy: chosenPharmacy), tag: 0, selection: $selection) {
                 Button(action: {

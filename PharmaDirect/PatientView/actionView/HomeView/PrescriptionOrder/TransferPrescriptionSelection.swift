@@ -14,7 +14,7 @@ struct TransferPrescriptionSelection: View {
     
     @State private var selection: Int?
     
-    @State private var chosenPharmacy: Pharmacy
+    @State private var chosenPharmacy: Pharmacy?
     
     @State private var isOn1: Bool = true
     @State private var isOn2: Bool = false
@@ -38,7 +38,7 @@ struct TransferPrescriptionSelection: View {
     @State private var rx6: String = ""
     @State private var med6: String = ""
     
-    init(chosenPharmacy: Pharmacy) {
+    init(chosenPharmacy: Pharmacy?) {
         _chosenPharmacy = State(wrappedValue: chosenPharmacy)
     }
     
@@ -107,8 +107,8 @@ struct TransferPrescriptionSelection: View {
                 } else if isOn1 == false, isOn2 == true {
                 
                     Section {
-                        Text("New Pharmacy Phone: \(chosenPharmacy.phoneNumber)").multilineTextAlignment(.leading)
-                        Text("New Pharmacy Fax: \(chosenPharmacy.faxNumber)").multilineTextAlignment(.leading)
+                        Text("New Pharmacy Phone: \(chosenPharmacy!.phoneNumber)").multilineTextAlignment(.leading)
+                        Text("New Pharmacy Fax: \(chosenPharmacy!.faxNumber)").multilineTextAlignment(.leading)
                     }
                 }
             }
@@ -149,8 +149,8 @@ struct TransferPrescriptionSelection: View {
                     .background( (isOn1 == true && isOn2 == false && priorPharmacyName.isEmpty) || (isOn1 == true && isOn2 == false && priorPharmacyPhone.isEmpty) || (transferAll == false && rx1.isEmpty) || (transferAll == false && med1.isEmpty) ? .gray : Color(UIColor.mainColor))
                     .padding()
                             
-                NavigationLink(destination: TransferPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 0, selection: $selection) { EmptyView() }
-                NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: 4), tag: 1, selection: $selection) { EmptyView() }
+                NavigationLink(destination: HomeView(), tag: 0, selection: $selection) { EmptyView() }
+                NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy!, prescriptionSource: prescriptionSource, indicator: 4), tag: 1, selection: $selection) { EmptyView() }
                 
             
         }

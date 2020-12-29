@@ -26,7 +26,7 @@ struct HealthProfileView3: View {
             _conditionsListFlag = State(wrappedValue: UserDefaults.standard.object(forKey: "conditionsListFlag") as! [Bool])
             _otherMedicalConditions = State(wrappedValue: UserDefaults.standard.string(forKey: "otherMedicalConditions")!)
         } else {
-            _medicalConditionsFlag = State(wrappedValue: false)
+            _medicalConditionsFlag = State(wrappedValue: true)
             _conditionsListFlag = State(wrappedValue: Array(repeating: false, count: conditionsListExOther.count))
             _otherMedicalConditions = State(wrappedValue: "")
         }
@@ -40,16 +40,18 @@ struct HealthProfileView3: View {
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
                 
-                Image("cropped-img7")
-                    .resizable()
-                    .frame(height: UIScreen.main.bounds.height * 0.18)
-                    .overlay(
-                        Text("Provide all necessary info to your pharmacist")
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .opacity(0.7)
-                    )
+                if UIScreen.main.bounds.size.height > 800 {
+                    Image("cropped-img7")
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height * 0.18)
+                        .overlay(
+                            Text("Provide all necessary info to your pharmacist")
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .opacity(0.7)
+                        )
+                }
                 if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
                     HStack {
                         ForEach(0..<8) { index in

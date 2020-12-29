@@ -39,16 +39,18 @@ struct HealthProfileView1: View {
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
                 
-                Image("cropped-img7")
-                    .resizable()
-                    .frame(height: UIScreen.main.bounds.height * 0.18)
-                    .overlay(
-                        Text("Provide all necessary info to your pharmacist")
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .opacity(0.7)
-                    )
+                if UIScreen.main.bounds.size.height > 800 {
+                    Image("cropped-img7")
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height * 0.18)
+                        .overlay(
+                            Text("Provide all necessary info to your pharmacist")
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .opacity(0.7)
+                        )
+                }
                       
                 if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
                     HStack {

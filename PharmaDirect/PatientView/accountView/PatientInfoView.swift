@@ -51,16 +51,18 @@ struct PatientInfoView: View {
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
                  
-            Image("cropped-img7")
-                .resizable()
-                .frame(height: UIScreen.main.bounds.height * 0.2)
-                .overlay(
-                    Text("Provide all necessary info to your pharmacist")
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.2)
-                        .foregroundColor(.white)
-                        .background(Color.black)
-                        .opacity(0.7)
-                )
+            if UIScreen.main.bounds.height > 800 {
+                Image("cropped-img7")
+                    .resizable()
+                    .frame(height: UIScreen.main.bounds.height * 0.2)
+                    .overlay(
+                        Text("Provide all necessary info to your pharmacist")
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.2)
+                            .foregroundColor(.white)
+                            .background(Color.black)
+                            .opacity(0.7)
+                    )
+            }
             if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
                 Section {
                     HStack {

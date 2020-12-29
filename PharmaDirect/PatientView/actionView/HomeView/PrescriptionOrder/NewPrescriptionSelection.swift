@@ -13,13 +13,13 @@ struct NewPrescriptionSelection: View {
     @Environment(\.colorScheme) var colorScheme
     
     @State private var selection: Int?
-    @State private var chosenPharmacy: Pharmacy
+    @State private var chosenPharmacy: Pharmacy?
     
     @State private var isOn1: Bool = true
     @State private var isOn2: Bool = false
     @State private var prescriptionSource: String?
     
-    init(chosenPharmacy: Pharmacy) {
+    init(chosenPharmacy: Pharmacy?) {
         _chosenPharmacy = State(wrappedValue: chosenPharmacy)
     }
     
@@ -46,15 +46,15 @@ struct NewPrescriptionSelection: View {
                 
                 if isOn1 == true, isOn2 == false {
                     Section {
-                        Text("Pharmacy Name: \(chosenPharmacy.pharmacyName)")
-                        Text("Pharmacy Address: \(chosenPharmacy.address)")
-                        Text("Pharmacy Postal Code: \(chosenPharmacy.postalCode)")
+                        Text("Pharmacy Name: \(chosenPharmacy!.pharmacyName)")
+                        Text("Pharmacy Address: \(chosenPharmacy!.address)")
+                        Text("Pharmacy Postal Code: \(chosenPharmacy!.postalCode)")
                     }
                     
                 } else if isOn1 == false, isOn2 == true {
                     Section {
-                        Text("Pharmacy Phone: \(chosenPharmacy.phoneNumber)")
-                        Text("Pharmacy Fax: \(chosenPharmacy.faxNumber)")
+                        Text("Pharmacy Phone: \(chosenPharmacy!.phoneNumber)")
+                        Text("Pharmacy Fax: \(chosenPharmacy!.faxNumber)")
                     }
                 }
             }
@@ -81,8 +81,8 @@ struct NewPrescriptionSelection: View {
                 .background(Color(UIColor.mainColor))
                 .padding()
             
-            NavigationLink(destination: NewPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 0, selection: $selection) { EmptyView() }
-            NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: 2), tag: 1, selection: $selection) { EmptyView() }
+            NavigationLink(destination: HomeView(), tag: 0, selection: $selection) { EmptyView() }
+            NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy!, prescriptionSource: prescriptionSource, indicator: 2), tag: 1, selection: $selection) { EmptyView() }
 
             
         }

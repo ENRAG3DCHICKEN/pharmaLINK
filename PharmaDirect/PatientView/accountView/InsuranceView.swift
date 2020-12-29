@@ -53,16 +53,19 @@ struct InsuranceView: View {
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
                 
-                Image("cropped-img7")
-                    .resizable()
-                    .frame(height: UIScreen.main.bounds.height * 0.18)
-                    .overlay(
-                        Text("Provide all necessary info to your pharmacist")
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .opacity(0.7)
-                    )
+                if UIScreen.main.bounds.size.height > 800 {
+                    Image("cropped-img7")
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height * 0.18)
+                        .overlay(
+                            Text("Provide all necessary info to your pharmacist")
+                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.18)
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .opacity(0.7)
+                        )
+                }
+                
                 if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
                     HStack {
                         ForEach(0..<8) { index in
@@ -79,16 +82,19 @@ struct InsuranceView: View {
                         TextField("OHIP Number", text: $OHIP).autocapitalization(.none).disableAutocorrection(true)
                         
                         Section {
-                            Toggle(isOn: self.$billToInsuranceFlag1) { Text("Would you like us to bill a prescription insurance provider?").font(.callout) }
-                                .onReceive( [self.$billToInsuranceFlag1].publisher.first()) { (value) in
-                                    if value.wrappedValue == false {
-                                        billToInsuranceFlag2 = false
-                                        billToInsuranceFlag3 = false
-                                        selectedPlanName1 = ""
-                                        selectedPlanName2 = ""
-                                        selectedPlanName3 = ""
+                            HStack {
+                                Toggle(isOn: self.$billToInsuranceFlag1) { Text("Would you like us to bill a prescription insurance provider?").font(.callout) }
+                                    .onReceive( [self.$billToInsuranceFlag1].publisher.first()) { (value) in
+                                        if value.wrappedValue == false {
+                                            billToInsuranceFlag2 = false
+                                            billToInsuranceFlag3 = false
+                                            selectedPlanName1 = ""
+                                            selectedPlanName2 = ""
+                                            selectedPlanName3 = ""
+                                        }
                                     }
-                                }
+                                Text(billToInsuranceFlag1 ? "Yes" : "No")
+                            }
                             
                             if billToInsuranceFlag1 == true {
                                 Picker(selection: $selectedPlanName1, label: Text("Plan")) {
@@ -101,14 +107,17 @@ struct InsuranceView: View {
                         
                         Section {
                             if billToInsuranceFlag1 == true && selectedPlanName1 != "" {
-                                Toggle(isOn: self.$billToInsuranceFlag2) { Text("Would you like us to bill another prescription insurance provider?").font(.callout) }
-                                    .onReceive( [self.$billToInsuranceFlag2].publisher.first()) { (value) in
-                                        if value.wrappedValue == false {
-                                            billToInsuranceFlag3 = false
-                                            selectedPlanName2 = ""
-                                            selectedPlanName3 = ""
+                                HStack {
+                                    Toggle(isOn: self.$billToInsuranceFlag2) { Text("Would you like us to bill another prescription insurance provider?").font(.callout) }
+                                        .onReceive( [self.$billToInsuranceFlag2].publisher.first()) { (value) in
+                                            if value.wrappedValue == false {
+                                                billToInsuranceFlag3 = false
+                                                selectedPlanName2 = ""
+                                                selectedPlanName3 = ""
+                                            }
                                         }
-                                    }
+                                    Text(billToInsuranceFlag2 ? "Yes" : "No")
+                                }
                             }
 
                             
@@ -123,12 +132,15 @@ struct InsuranceView: View {
                         
                         Section {
                             if billToInsuranceFlag1 == true && selectedPlanName1 != "" && billToInsuranceFlag2 == true && selectedPlanName2 != "" {
-                                Toggle(isOn: self.$billToInsuranceFlag3) { Text("Would you like us to bill another prescription insurance provider?").font(.callout) }
-                                    .onReceive( [self.$billToInsuranceFlag3].publisher.first()) { (value) in
-                                        if value.wrappedValue == false {
-                                            selectedPlanName3 = ""
+                                HStack {
+                                    Toggle(isOn: self.$billToInsuranceFlag3) { Text("Would you like us to bill another prescription insurance provider?").font(.callout) }
+                                        .onReceive( [self.$billToInsuranceFlag3].publisher.first()) { (value) in
+                                            if value.wrappedValue == false {
+                                                selectedPlanName3 = ""
+                                            }
                                         }
-                                    }
+                                    Text(billToInsuranceFlag3 ? "Yes" : "No")
+                                }
                             }
                             
                             if billToInsuranceFlag1 == true && selectedPlanName1 != "" && billToInsuranceFlag2 == true && selectedPlanName2 != "" && billToInsuranceFlag3 == true {

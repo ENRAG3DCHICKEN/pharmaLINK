@@ -14,7 +14,7 @@ struct RefillPrescriptionSelection: View {
     
     @State private var selection: Int?
     
-    @State private var chosenPharmacy: Pharmacy
+    @State private var chosenPharmacy: Pharmacy?
     
     @State private var rx1: String = ""
     @State private var rx2: String = ""
@@ -23,7 +23,7 @@ struct RefillPrescriptionSelection: View {
     @State private var rx5: String = ""
     @State private var rx6: String = ""
         
-    init(chosenPharmacy: Pharmacy) {
+    init(chosenPharmacy: Pharmacy?) {
         _chosenPharmacy = State(wrappedValue: chosenPharmacy)
     }
     
@@ -41,9 +41,9 @@ struct RefillPrescriptionSelection: View {
 
             Form {
                 Section(header: Text("Pharmacy Details: ")) {
-                    Text("Pharmacy Name: \(chosenPharmacy.pharmacyName)")
-                    Text("Pharmacy Address: \(chosenPharmacy.address)")
-                    Text("Pharmacy Phone: \(chosenPharmacy.phoneNumber)")
+                    Text("Pharmacy Name: \(chosenPharmacy!.pharmacyName)")
+                    Text("Pharmacy Address: \(chosenPharmacy!.address)")
+                    Text("Pharmacy Phone: \(chosenPharmacy!.phoneNumber)")
                 }
                 
                 Section() {
@@ -78,8 +78,8 @@ struct RefillPrescriptionSelection: View {
                 .background( (rx1.isEmpty) ? .gray : Color(UIColor.mainColor))
                 .padding()
             
-            NavigationLink(destination: RefillPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 0, selection: $selection) { EmptyView() }
-            NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy, prescriptionSource: "Refill RX - N/A", indicator: 3), tag: 1, selection: $selection) { EmptyView() }
+            NavigationLink(destination: HomeView(), tag: 0, selection: $selection) { EmptyView() }
+            NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy!, prescriptionSource: "Refill RX - N/A", indicator: 3), tag: 1, selection: $selection) { EmptyView() }
             
         }
     }

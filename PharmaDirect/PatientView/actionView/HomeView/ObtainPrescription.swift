@@ -27,7 +27,7 @@ struct ObtainPrescriptions: View {
                 .navigationBarHidden(true)
                           
         
-            NavigationLink(destination: NewPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 1, selection: $selection) {
+            NavigationLink(destination: NewPrescriptionSelection(chosenPharmacy: chosenPharmacy), tag: 1, selection: $selection) {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [Color(UIColor.tile1b),Color(UIColor.tile1a)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     HStack {
@@ -68,7 +68,7 @@ struct ObtainPrescriptions: View {
                 
             }
             
-            NavigationLink(destination: RefillPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 2, selection: $selection) {
+            NavigationLink(destination: RefillPrescriptionSelection(chosenPharmacy: chosenPharmacy), tag: 2, selection: $selection) {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [Color(UIColor.tile2b),Color(UIColor.tile2a)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     HStack {
@@ -105,7 +105,7 @@ struct ObtainPrescriptions: View {
             }
             
             
-            NavigationLink(destination: TransferPrescriptionMessage(chosenPharmacy: chosenPharmacy), tag: 3, selection: $selection) {
+            NavigationLink(destination: TransferPrescriptionSelection(chosenPharmacy: chosenPharmacy), tag: 3, selection: $selection) {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [Color(UIColor.tile3b),Color(UIColor.tile3a)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     HStack {
@@ -144,6 +144,8 @@ struct ObtainPrescriptions: View {
                     
             }
             
+            NavigationLink(destination: PharmacySearchView(), tag: 4, selection: $selection) { EmptyView() }
+            
             
             
             
@@ -151,6 +153,12 @@ struct ObtainPrescriptions: View {
         }
             .onAppear {
                 DispatchQueue.global(qos: .userInitiated).async {
+                    
+                    //If no pharmacy saved on phone - send to PharmacySearchView
+                    if UserDefaults.standard.integer(forKey: "chosenPharmacy") == 0 {
+                        self.selection = 4
+                    }
+                    
                     //Standard query request to Core Data
                     let request = NSFetchRequest<Pharmacy>(entityName: "Pharmacy")
                     request.sortDescriptors = [NSSortDescriptor(key: "accreditationNumber_", ascending: true)]
