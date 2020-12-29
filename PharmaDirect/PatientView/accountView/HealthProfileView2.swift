@@ -105,9 +105,10 @@ struct HealthProfileView2: View {
                     UserDefaults.standard.set(otherAllergies, forKey: "otherAllergies")
                     
                 } ) { Text("Next >").font(.body).bold() }
+                    .disabled(allergiesFlag && (allergiesListFlag.allSatisfy({ $0 == false }) && otherAllergies == ""))
                     .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                     .foregroundColor(Color(.white))
-                    .background(Color(UIColor.mainColor))
+                    .background(allergiesFlag && (allergiesListFlag.allSatisfy({ $0 == false }) && otherAllergies == "") ? Color(.gray) : Color(UIColor.mainColor))
                     .padding()
                 
                 NavigationLink(destination: HealthProfileView1(), tag: 0, selection: $selection) { EmptyView() }

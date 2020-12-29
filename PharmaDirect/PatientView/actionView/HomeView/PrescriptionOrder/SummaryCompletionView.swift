@@ -14,6 +14,8 @@ struct SummaryCompletionView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var context: NSManagedObjectContext
     
+    @State private var showAlert = false
+    
     @State private var selection: Int?
     
     @State private var prescriptionSource: String?
@@ -26,6 +28,9 @@ struct SummaryCompletionView: View {
         _indicator = State(wrappedValue: indicator)
     }
     
+    var alert: Alert {
+        Alert(title: Text("Order Confirmation"), message: Text("Your order has been received."), dismissButton: .default(Text("Dismiss")))
+    }
     
     var body: some View {
         VStack {
@@ -91,13 +96,14 @@ struct SummaryCompletionView: View {
                 .foregroundColor(Color(.white))
             
             Button(action: {
-                
+                self.showAlert.toggle()
                 self.selection = 1
                 print("OK")
                 OrderSubmissionToCoreDataAndFB(context: context, chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator)
                 
             } ) { Text("Confirm Order >").font(.body).bold() }
                 .environment(\.managedObjectContext, self.context)
+                .alert(isPresented: $showAlert, content: { self.alert })
                 .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                 .background(Color(UIColor.mainColor))
                 .padding()

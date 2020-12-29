@@ -37,7 +37,7 @@ struct InsuranceView: View {
                 _selectedPlanName3 = State(wrappedValue: UserDefaults.standard.string(forKey: "selectedPlanName3")!)
             } else {
                 _OHIP = State(wrappedValue: "")
-                _billToInsuranceFlag1 = State(wrappedValue: false)
+                _billToInsuranceFlag1 = State(wrappedValue: true)
                 _billToInsuranceFlag2 = State(wrappedValue: false)
                 _billToInsuranceFlag3 = State(wrappedValue: false)
                 _selectedPlanName1 = State(wrappedValue: "")
@@ -79,6 +79,7 @@ struct InsuranceView: View {
                 
                 Form {
                     Section(header: Text("Insurance Details")) {
+                        
                         TextField("OHIP Number", text: $OHIP).autocapitalization(.none).disableAutocorrection(true)
                         
                         Section {
@@ -95,6 +96,7 @@ struct InsuranceView: View {
                                     }
                                 Text(billToInsuranceFlag1 ? "Yes" : "No")
                             }
+                        
                             
                             if billToInsuranceFlag1 == true {
                                 Picker(selection: $selectedPlanName1, label: Text("Plan")) {

@@ -106,9 +106,10 @@ struct HealthProfileView3: View {
                         UserDefaults.standard.set(self.otherMedicalConditions, forKey: "otherMedicalConditions")
                         FormSubmissionToCoreData(context: context)
                     } ) { Text("Submit").font(.body).bold() }
+                        .disabled(medicalConditionsFlag && (conditionsListFlag.allSatisfy({ $0 == false }) && otherMedicalConditions == ""))
                         .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                         .foregroundColor(Color(.white))
-                        .background(Color(UIColor.mainColor))
+                        .background(medicalConditionsFlag && (conditionsListFlag.allSatisfy({ $0 == false }) && otherMedicalConditions == "") ? Color(.gray) : Color(UIColor.mainColor))
                         .padding()
                 } else {
                                         
@@ -118,9 +119,10 @@ struct HealthProfileView3: View {
                         UserDefaults.standard.set(self.conditionsListFlag, forKey: "conditionsListFlag")
                         UserDefaults.standard.set(self.otherMedicalConditions, forKey: "otherMedicalConditions")
                 } ) { Text("Next >").font(.body).bold() }
+                    .disabled(medicalConditionsFlag && (conditionsListFlag.allSatisfy({ $0 == false }) && otherMedicalConditions == ""))
                     .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
                     .foregroundColor(Color(.white))
-                    .background(Color(UIColor.mainColor))
+                    .background(medicalConditionsFlag && (conditionsListFlag.allSatisfy({ $0 == false }) && otherMedicalConditions == "") ? Color(.gray) : Color(UIColor.mainColor))
                     .padding()
                 }
                 
