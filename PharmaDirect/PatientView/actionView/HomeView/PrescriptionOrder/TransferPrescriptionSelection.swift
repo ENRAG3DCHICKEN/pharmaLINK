@@ -49,11 +49,54 @@ struct TransferPrescriptionSelection: View {
         VStack(spacing: 0) {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Transfer Prescription")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            self.selection = 0
+                        } ) {
+                            HStack {
+                                Image(systemName: "chevron.backward").font(.headline)
+                                Text("Back").font(.headline)
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+        
+                            if isOn1 == true, isOn2 == false {
+                                self.prescriptionSource = "Written Prescription"
+                            } else if isOn1 == false, isOn2 == true {
+                                self.prescriptionSource = "Call/Fax from Doctor"
+                            }
+        
+                            UserDefaults.standard.set(self.priorPharmacyName, forKey: "transPriorPharmacyName")
+                            UserDefaults.standard.set(self.priorPharmacyPhone, forKey: "transPriorPharmacyPhone")
+                            UserDefaults.standard.set(self.transferAll, forKey: "trans_transferAll")
+        
+                            UserDefaults.standard.set( (self.rx1 + " " + med1), forKey: "transMedication1")
+                            UserDefaults.standard.set( (self.rx2 + " " + med2), forKey: "transMedication2")
+                            UserDefaults.standard.set( (self.rx3 + " " + med3), forKey: "transMedication3")
+                            UserDefaults.standard.set( (self.rx4 + " " + med4), forKey: "transMedication4")
+                            UserDefaults.standard.set( (self.rx5 + " " + med5), forKey: "transMedication5")
+                            UserDefaults.standard.set( (self.rx6 + " " + med6), forKey: "transMedication6")
+        
+                            self.selection = 1
+                            
+                        })  {
+                            HStack {
+                                Text("Next").font(.headline)
+                                Image(systemName: "chevron.forward").font(.headline)
+                            }
+                        }
+                            .disabled( (isOn1 == true && isOn2 == false && priorPharmacyName.isEmpty) || (isOn1 == true && isOn2 == false && priorPharmacyPhone.isEmpty) || (transferAll == false && rx1.isEmpty) || (transferAll == false && med1.isEmpty) )
+                    }
+                }
             
             
-            Text("Transfer Prescription Request").font(.headline)
+            
 
             Form {
                 
@@ -113,41 +156,41 @@ struct TransferPrescriptionSelection: View {
                 }
             }
             
-                Button(action: {
-                    self.selection = 0
-                } ) { Text("< Back").font(.body).bold() }
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background(Color(UIColor.gradiant1))
-                    .padding(.horizontal)
-                            
-                Button(action: {
-                    
-                    if isOn1 == true, isOn2 == false {
-                        self.prescriptionSource = "Written Prescription"
-                    } else if isOn1 == false, isOn2 == true {
-                        self.prescriptionSource = "Call/Fax from Doctor"
-                    }
-                    
-                    UserDefaults.standard.set(self.priorPharmacyName, forKey: "transPriorPharmacyName")
-                    UserDefaults.standard.set(self.priorPharmacyPhone, forKey: "transPriorPharmacyPhone")
-                    UserDefaults.standard.set(self.transferAll, forKey: "trans_transferAll")
-                    
-                    UserDefaults.standard.set( (self.rx1 + " " + med1), forKey: "transMedication1")
-                    UserDefaults.standard.set( (self.rx2 + " " + med2), forKey: "transMedication2")
-                    UserDefaults.standard.set( (self.rx3 + " " + med3), forKey: "transMedication3")
-                    UserDefaults.standard.set( (self.rx4 + " " + med4), forKey: "transMedication4")
-                    UserDefaults.standard.set( (self.rx5 + " " + med5), forKey: "transMedication5")
-                    UserDefaults.standard.set( (self.rx6 + " " + med6), forKey: "transMedication6")
-                
-                    self.selection = 1
-                    
-                } ) { Text("Next >").font(.body).bold() }
-                    .disabled( (isOn1 == true && isOn2 == false && priorPharmacyName.isEmpty) || (isOn1 == true && isOn2 == false && priorPharmacyPhone.isEmpty) || (transferAll == false && rx1.isEmpty) || (transferAll == false && med1.isEmpty) )
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background( (isOn1 == true && isOn2 == false && priorPharmacyName.isEmpty) || (isOn1 == true && isOn2 == false && priorPharmacyPhone.isEmpty) || (transferAll == false && rx1.isEmpty) || (transferAll == false && med1.isEmpty) ? .gray : Color(UIColor.mainColor))
-                    .padding()
+//                Button(action: {
+//                    self.selection = 0
+//                } ) { Text("< Back").font(.body).bold() }
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background(Color(UIColor.gradiant1))
+//                    .padding(.horizontal)
+//
+//                Button(action: {
+//
+//                    if isOn1 == true, isOn2 == false {
+//                        self.prescriptionSource = "Written Prescription"
+//                    } else if isOn1 == false, isOn2 == true {
+//                        self.prescriptionSource = "Call/Fax from Doctor"
+//                    }
+//
+//                    UserDefaults.standard.set(self.priorPharmacyName, forKey: "transPriorPharmacyName")
+//                    UserDefaults.standard.set(self.priorPharmacyPhone, forKey: "transPriorPharmacyPhone")
+//                    UserDefaults.standard.set(self.transferAll, forKey: "trans_transferAll")
+//
+//                    UserDefaults.standard.set( (self.rx1 + " " + med1), forKey: "transMedication1")
+//                    UserDefaults.standard.set( (self.rx2 + " " + med2), forKey: "transMedication2")
+//                    UserDefaults.standard.set( (self.rx3 + " " + med3), forKey: "transMedication3")
+//                    UserDefaults.standard.set( (self.rx4 + " " + med4), forKey: "transMedication4")
+//                    UserDefaults.standard.set( (self.rx5 + " " + med5), forKey: "transMedication5")
+//                    UserDefaults.standard.set( (self.rx6 + " " + med6), forKey: "transMedication6")
+//
+//                    self.selection = 1
+//
+//                } ) { Text("Next >").font(.body).bold() }
+//                    .disabled( (isOn1 == true && isOn2 == false && priorPharmacyName.isEmpty) || (isOn1 == true && isOn2 == false && priorPharmacyPhone.isEmpty) || (transferAll == false && rx1.isEmpty) || (transferAll == false && med1.isEmpty) )
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background( (isOn1 == true && isOn2 == false && priorPharmacyName.isEmpty) || (isOn1 == true && isOn2 == false && priorPharmacyPhone.isEmpty) || (transferAll == false && rx1.isEmpty) || (transferAll == false && med1.isEmpty) ? .gray : Color(UIColor.mainColor))
+//                    .padding()
                             
                 NavigationLink(destination: HomeView(), tag: 0, selection: $selection) { EmptyView() }
                 NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy!, prescriptionSource: prescriptionSource, indicator: 4), tag: 1, selection: $selection) { EmptyView() }

@@ -14,7 +14,7 @@ struct PrivacyPolicyView: View {
         VStack {
         
             Text("")
-                .navigationBarTitle("Privacy Policy")
+                .navigationBarTitle("Privacy Policy", displayMode: .inline)
 //                .navigationBarHidden(true)
             
             ScrollView(.vertical, showsIndicators: false, content: {

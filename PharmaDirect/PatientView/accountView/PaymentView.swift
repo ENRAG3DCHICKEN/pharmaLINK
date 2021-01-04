@@ -45,8 +45,65 @@ struct PaymentView: View {
                 VStack {
                     
                     Text("")
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationTitle("Payment Details")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                                    EmptyView()
+                                } else {
+                                    Button(action: {
+                                        self.selection = 0
+                                    } ) {
+                                        HStack {
+                                            Image(systemName: "chevron.backward").font(.headline)
+                                            Text("Back").font(.headline)
+                                        }
+                                    }
+                                }
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                                    Button(action: {
+                                        
+                                        self.selection = 9
+                                        UserDefaults.standard.set(self.paymentType, forKey: "paymentType")
+                                        UserDefaults.standard.set(self.cardholderName, forKey: "cardholderName")
+                                        UserDefaults.standard.set(self.paymentCardNumber, forKey: "paymentCardNumber")
+                                        UserDefaults.standard.set(self.expirationMonth, forKey: "expirationMonth")
+                                        UserDefaults.standard.set(self.expirationYear, forKey: "expirationYear")
+                                        UserDefaults.standard.set(self.cvv, forKey: "cvv")
+                                        FormSubmissionToCoreData(context: context)
+                                        
+                                    })  {
+                                        HStack {
+                                            Text("Submit").font(.headline)
+                                            Image(systemName: "chevron.forward").font(.headline)
+                                        }
+                                    }
+                                        .disabled(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty)
+                                } else {
+                                    Button(action: {
+                    
+                                        self.selection = 1
+                                        UserDefaults.standard.set(self.paymentType, forKey: "paymentType")
+                                        UserDefaults.standard.set(self.cardholderName, forKey: "cardholderName")
+                                        UserDefaults.standard.set(self.paymentCardNumber, forKey: "paymentCardNumber")
+                                        UserDefaults.standard.set(self.expirationMonth, forKey: "expirationMonth")
+                                        UserDefaults.standard.set(self.expirationYear, forKey: "expirationYear")
+                                        UserDefaults.standard.set(self.cvv, forKey: "cvv")
+                                        
+                                    })  {
+                                        HStack {
+                                            Text("Next").font(.headline)
+                                            Image(systemName: "chevron.forward").font(.headline)
+                                        }
+                                    }
+                                        .disabled(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty)
+                                }
+                            }
+                        }
                     
                     if UIScreen.main.bounds.size.height > 800 {
                         Image("cropped-img7")
@@ -95,48 +152,48 @@ struct PaymentView: View {
                         .padding()
                     
                     Spacer()
-                    
-                    if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
-                        Button(action: {
-                            self.selection = 9
-                            UserDefaults.standard.set(self.paymentType, forKey: "paymentType")
-                            UserDefaults.standard.set(self.cardholderName, forKey: "cardholderName")
-                            UserDefaults.standard.set(self.paymentCardNumber, forKey: "paymentCardNumber")
-                            UserDefaults.standard.set(self.expirationMonth, forKey: "expirationMonth")
-                            UserDefaults.standard.set(self.expirationYear, forKey: "expirationYear")
-                            UserDefaults.standard.set(self.cvv, forKey: "cvv")
-                            FormSubmissionToCoreData(context: context)
-                        } ) { Text("Submit").font(.body).bold() }
-                            .disabled(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty)
-                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                            .foregroundColor(Color(.white))
-                            .background(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty ? .gray : Color(UIColor.mainColor))
-                            .padding()
-                    } else {
-                        
-                        Button(action: {
-                            self.selection = 0
-                        } ) { Text("< Back").font(.body).bold() }
-                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                            .foregroundColor(Color(.white))
-                            .background(Color(UIColor.gradiant1))
-                            .padding(.horizontal)
-                        
-                        Button(action: {
-                            self.selection = 1
-                            UserDefaults.standard.set(self.paymentType, forKey: "paymentType")
-                            UserDefaults.standard.set(self.cardholderName, forKey: "cardholderName")
-                            UserDefaults.standard.set(self.paymentCardNumber, forKey: "paymentCardNumber")
-                            UserDefaults.standard.set(self.expirationMonth, forKey: "expirationMonth")
-                            UserDefaults.standard.set(self.expirationYear, forKey: "expirationYear")
-                            UserDefaults.standard.set(self.cvv, forKey: "cvv")
-                        } ) { Text("Next >").font(.body).bold() }
-                            .disabled(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty)
-                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                            .foregroundColor(Color(.white))
-                            .background(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty ? .gray : Color(UIColor.mainColor))
-                            .padding()
-                    }
+//                    
+//                    if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+//                        Button(action: {
+//                            self.selection = 9
+//                            UserDefaults.standard.set(self.paymentType, forKey: "paymentType")
+//                            UserDefaults.standard.set(self.cardholderName, forKey: "cardholderName")
+//                            UserDefaults.standard.set(self.paymentCardNumber, forKey: "paymentCardNumber")
+//                            UserDefaults.standard.set(self.expirationMonth, forKey: "expirationMonth")
+//                            UserDefaults.standard.set(self.expirationYear, forKey: "expirationYear")
+//                            UserDefaults.standard.set(self.cvv, forKey: "cvv")
+//                            FormSubmissionToCoreData(context: context)
+//                        } ) { Text("Submit").font(.body).bold() }
+//                            .disabled(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty)
+//                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                            .foregroundColor(Color(.white))
+//                            .background(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty ? .gray : Color(UIColor.mainColor))
+//                            .padding()
+//                    } else {
+//                        
+//                        Button(action: {
+//                            self.selection = 0
+//                        } ) { Text("< Back").font(.body).bold() }
+//                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                            .foregroundColor(Color(.white))
+//                            .background(Color(UIColor.gradiant1))
+//                            .padding(.horizontal)
+//                        
+//                        Button(action: {
+//                            self.selection = 1
+//                            UserDefaults.standard.set(self.paymentType, forKey: "paymentType")
+//                            UserDefaults.standard.set(self.cardholderName, forKey: "cardholderName")
+//                            UserDefaults.standard.set(self.paymentCardNumber, forKey: "paymentCardNumber")
+//                            UserDefaults.standard.set(self.expirationMonth, forKey: "expirationMonth")
+//                            UserDefaults.standard.set(self.expirationYear, forKey: "expirationYear")
+//                            UserDefaults.standard.set(self.cvv, forKey: "cvv")
+//                        } ) { Text("Next >").font(.body).bold() }
+//                            .disabled(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty)
+//                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                            .foregroundColor(Color(.white))
+//                            .background(paymentType.isEmpty || cardholderName.isEmpty || paymentCardNumber.isEmpty || expirationMonth.isEmpty || expirationYear.isEmpty || cvv.isEmpty ? .gray : Color(UIColor.mainColor))
+//                            .padding()
+//                    }
                     Group {
                         NavigationLink(destination: InsuranceView(), tag: 0, selection: $selection) { EmptyView() }
                         NavigationLink(destination: PrivacyView(), tag: 1, selection: $selection) { EmptyView() }

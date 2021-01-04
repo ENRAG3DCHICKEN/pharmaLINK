@@ -30,8 +30,58 @@ struct PrivacyView: View {
             
                 VStack {
                     Text("")
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationTitle("Payment Details")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                                    EmptyView()
+                                } else {
+                                    Button(action: {
+                                        self.selection = 0
+                                    } ) {
+                                        HStack {
+                                            Image(systemName: "chevron.backward").font(.headline)
+                                            Text("Back").font(.headline)
+                                        }
+                                    }
+                                }
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                                    Button(action: {
+                                        
+                                        self.selection = 9
+                                        UserDefaults.standard.set(true, forKey: "privacyCompletionFlag")
+                                        UserDefaults.standard.set(true, forKey: "signupCompletionFlag")
+                                        FormSubmissionToCoreData(context: context)
+                                        
+                                    })  {
+                                        HStack {
+                                            Text("Submit").font(.headline)
+                                            Image(systemName: "chevron.forward").font(.headline)
+                                        }
+                                    }
+                                        .disabled(privacyCompletionFlag == false)
+                                } else {
+                                    Button(action: {
+                    
+                                        self.selection = 1
+                                        UserDefaults.standard.set(true, forKey: "privacyCompletionFlag")
+                                        UserDefaults.standard.set(true, forKey: "signupCompletionFlag")
+                                        FormSubmissionToCoreData(context: context)
+                                        
+                                    })  {
+                                        HStack {
+                                            Text("Next").font(.headline)
+                                            Image(systemName: "chevron.forward").font(.headline)
+                                        }
+                                    }
+                                        .disabled(privacyCompletionFlag == false)
+                                }
+                            }
+                        }
                     
                     if UIScreen.main.bounds.size.height > 800 {
                         Image("cropped-img7")
@@ -122,43 +172,43 @@ struct PrivacyView: View {
                         .padding(.horizontal)
                         
                 
-                    
-                    if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
-                        Button(action: {
-                            self.selection = 9
-                            UserDefaults.standard.set(true, forKey: "privacyCompletionFlag")
-                            UserDefaults.standard.set(true, forKey: "signupCompletionFlag")
-                            FormSubmissionToCoreData(context: context)
-                        } ) { Text("Submit").font(.body).bold() }
-                            .environment(\.managedObjectContext, self.context)
-                            .disabled(privacyCompletionFlag == false)
-                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                            .foregroundColor(Color(.white))
-                            .background(privacyCompletionFlag == false ? .gray : Color(UIColor.mainColor))
-                            .padding()
-                    } else {
-                        
-                        Button(action: {
-                            self.selection = 0
-                        } ) { Text("< Back").font(.body).bold() }
-                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                            .foregroundColor(Color(.white))
-                            .background(Color(UIColor.gradiant1))
-                            .padding(.horizontal)
-                        
-                        Button(action: {
-                            self.selection = 1
-                            UserDefaults.standard.set(true, forKey: "privacyCompletionFlag")
-                            UserDefaults.standard.set(true, forKey: "signupCompletionFlag")
-                            FormSubmissionToCoreData(context: context)
-                        } ) { Text("Next >").font(.body).bold() }
-                            .environment(\.managedObjectContext, self.context)
-                            .disabled(privacyCompletionFlag == false)
-                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                            .foregroundColor(Color(.white))
-                            .background(privacyCompletionFlag == false ? .gray : Color(UIColor.mainColor))
-                            .padding()
-                    }
+//                    
+//                    if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+//                        Button(action: {
+//                            self.selection = 9
+//                            UserDefaults.standard.set(true, forKey: "privacyCompletionFlag")
+//                            UserDefaults.standard.set(true, forKey: "signupCompletionFlag")
+//                            FormSubmissionToCoreData(context: context)
+//                        } ) { Text("Submit").font(.body).bold() }
+//                            .environment(\.managedObjectContext, self.context)
+//                            .disabled(privacyCompletionFlag == false)
+//                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                            .foregroundColor(Color(.white))
+//                            .background(privacyCompletionFlag == false ? .gray : Color(UIColor.mainColor))
+//                            .padding()
+//                    } else {
+//                        
+//                        Button(action: {
+//                            self.selection = 0
+//                        } ) { Text("< Back").font(.body).bold() }
+//                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                            .foregroundColor(Color(.white))
+//                            .background(Color(UIColor.gradiant1))
+//                            .padding(.horizontal)
+//                        
+//                        Button(action: {
+//                            self.selection = 1
+//                            UserDefaults.standard.set(true, forKey: "privacyCompletionFlag")
+//                            UserDefaults.standard.set(true, forKey: "signupCompletionFlag")
+//                            FormSubmissionToCoreData(context: context)
+//                        } ) { Text("Next >").font(.body).bold() }
+//                            .environment(\.managedObjectContext, self.context)
+//                            .disabled(privacyCompletionFlag == false)
+//                            .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                            .foregroundColor(Color(.white))
+//                            .background(privacyCompletionFlag == false ? .gray : Color(UIColor.mainColor))
+//                            .padding()
+//                    }
                     Group {
                         NavigationLink(destination: PaymentView(), tag: 0, selection: $selection) { EmptyView() }
                         NavigationLink(destination: HomeView(), tag: 1, selection: $selection) { EmptyView() }

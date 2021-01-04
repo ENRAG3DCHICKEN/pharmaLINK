@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 import MapKit
 
+@available(iOS 14.0, *)
 struct PharmacySearchView: View {
     
     
@@ -33,8 +34,6 @@ struct PharmacySearchView: View {
     init() {
         _chosenPharmacy = State(wrappedValue: nil)
     }
-
-
     
     var selectedPharmacyMarker: Binding<MKAnnotation?> {
         return Binding<MKAnnotation?>(
@@ -46,14 +45,46 @@ struct PharmacySearchView: View {
             }
         )
     }
-    
+
     var body: some View {
         VStack {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-                          
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Pharmacy Search")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EmptyView()
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                            Button(action: {
+                                UserDefaults.standard.set(chosenPharmacy!.accreditationNumber, forKey: "chosenPharmacy")
+                                self.selection = 9
+                                FormSubmissionToCoreData(context: context)
+                            } ) {
+                                HStack {
+                                    Text("Submit").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                                .disabled(chosenPharmacy == nil)
+                        } else {
+                            Button(action: {
+                                UserDefaults.standard.set(chosenPharmacy!.accreditationNumber, forKey: "chosenPharmacy")
+                                self.selection = 1
+                            } ) {
+                                HStack {
+                                    Text("Next").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                                .disabled(chosenPharmacy == nil)
+                        }
+                    }
+                }
+            
             Form {
                 Section {
                     Picker("Pharmacy", selection: $chosenPharmacy) {
@@ -67,30 +98,28 @@ struct PharmacySearchView: View {
                 }
             }
             
-            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
-                Button(action: {
-                    UserDefaults.standard.set(chosenPharmacy!.accreditationNumber, forKey: "chosenPharmacy")
-                    self.selection = 9
-                    FormSubmissionToCoreData(context: context)
-                } ) { Text("Submit").font(.body).bold() }
-                    .disabled(chosenPharmacy == nil)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background( chosenPharmacy == nil ? .gray : Color(UIColor.mainColor))
-                    .padding()
-            } else {
-                Button(action: {
-                    UserDefaults.standard.set(chosenPharmacy!.accreditationNumber, forKey: "chosenPharmacy")
-                    print("checkHERE")
-                    print(UserDefaults.standard.double(forKey: "chosenPharmacy"))
-                    self.selection = 1
-                } ) { Text("Next >").font(.body).bold() }
-                    .disabled(chosenPharmacy == nil)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background( chosenPharmacy == nil ? .gray : Color(UIColor.mainColor))
-                    .padding()
-            }
+//            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+//                Button(action: {
+//                    UserDefaults.standard.set(chosenPharmacy!.accreditationNumber, forKey: "chosenPharmacy")
+//                    self.selection = 9
+//                    FormSubmissionToCoreData(context: context)
+//                } ) { Text("Submit").font(.body).bold() }
+//                    .disabled(chosenPharmacy == nil)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background( chosenPharmacy == nil ? .gray : Color(UIColor.mainColor))
+//                    .padding()
+//            } else {
+//                Button(action: {
+//                    UserDefaults.standard.set(chosenPharmacy!.accreditationNumber, forKey: "chosenPharmacy")
+//                    self.selection = 1
+//                } ) { Text("Next >").font(.body).bold() }
+//                    .disabled(chosenPharmacy == nil)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background( chosenPharmacy == nil ? .gray : Color(UIColor.mainColor))
+//                    .padding()
+//            }
                 NavigationLink(destination: PatientInfoView(), tag: 1, selection: $selection) { EmptyView() }
                 NavigationLink(destination: HomeView(selectionValue: 1), tag: 9, selection: $selection) { EmptyView() }
         }
@@ -100,8 +129,8 @@ struct PharmacySearchView: View {
                 print("done")
                 
             })
-        }
     }
+}
 
 
 

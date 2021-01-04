@@ -9,7 +9,7 @@
 
 import SwiftUI
 import CoreData
-import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 
 func FormSubmissionToCoreData(context: NSManagedObjectContext) {

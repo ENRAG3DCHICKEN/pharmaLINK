@@ -44,11 +44,61 @@ struct CheckoutView: View {
 
             VStack() {
 
-//                Text("")
-
-                Text("Checkout View").font(.headline)
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
+                Text("")
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle("Checkout View")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                
+                                //Back to New Prescriptions
+                                if indicator == 2 {
+                                    self.selection = 2
+                                //Back to Refill Prescriptions
+                                } else if indicator == 3 {
+                                    self.selection = 3
+                                //Back to Transfer Prescriptions
+                                } else if indicator == 4 {
+                                    self.selection = 4
+                                }
+                                
+                            } ) {
+                                HStack {
+                                    Image(systemName: "chevron.backward").font(.headline)
+                                    Text("Back").font(.headline)
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+            
+                                if optionLocalPickup {
+                                    UserDefaults.standard.set("Local Pickup", forKey: "shipOption")
+                                } else if optionDelivery_Regular {
+                                    UserDefaults.standard.set("Regular Delivery", forKey: "shipOption")
+                                } else if optionDelivery_Sameday {
+                                    UserDefaults.standard.set("Sameday Delivery", forKey: "shipOption")
+                                }
+                
+                                UserDefaults.standard.set(shipFullName, forKey: "shipFullName")
+                                UserDefaults.standard.set(shipAddress, forKey: "shipAddress")
+                                UserDefaults.standard.set(shipCity, forKey: "shipCity")
+                                UserDefaults.standard.set(shipProvince, forKey: "shipProvince")
+                                UserDefaults.standard.set(shipPostalCode, forKey: "shipPostalCode")
+                                UserDefaults.standard.set(shipPhoneNumber, forKey: "shipPhoneNumber")
+                
+                                self.selection = 1
+                                
+                            })  {
+                                HStack {
+                                    Text("Next").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                                .disabled( !optionLocalPickup && shipFullName.isEmpty || !optionLocalPickup && shipAddress.isEmpty || !optionLocalPickup && shipProvince.isEmpty || !optionLocalPickup && shipPostalCode.isEmpty || !optionLocalPickup && shipPhoneNumber.isEmpty)
+                        }
+                    }
                
                 Form {
                     Section(header: Text("Shipping Options: "))  {
@@ -85,48 +135,48 @@ struct CheckoutView: View {
             
             Spacer()
             
-            Button(action: {
-                //Back to New Prescriptions
-                if indicator == 2 {
-                    self.selection = 2
-                //Back to Refill Prescriptions
-                } else if indicator == 3 {
-                    self.selection = 3
-                //Back to Transfer Prescriptions
-                } else if indicator == 4 {
-                    self.selection = 4
-                }
-            }) { Text("< Back").font(.body).bold() }
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .foregroundColor(Color(.white))
-                .background(Color(UIColor.gradiant1))
-                .padding(.horizontal)
-            
-            Button(action: {
-  
-                if optionLocalPickup {
-                    UserDefaults.standard.set("Local Pickup", forKey: "shipOption")
-                } else if optionDelivery_Regular {
-                    UserDefaults.standard.set("Regular Delivery", forKey: "shipOption")
-                } else if optionDelivery_Sameday {
-                    UserDefaults.standard.set("Sameday Delivery", forKey: "shipOption")
-                }
-                
-                UserDefaults.standard.set(shipFullName, forKey: "shipFullName")
-                UserDefaults.standard.set(shipAddress, forKey: "shipAddress")
-                UserDefaults.standard.set(shipCity, forKey: "shipCity")
-                UserDefaults.standard.set(shipProvince, forKey: "shipProvince")
-                UserDefaults.standard.set(shipPostalCode, forKey: "shipPostalCode")
-                UserDefaults.standard.set(shipPhoneNumber, forKey: "shipPhoneNumber")
-                                
-                self.selection = 1
-                
-            } ) { Text("Next >").font(.body).bold() }
-                .disabled( !optionLocalPickup && shipFullName.isEmpty || !optionLocalPickup && shipAddress.isEmpty || !optionLocalPickup && shipProvince.isEmpty || !optionLocalPickup && shipPostalCode.isEmpty || !optionLocalPickup && shipPhoneNumber.isEmpty)
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .foregroundColor(Color(.white))
-                .background( !optionLocalPickup && shipFullName.isEmpty || !optionLocalPickup && shipAddress.isEmpty || !optionLocalPickup && shipProvince.isEmpty || !optionLocalPickup && shipPostalCode.isEmpty || !optionLocalPickup && shipPhoneNumber.isEmpty ? .gray : Color(UIColor.mainColor))
-                .padding()
+//            Button(action: {
+//                //Back to New Prescriptions
+//                if indicator == 2 {
+//                    self.selection = 2
+//                //Back to Refill Prescriptions
+//                } else if indicator == 3 {
+//                    self.selection = 3
+//                //Back to Transfer Prescriptions
+//                } else if indicator == 4 {
+//                    self.selection = 4
+//                }
+//            }) { Text("< Back").font(.body).bold() }
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .foregroundColor(Color(.white))
+//                .background(Color(UIColor.gradiant1))
+//                .padding(.horizontal)
+//
+//            Button(action: {
+//
+//                if optionLocalPickup {
+//                    UserDefaults.standard.set("Local Pickup", forKey: "shipOption")
+//                } else if optionDelivery_Regular {
+//                    UserDefaults.standard.set("Regular Delivery", forKey: "shipOption")
+//                } else if optionDelivery_Sameday {
+//                    UserDefaults.standard.set("Sameday Delivery", forKey: "shipOption")
+//                }
+//
+//                UserDefaults.standard.set(shipFullName, forKey: "shipFullName")
+//                UserDefaults.standard.set(shipAddress, forKey: "shipAddress")
+//                UserDefaults.standard.set(shipCity, forKey: "shipCity")
+//                UserDefaults.standard.set(shipProvince, forKey: "shipProvince")
+//                UserDefaults.standard.set(shipPostalCode, forKey: "shipPostalCode")
+//                UserDefaults.standard.set(shipPhoneNumber, forKey: "shipPhoneNumber")
+//
+//                self.selection = 1
+//
+//            } ) { Text("Next >").font(.body).bold() }
+//                .disabled( !optionLocalPickup && shipFullName.isEmpty || !optionLocalPickup && shipAddress.isEmpty || !optionLocalPickup && shipProvince.isEmpty || !optionLocalPickup && shipPostalCode.isEmpty || !optionLocalPickup && shipPhoneNumber.isEmpty)
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .foregroundColor(Color(.white))
+//                .background( !optionLocalPickup && shipFullName.isEmpty || !optionLocalPickup && shipAddress.isEmpty || !optionLocalPickup && shipProvince.isEmpty || !optionLocalPickup && shipPostalCode.isEmpty || !optionLocalPickup && shipPhoneNumber.isEmpty ? .gray : Color(UIColor.mainColor))
+//                .padding()
             
                 //Go BACK Views
                 NavigationLink(destination: NewPrescriptionSelection(chosenPharmacy: chosenPharmacy), tag: 2, selection: $selection) { EmptyView() }

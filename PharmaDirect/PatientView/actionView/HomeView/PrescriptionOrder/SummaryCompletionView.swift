@@ -29,17 +29,55 @@ struct SummaryCompletionView: View {
     }
     
     var alert: Alert {
-        Alert(title: Text("Order Confirmation"), message: Text("Your order has been received."), dismissButton: .default(Text("Dismiss")))
+//        Alert(title: Text("Order Confirmation"), message: Text("Your order has been received."), dismissButton: .default(Text("Dismiss")))
+        Alert(title: Text("Order Confirmation"),
+            message: Text("Your order has been received."),
+            dismissButton: Alert.Button.default(
+                Text("Dismiss"), action: { self.selection = 1 }
+            )
+        )
     }
     
     var body: some View {
         VStack {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Order Confirmation")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            
+                            self.selection = 0
+                            
+                        } ) {
+                            HStack {
+                                Image(systemName: "chevron.backward").font(.headline)
+                                Text("Back").font(.headline)
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+        
+//                            self.selection = 1
+                            OrderSubmissionToCoreDataAndFB(context: context, chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator)
+                            self.showAlert.toggle()
+
+                            
+                        })  {
+                            HStack {
+                                Text("Submit").font(.headline)
+                                Image(systemName: "chevron.forward").font(.headline)
+                            }
+                        }
+                            .environment(\.managedObjectContext, self.context)
+                            .alert(isPresented: $showAlert, content: { self.alert })
+                    }
+                }
             
-            Text("Order Confirmation").font(.headline)
+            
 //            ScrollView {
                 Form {
                     Section(header: Text("Your prescription will be fulfilled by: ")) {
@@ -89,25 +127,25 @@ struct SummaryCompletionView: View {
                         Text("Billing Expiry: \(UserDefaults.standard.integer(forKey: "expirationMM")) /  \(UserDefaults.standard.integer(forKey: "expirationYY"))")
                     }
             }
-            Button(action: { self.selection = 0 } ) { Text("< Back").font(.body).bold() }
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .background(Color(UIColor.gradiant1))
-                .padding(.horizontal)
-                .foregroundColor(Color(.white))
-            
-            Button(action: {
-                self.showAlert.toggle()
-                self.selection = 1
-                print("OK")
-                OrderSubmissionToCoreDataAndFB(context: context, chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator)
-                
-            } ) { Text("Confirm Order >").font(.body).bold() }
-                .environment(\.managedObjectContext, self.context)
-                .alert(isPresented: $showAlert, content: { self.alert })
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .background(Color(UIColor.mainColor))
-                .padding()
-                .foregroundColor(Color(.white))
+//            Button(action: { self.selection = 0 } ) { Text("< Back").font(.body).bold() }
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .background(Color(UIColor.gradiant1))
+//                .padding(.horizontal)
+//                .foregroundColor(Color(.white))
+//
+//            Button(action: {
+//                self.showAlert.toggle()
+//                self.selection = 1
+//                print("OK")
+//                OrderSubmissionToCoreDataAndFB(context: context, chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator)
+//
+//            } ) { Text("Confirm Order >").font(.body).bold() }
+//                .environment(\.managedObjectContext, self.context)
+//                .alert(isPresented: $showAlert, content: { self.alert })
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .background(Color(UIColor.mainColor))
+//                .padding()
+//                .foregroundColor(Color(.white))
             
             NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy, prescriptionSource: prescriptionSource, indicator: indicator), tag: 0, selection: $selection) { EmptyView() }
             

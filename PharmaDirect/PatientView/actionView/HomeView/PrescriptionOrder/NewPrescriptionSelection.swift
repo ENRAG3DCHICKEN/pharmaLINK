@@ -31,13 +31,42 @@ struct NewPrescriptionSelection: View {
         VStack(spacing: 0) {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("New Prescription")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            self.selection = 0
+                        } ) {
+                            HStack {
+                                Image(systemName: "chevron.backward").font(.headline)
+                                Text("Back").font(.headline)
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+        
+                            if isOn1 == true, isOn2 == false {
+                                self.prescriptionSource = "Written Prescription"
+                            } else if isOn1 == false, isOn2 == true {
+                                self.prescriptionSource = "Call/Fax from Doctor"
+                            }
+                            self.selection = 1
+                            
+                        })  {
+                            HStack {
+                                Text("Next").font(.headline)
+                                Image(systemName: "chevron.forward").font(.headline)
+                            }
+                        }
+                    }
+                }
             
-            Text("New Prescription Request").font(.headline)
+            
             
             Form {
-                Text("Do you have a written prescription?").font(.subheadline)
                 
                 Section {
                     Toggle(isOn: on1) { Text("I have a written prescription. I will mail it to the pharmacy. ").font(.callout) }
@@ -60,26 +89,26 @@ struct NewPrescriptionSelection: View {
             }
             
             
-            Button(action: {
-                self.selection = 0
-            } ) { Text("< Back").font(.body).bold() }
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .foregroundColor(Color(.white))
-                .background(Color(UIColor.gradiant1))
-                .padding(.horizontal)   
-            
-            Button(action: {
-                if isOn1 == true, isOn2 == false {
-                    self.prescriptionSource = "Written Prescription"
-                } else if isOn1 == false, isOn2 == true {
-                    self.prescriptionSource = "Call/Fax from Doctor"
-                }
-                self.selection = 1
-            } ) { Text("Next >").font(.body).bold() }
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .foregroundColor(Color(.white))
-                .background(Color(UIColor.mainColor))
-                .padding()
+//            Button(action: {
+//                self.selection = 0
+//            } ) { Text("< Back").font(.body).bold() }
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .foregroundColor(Color(.white))
+//                .background(Color(UIColor.gradiant1))
+//                .padding(.horizontal)
+//
+//            Button(action: {
+//                if isOn1 == true, isOn2 == false {
+//                    self.prescriptionSource = "Written Prescription"
+//                } else if isOn1 == false, isOn2 == true {
+//                    self.prescriptionSource = "Call/Fax from Doctor"
+//                }
+//                self.selection = 1
+//            } ) { Text("Next >").font(.body).bold() }
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .foregroundColor(Color(.white))
+//                .background(Color(UIColor.mainColor))
+//                .padding()
             
             NavigationLink(destination: HomeView(), tag: 0, selection: $selection) { EmptyView() }
             NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy!, prescriptionSource: prescriptionSource, indicator: 2), tag: 1, selection: $selection) { EmptyView() }

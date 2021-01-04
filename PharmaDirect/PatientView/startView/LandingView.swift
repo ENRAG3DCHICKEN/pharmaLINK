@@ -74,7 +74,7 @@ struct LandingView: View {
                                 self.selection = 1
                             }, label: { Text("Sign Up").font(.body) })
                             
-                            .frame(width: UIScreen.main.bounds.width / 2.5, height: UIScreen.main.bounds.height * 0.035)
+                            .frame(width: UIScreen.main.bounds.width / 2.5, height: UIScreen.main.bounds.height * 0.04)
                                 .foregroundColor(Color(UIColor.mainColor))
                                 .background(colorScheme == .light ? Color(.white) : Color(UIColor.shadedWhite))
                                 .cornerRadius(10)
@@ -87,7 +87,7 @@ struct LandingView: View {
                             Button(action: {
                                 self.selection = 2
                             }, label: { Text("Login").font(.body) })
-                                .frame(width: UIScreen.main.bounds.width / 2.5, height: UIScreen.main.bounds.height * 0.035)
+                                .frame(width: UIScreen.main.bounds.width / 2.5, height: UIScreen.main.bounds.height * 0.04)
                                 .foregroundColor(Color(UIColor.white))
                                 .background(Color(UIColor.mainColor))
                                 .cornerRadius(10)

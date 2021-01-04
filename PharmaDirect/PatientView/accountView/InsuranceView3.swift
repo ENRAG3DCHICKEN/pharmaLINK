@@ -63,8 +63,67 @@ struct InsuranceView3: View {
         VStack {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Insurance Plan #3")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                            EmptyView()
+                        } else {
+                            Button(action: {
+                                self.selection = 0
+                            } ) {
+                                HStack {
+                                    Image(systemName: "chevron.backward").font(.headline)
+                                    Text("Back").font(.headline)
+                                }
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                            Button(action: {
+                                
+                                self.selection = 9
+                                UserDefaults.standard.set(self.memberID3, forKey: "memberID3")
+                                UserDefaults.standard.set(self.groupNumber3, forKey: "groupNumber3")
+                                UserDefaults.standard.set(self.policyholderName3, forKey: "policyholderName3")
+                                UserDefaults.standard.set(self.carrierCode3, forKey: "carrierCode3")
+                                UserDefaults.standard.set(self.selectedDate3, forKey: "selectedDate3")
+                                UserDefaults.standard.set(self.insurancePhone3, forKey: "insurancePhone3")
+                                UserDefaults.standard.set(self.relationshipToCardholder3, forKey: "relationshipToCardholder3")
+                                FormSubmissionToCoreData(context: context)
+                                
+                            })  {
+                                HStack {
+                                    Text("Submit").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                                .disabled(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty)
+                        } else {
+                            Button(action: {
+            
+                                self.selection = 1
+                                UserDefaults.standard.set(self.memberID3, forKey: "memberID3")
+                                UserDefaults.standard.set(self.groupNumber3, forKey: "groupNumber3")
+                                UserDefaults.standard.set(self.policyholderName3, forKey: "policyholderName3")
+                                UserDefaults.standard.set(self.carrierCode3, forKey: "carrierCode3")
+                                UserDefaults.standard.set(self.selectedDate3, forKey: "selectedDate3")
+                                UserDefaults.standard.set(self.insurancePhone3, forKey: "insurancePhone3")
+                                UserDefaults.standard.set(self.relationshipToCardholder3, forKey: "relationshipToCardholder3")
+                                
+                            })  {
+                                HStack {
+                                    Text("Next").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                                .disabled(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty)
+                        }
+                    }
+                }
             
             if UIScreen.main.bounds.size.height > 800 {
                 Image("cropped-img7")
@@ -114,49 +173,49 @@ struct InsuranceView3: View {
             
             Spacer()
             
-            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
-                Button(action: {
-                    self.selection = 9
-                    UserDefaults.standard.set(self.memberID3, forKey: "memberID3")
-                    UserDefaults.standard.set(self.groupNumber3, forKey: "groupNumber3")
-                    UserDefaults.standard.set(self.policyholderName3, forKey: "policyholderName3")
-                    UserDefaults.standard.set(self.carrierCode3, forKey: "carrierCode3")
-                    UserDefaults.standard.set(self.selectedDate3, forKey: "selectedDate3")
-                    UserDefaults.standard.set(self.insurancePhone3, forKey: "insurancePhone3")
-                    UserDefaults.standard.set(self.relationshipToCardholder3, forKey: "relationshipToCardholder3")
-                    FormSubmissionToCoreData(context: context)
-                } ) { Text("Submit").font(.body).bold() }
-                    .disabled(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty ? .gray : Color(UIColor.mainColor))
-                    .padding()
-            } else {
-                
-                Button(action: {
-                    self.selection = 0
-                } ) { Text("< Back").font(.body).bold() }
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background(Color(UIColor.gradiant1))
-                    .padding(.horizontal)
-                
-                Button(action: {
-                    self.selection = 1
-                    UserDefaults.standard.set(self.memberID3, forKey: "memberID3")
-                    UserDefaults.standard.set(self.groupNumber3, forKey: "groupNumber3")
-                    UserDefaults.standard.set(self.policyholderName3, forKey: "policyholderName3")
-                    UserDefaults.standard.set(self.carrierCode3, forKey: "carrierCode3")
-                    UserDefaults.standard.set(self.selectedDate3, forKey: "selectedDate3")
-                    UserDefaults.standard.set(self.insurancePhone3, forKey: "insurancePhone3")
-                    UserDefaults.standard.set(self.relationshipToCardholder3, forKey: "relationshipToCardholder3")
-                } ) { Text("Next >").font(.body).bold() }
-                    .disabled(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty ? .gray : Color(UIColor.mainColor))
-                    .padding()
-            }
+//            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+//                Button(action: {
+//                    self.selection = 9
+//                    UserDefaults.standard.set(self.memberID3, forKey: "memberID3")
+//                    UserDefaults.standard.set(self.groupNumber3, forKey: "groupNumber3")
+//                    UserDefaults.standard.set(self.policyholderName3, forKey: "policyholderName3")
+//                    UserDefaults.standard.set(self.carrierCode3, forKey: "carrierCode3")
+//                    UserDefaults.standard.set(self.selectedDate3, forKey: "selectedDate3")
+//                    UserDefaults.standard.set(self.insurancePhone3, forKey: "insurancePhone3")
+//                    UserDefaults.standard.set(self.relationshipToCardholder3, forKey: "relationshipToCardholder3")
+//                    FormSubmissionToCoreData(context: context)
+//                } ) { Text("Submit").font(.body).bold() }
+//                    .disabled(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty ? .gray : Color(UIColor.mainColor))
+//                    .padding()
+//            } else {
+//
+//                Button(action: {
+//                    self.selection = 0
+//                } ) { Text("< Back").font(.body).bold() }
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background(Color(UIColor.gradiant1))
+//                    .padding(.horizontal)
+//
+//                Button(action: {
+//                    self.selection = 1
+//                    UserDefaults.standard.set(self.memberID3, forKey: "memberID3")
+//                    UserDefaults.standard.set(self.groupNumber3, forKey: "groupNumber3")
+//                    UserDefaults.standard.set(self.policyholderName3, forKey: "policyholderName3")
+//                    UserDefaults.standard.set(self.carrierCode3, forKey: "carrierCode3")
+//                    UserDefaults.standard.set(self.selectedDate3, forKey: "selectedDate3")
+//                    UserDefaults.standard.set(self.insurancePhone3, forKey: "insurancePhone3")
+//                    UserDefaults.standard.set(self.relationshipToCardholder3, forKey: "relationshipToCardholder3")
+//                } ) { Text("Next >").font(.body).bold() }
+//                    .disabled(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background(memberID3.isEmpty || groupNumber3.isEmpty || policyholderName3.isEmpty || carrierCode3.isEmpty || insurancePhone3.isEmpty || relationshipToCardholder3.isEmpty ? .gray : Color(UIColor.mainColor))
+//                    .padding()
+//            }
             NavigationLink(destination: InsuranceView2(billToInsuranceFlag1: $billToInsuranceFlag1, billToInsuranceFlag2: $billToInsuranceFlag2, billToInsuranceFlag3: $billToInsuranceFlag3, selectedPlanName1: $selectedPlanName1, selectedPlanName2: $selectedPlanName2, selectedPlanName3: $selectedPlanName3), tag: 0, selection: $selection) { EmptyView() }
             NavigationLink(destination: PaymentView(), tag: 1, selection: $selection) { EmptyView() }
             

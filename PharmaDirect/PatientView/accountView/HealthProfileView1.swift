@@ -36,8 +36,64 @@ struct HealthProfileView1: View {
             VStack {
                 
                 Text("")
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle("Health Profile")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                                EmptyView()
+                            } else {
+                                Button(action: {
+                                    self.selection = 0
+                                } ) {
+                                    HStack {
+                                        Image(systemName: "chevron.backward").font(.headline)
+                                        Text("Back").font(.headline)
+                                    }
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                                Button(action: {
+
+                                    self.selection = 1
+                
+                                    UserDefaults.standard.set(self.birthDate, forKey: "birthDate")
+                                    UserDefaults.standard.set(self.substituteGeneric, forKey: "substituteGeneric")
+                                    UserDefaults.standard.set(self.selectedGender, forKey: "selectedGender")
+                                    
+                                })  {
+                                    HStack {
+                                        Text("Submit").font(.headline)
+                                        Image(systemName: "chevron.forward").font(.headline)
+                                    }
+                                }
+                                    .disabled(selectedGender.isEmpty)
+                            } else {
+                                Button(action: {
+                                    
+                                    self.selection = 1
+                
+                                    UserDefaults.standard.set(self.birthDate, forKey: "birthDate")
+                                    UserDefaults.standard.set(self.substituteGeneric, forKey: "substituteGeneric")
+                                    UserDefaults.standard.set(self.selectedGender, forKey: "selectedGender")
+                                    
+                                })  {
+                                    HStack {
+                                        Text("Next").font(.headline)
+                                        Image(systemName: "chevron.forward").font(.headline)
+                                    }
+                                }
+                                    .disabled(selectedGender.isEmpty)
+                            }
+                        }
+                    }
+                
+                
+                
+                
                 
                 if UIScreen.main.bounds.size.height > 800 {
                     Image("cropped-img7")
@@ -81,35 +137,46 @@ struct HealthProfileView1: View {
                 
                 Spacer()
                 
-                if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
-                    Button(action: {
-                        self.selection = 0
-                    } ) { Text("< Back").font(.body).bold() }
-                        .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                        .foregroundColor(Color(.white))
-                        .background(Color(UIColor.gradiant1))
-                        .padding(.horizontal)
-                }
-                
-                Button(action: {
-                    
-                    self.selection = 1
-                    
-                    UserDefaults.standard.set(self.birthDate, forKey: "birthDate")
-                    UserDefaults.standard.set(self.substituteGeneric, forKey: "substituteGeneric")
-                    UserDefaults.standard.set(self.selectedGender, forKey: "selectedGender")
-                    
-                } ) { Text("Next >").font(.body).bold() }
-                    .disabled(selectedGender.isEmpty)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background(selectedGender.isEmpty ? .gray : Color(UIColor.mainColor))
-                    .padding()
+//                if UserDefaults.standard.bool(forKey: "signupCompletionFlag") != true {
+//                    Button(action: {
+//                        self.selection = 0
+//                    } ) { Text("< Back").font(.body).bold() }
+//                        .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                        .foregroundColor(Color(.white))
+//                        .background(Color(UIColor.gradiant1))
+//                        .padding(.horizontal)
+//                }
+//                
+//                Button(action: {
+//                    
+//                    self.selection = 1
+//                    
+//                    UserDefaults.standard.set(self.birthDate, forKey: "birthDate")
+//                    UserDefaults.standard.set(self.substituteGeneric, forKey: "substituteGeneric")
+//                    UserDefaults.standard.set(self.selectedGender, forKey: "selectedGender")
+//                    
+//                } ) { Text("Next >").font(.body).bold() }
+//                    .disabled(selectedGender.isEmpty)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background(selectedGender.isEmpty ? .gray : Color(UIColor.mainColor))
+//                    .padding()
                     
                     NavigationLink(destination: PatientInfoView(), tag: 0, selection: $selection) { EmptyView() }
                 
                     NavigationLink(destination: HealthProfileView2(), tag: 1, selection: $selection) { EmptyView() }
             }
         }
-    }
+
+    
+    
+    
+                                
+                            
+
+}
+    
+    
+    
+    
 

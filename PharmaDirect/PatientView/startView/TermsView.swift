@@ -14,7 +14,7 @@ struct TermsView: View {
         VStack {
         
             Text("")
-                .navigationBarTitle("Terms and Conditions")
+                .navigationBarTitle("Terms and Conditions", displayMode: .inline)
 //                .navigationBarHidden(true)
             
             ScrollView(.vertical, showsIndicators: false, content: {

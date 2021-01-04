@@ -42,15 +42,73 @@ struct PatientInfoView: View {
             _phoneNumber = State(wrappedValue: "")
         }
     }
-
+    
     var body: some View {
         
         VStack {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-                 
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Patient Info")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                            EmptyView()
+                        } else {
+                            Button(action: {
+                                self.selection = 0
+                            } ) {
+                                HStack {
+                                    Image(systemName: "chevron.backward").font(.headline)
+                                    Text("Back").font(.headline)
+                                }
+                            }
+                                .disabled(false)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+                            Button(action: {
+                                
+                                self.selection = 9
+                                UserDefaults.standard.set(self.fullName, forKey: "fullName")
+                                UserDefaults.standard.set(self.address, forKey: "address")
+                                UserDefaults.standard.set(self.city, forKey: "city")
+                                UserDefaults.standard.set(self.province, forKey: "province")
+                                UserDefaults.standard.set(self.postalCode, forKey: "postalCode")
+                                UserDefaults.standard.set(self.phoneNumber, forKey: "phoneNumber")
+                                FormSubmissionToCoreData(context: context)
+                                
+                            })  {
+                                HStack {
+                                    Text("Submit").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                            .disabled(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty)
+                        } else {
+                            Button(action: {
+                                
+                                self.selection = 1
+                                UserDefaults.standard.set(self.fullName, forKey: "fullName")
+                                UserDefaults.standard.set(self.address, forKey: "address")
+                                UserDefaults.standard.set(self.city, forKey: "city")
+                                UserDefaults.standard.set(self.province, forKey: "province")
+                                UserDefaults.standard.set(self.postalCode, forKey: "postalCode")
+                                UserDefaults.standard.set(self.phoneNumber, forKey: "phoneNumber")
+                                
+                            })  {
+                                HStack {
+                                    Text("Next").font(.headline)
+                                    Image(systemName: "chevron.forward").font(.headline)
+                                }
+                            }
+                            .disabled(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty)
+                        }
+                    }
+                }
+            
             if UIScreen.main.bounds.height > 800 {
                 Image("cropped-img7")
                     .resizable()
@@ -95,52 +153,52 @@ struct PatientInfoView: View {
             
             Spacer()
         
-            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
-                Button(action: {
-                    self.selection = 9
-                    
-                    UserDefaults.standard.set(self.fullName, forKey: "fullName")
-                    UserDefaults.standard.set(self.address, forKey: "address")
-                    UserDefaults.standard.set(self.city, forKey: "city")
-                    UserDefaults.standard.set(self.province, forKey: "province")
-                    UserDefaults.standard.set(self.postalCode, forKey: "postalCode")
-                    UserDefaults.standard.set(self.phoneNumber, forKey: "phoneNumber")
-                    
-                    FormSubmissionToCoreData(context: context)
-                })  { Text("Submit").font(.body).bold() }
-                .disabled(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                .background(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty ? .gray : Color(UIColor.mainColor))
-                    .padding()
-            } else {
-                
-                Button(action: {
-                    self.selection = 0
-                } ) { Text("< Back").font(.body).bold() }
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                    .background(Color(UIColor.gradiant1))
-                    .padding(.horizontal)   
-                
-                Button(action: {
-                    self.selection = 1
-                    
-                    UserDefaults.standard.set(self.fullName, forKey: "fullName")
-                    UserDefaults.standard.set(self.address, forKey: "address")
-                    UserDefaults.standard.set(self.city, forKey: "city")
-                    UserDefaults.standard.set(self.province, forKey: "province")
-                    UserDefaults.standard.set(self.postalCode, forKey: "postalCode")
-                    UserDefaults.standard.set(self.phoneNumber, forKey: "phoneNumber")
-                    
-                })  { Text("Next >").font(.body).bold() }
-                .disabled(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty)
-                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                    .foregroundColor(Color(.white))
-                .background(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty ? .gray : Color(UIColor.mainColor))
-                    .padding()
-            
-            }
+//            if UserDefaults.standard.bool(forKey: "signupCompletionFlag") == true {
+//                Button(action: {
+//                    self.selection = 9
+//
+//                    UserDefaults.standard.set(self.fullName, forKey: "fullName")
+//                    UserDefaults.standard.set(self.address, forKey: "address")
+//                    UserDefaults.standard.set(self.city, forKey: "city")
+//                    UserDefaults.standard.set(self.province, forKey: "province")
+//                    UserDefaults.standard.set(self.postalCode, forKey: "postalCode")
+//                    UserDefaults.standard.set(self.phoneNumber, forKey: "phoneNumber")
+//
+//                    FormSubmissionToCoreData(context: context)
+//                })  { Text("Submit").font(.body).bold() }
+//                .disabled(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                .background(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty ? .gray : Color(UIColor.mainColor))
+//                    .padding()
+//            } else {
+//
+//                Button(action: {
+//                    self.selection = 0
+//                } ) { Text("< Back").font(.body).bold() }
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                    .background(Color(UIColor.gradiant1))
+//                    .padding(.horizontal)
+//
+//                Button(action: {
+//                    self.selection = 1
+//
+//                    UserDefaults.standard.set(self.fullName, forKey: "fullName")
+//                    UserDefaults.standard.set(self.address, forKey: "address")
+//                    UserDefaults.standard.set(self.city, forKey: "city")
+//                    UserDefaults.standard.set(self.province, forKey: "province")
+//                    UserDefaults.standard.set(self.postalCode, forKey: "postalCode")
+//                    UserDefaults.standard.set(self.phoneNumber, forKey: "phoneNumber")
+//
+//                })  { Text("Next >").font(.body).bold() }
+//                .disabled(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty)
+//                    .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                    .foregroundColor(Color(.white))
+//                .background(fullName.isEmpty || address.isEmpty || city.isEmpty || province.isEmpty || postalCode.isEmpty || phoneNumber.isEmpty ? .gray : Color(UIColor.mainColor))
+//                    .padding()
+//
+//            }
                 NavigationLink(destination: PharmacySearchView(chosenPharmacy: chosenPharmacy), tag: 0, selection: $selection) { EmptyView() }
                 NavigationLink(destination: HealthProfileView1(), tag: 1, selection: $selection) { EmptyView() }
             

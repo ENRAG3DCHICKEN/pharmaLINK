@@ -34,10 +34,37 @@ struct RefillPrescriptionSelection: View {
         VStack(spacing: 0) {
             
             Text("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Refill Prescription")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            self.selection = 0
+                        } ) {
+                            HStack {
+                                Image(systemName: "chevron.backward").font(.headline)
+                                Text("Back").font(.headline)
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+        
+                            UserDefaults.standard.set( (rx1 + rx2 + rx3 + rx4 + rx5 + rx6), forKey: "refill_prescription")
+                            self.selection = 1
+                            
+                        })  {
+                            HStack {
+                                Text("Next").font(.headline)
+                                Image(systemName: "chevron.forward").font(.headline)
+                            }
+                        }
+                            .disabled(rx1.isEmpty)
+                    }
+                }
+
             
-            Text("Refill Prescription Request").font(.headline)
 
             Form {
                 Section(header: Text("Pharmacy Details: ")) {
@@ -60,23 +87,23 @@ struct RefillPrescriptionSelection: View {
             
             
             
-            Button(action: {
-                self.selection = 0
-            } ) { Text("< Back").font(.body).bold() }
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .foregroundColor(Color(.white))
-                .background(Color(UIColor.gradiant1))
-                .padding(.horizontal)
+//            Button(action: {
+//                self.selection = 0
+//            } ) { Text("< Back").font(.body).bold() }
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .foregroundColor(Color(.white))
+//                .background(Color(UIColor.gradiant1))
+//                .padding(.horizontal)
             
-            Button(action: {
-                UserDefaults.standard.set( (rx1 + rx2 + rx3 + rx4 + rx5 + rx6), forKey: "refill_prescription")
-                self.selection = 1
-            } ) { Text("Next >").font(.body).bold() }
-                .disabled(rx1.isEmpty)
-                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
-                .foregroundColor(Color(.white))
-                .background( (rx1.isEmpty) ? .gray : Color(UIColor.mainColor))
-                .padding()
+//            Button(action: {
+//                UserDefaults.standard.set( (rx1 + rx2 + rx3 + rx4 + rx5 + rx6), forKey: "refill_prescription")
+//                self.selection = 1
+//            } ) { Text("Next >").font(.body).bold() }
+//                .disabled(rx1.isEmpty)
+//                .frame(width: UIScreen.main.bounds.width * 0.92, height: 35)
+//                .foregroundColor(Color(.white))
+//                .background( (rx1.isEmpty) ? .gray : Color(UIColor.mainColor))
+//                .padding()
             
             NavigationLink(destination: HomeView(), tag: 0, selection: $selection) { EmptyView() }
             NavigationLink(destination: CheckoutView(chosenPharmacy: chosenPharmacy!, prescriptionSource: "Refill RX - N/A", indicator: 3), tag: 1, selection: $selection) { EmptyView() }
