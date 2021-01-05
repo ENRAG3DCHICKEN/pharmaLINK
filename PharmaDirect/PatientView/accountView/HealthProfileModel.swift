@@ -32,7 +32,8 @@ var conditionsListExOther: [String] = ["Angina",
                                        "Epilepsy"]
 
 var genderSelections: [String] = ["Male",
-                                  "Female"]
+                                  "Female",
+                                  "Other"]
 
 var provinces: [String] = ["Ontario",
                           "British Columbia",

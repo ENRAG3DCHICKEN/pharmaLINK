@@ -31,7 +31,7 @@ struct SummaryCompletionView: View {
     var alert: Alert {
 //        Alert(title: Text("Order Confirmation"), message: Text("Your order has been received."), dismissButton: .default(Text("Dismiss")))
         Alert(title: Text("Order Confirmation"),
-            message: Text("Your order has been received."),
+            message: Text("Your order has been received"),
             dismissButton: Alert.Button.default(
                 Text("Dismiss"), action: { self.selection = 1 }
             )

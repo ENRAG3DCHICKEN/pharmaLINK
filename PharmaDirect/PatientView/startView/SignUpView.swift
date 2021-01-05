@@ -108,7 +108,7 @@ struct SignUpView: View {
                         }
                         if validationResult == "Password Bad" {
                             self.passwordErrorCondition = true
-                            self.displayPasswordErrorMessage = "Password must be at least 6 characters and consists of characters and numbers"
+                            self.displayPasswordErrorMessage = "Weak Password - The Input Password needs to be at least 6 characters, and consist of upper & lower case letters, along with numbers and special chracters"
                         }
                     }
                 

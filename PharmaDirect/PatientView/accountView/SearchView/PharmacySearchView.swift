@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 import MapKit
 
-@available(iOS 14.0, *)
+ 
 struct PharmacySearchView: View {
     
     
@@ -34,6 +34,10 @@ struct PharmacySearchView: View {
     init() {
         _chosenPharmacy = State(wrappedValue: nil)
     }
+    
+    
+    
+    
     
     var selectedPharmacyMarker: Binding<MKAnnotation?> {
         return Binding<MKAnnotation?>(
@@ -86,6 +90,9 @@ struct PharmacySearchView: View {
                 }
             
             Form {
+                
+//                Text("Please select a pharmacy using the map provided below: ")
+                
                 Section {
                     Picker("Pharmacy", selection: $chosenPharmacy) {
                         ForEach(pharmacies.sorted(), id: \.self) { pharmacy in

@@ -51,14 +51,14 @@ struct MapView: UIViewRepresentable {
             view.canShowCallout = true
             return view
         }
-    }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let annotation = view.annotation {
-            self.selection = annotation
+    
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let annotation = view.annotation {
+                self.selection = annotation
+            }
         }
     }
-    
     
 }
 
